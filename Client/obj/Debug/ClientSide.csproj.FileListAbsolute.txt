@@ -1,0 +1,11 @@
+D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Client\bin\Debug\ClientSide.exe.config
+D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Client\bin\Debug\ClientSide.exe
+D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Client\bin\Debug\ClientSide.pdb
+D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSide.csprojResolveAssemblyReference.cache
+D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSide.Form1.resources
+D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSide.newevent.resources
+D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSide.Properties.Resources.resources
+D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSide.seeevents.resources
+D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSide.csproj.GenerateResource.Cache
+D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSide.exe
+D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSide.pdb

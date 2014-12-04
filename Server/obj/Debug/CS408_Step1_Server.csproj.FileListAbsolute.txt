@@ -1,0 +1,9 @@
+D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Server\bin\Debug\CS408_Step1_Server.exe.config
+D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Server\bin\Debug\CS408_Step1_Server.exe
+D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Server\bin\Debug\CS408_Step1_Server.pdb
+D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Server\obj\Debug\CS408_Step1_Server.csprojResolveAssemblyReference.cache
+D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Server\obj\Debug\CS408_Step1_Server.Server.resources
+D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Server\obj\Debug\CS408_Step1_Server.Properties.Resources.resources
+D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Server\obj\Debug\CS408_Step1_Server.csproj.GenerateResource.Cache
+D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Server\obj\Debug\CS408_Step1_Server.exe
+D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Server\obj\Debug\CS408_Step1_Server.pdb
