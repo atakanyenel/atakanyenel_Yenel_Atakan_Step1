@@ -175,5 +175,17 @@ namespace ClientSide
                 else
                     e.Cancel = true;
             }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var newevent = new newevent();
+            newevent.Show();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var seeevents = new seeevents();
+            seeevents.Show();
+        }
     }
 }
