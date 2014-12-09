@@ -187,5 +187,10 @@ namespace ClientSide
             var seeevents = new seeevents();
             seeevents.Show();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

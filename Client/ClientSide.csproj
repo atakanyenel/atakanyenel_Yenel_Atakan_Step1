@@ -50,6 +50,7 @@
     <Compile Include="client-master.Designer.cs">
       <DependentUpon>client-master.cs</DependentUpon>
     </Compile>
+    <Compile Include="event.cs" />
     <Compile Include="newevent.cs">
       <SubType>Form</SubType>
     </Compile>

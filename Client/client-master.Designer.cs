@@ -45,7 +45,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 23);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 13);
             this.label1.TabIndex = 0;
@@ -54,7 +54,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 65);
+            this.label2.Location = new System.Drawing.Point(105, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(17, 13);
             this.label2.TabIndex = 1;
@@ -63,7 +63,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(181, 19);
+            this.label3.Location = new System.Drawing.Point(12, 36);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(35, 13);
             this.label3.TabIndex = 2;
@@ -72,10 +72,10 @@
             // Connect
             // 
             this.Connect.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.Connect.Location = new System.Drawing.Point(184, 45);
+            this.Connect.Location = new System.Drawing.Point(237, 6);
             this.Connect.Name = "Connect";
-            this.Connect.Size = new System.Drawing.Size(128, 64);
-            this.Connect.TabIndex = 3;
+            this.Connect.Size = new System.Drawing.Size(139, 47);
+            this.Connect.TabIndex = 10;
             this.Connect.Text = "Connect";
             this.Connect.UseVisualStyleBackColor = true;
             this.Connect.Click += new System.EventHandler(this.Connect_Click);
@@ -83,68 +83,68 @@
             // richtextbox
             // 
             this.richtextbox.ForeColor = System.Drawing.Color.Blue;
-            this.richtextbox.Location = new System.Drawing.Point(24, 154);
+            this.richtextbox.Location = new System.Drawing.Point(12, 85);
             this.richtextbox.Name = "richtextbox";
             this.richtextbox.ReadOnly = true;
-            this.richtextbox.Size = new System.Drawing.Size(288, 155);
-            this.richtextbox.TabIndex = 4;
+            this.richtextbox.Size = new System.Drawing.Size(294, 213);
+            this.richtextbox.TabIndex = 13;
             this.richtextbox.Text = "";
             // 
             // tbsend
             // 
-            this.tbsend.Location = new System.Drawing.Point(24, 115);
+            this.tbsend.Location = new System.Drawing.Point(12, 59);
             this.tbsend.Name = "tbsend";
-            this.tbsend.Size = new System.Drawing.Size(234, 20);
-            this.tbsend.TabIndex = 5;
+            this.tbsend.Size = new System.Drawing.Size(294, 20);
+            this.tbsend.TabIndex = 11;
             // 
             // btnsend
             // 
             this.btnsend.Enabled = false;
-            this.btnsend.Location = new System.Drawing.Point(269, 115);
+            this.btnsend.Location = new System.Drawing.Point(312, 59);
             this.btnsend.Name = "btnsend";
-            this.btnsend.Size = new System.Drawing.Size(43, 20);
-            this.btnsend.TabIndex = 6;
+            this.btnsend.Size = new System.Drawing.Size(64, 20);
+            this.btnsend.TabIndex = 12;
             this.btnsend.Text = "Send";
             this.btnsend.UseVisualStyleBackColor = true;
             this.btnsend.Click += new System.EventHandler(this.btnsend_Click);
             // 
             // tbport
             // 
-            this.tbport.Location = new System.Drawing.Point(46, 23);
+            this.tbport.Location = new System.Drawing.Point(44, 6);
             this.tbport.Name = "tbport";
-            this.tbport.Size = new System.Drawing.Size(81, 20);
+            this.tbport.Size = new System.Drawing.Size(55, 20);
             this.tbport.TabIndex = 7;
             // 
             // tbip
             // 
-            this.tbip.Location = new System.Drawing.Point(44, 65);
+            this.tbip.Location = new System.Drawing.Point(128, 6);
             this.tbip.Name = "tbip";
-            this.tbip.Size = new System.Drawing.Size(117, 20);
+            this.tbip.Size = new System.Drawing.Size(103, 20);
             this.tbip.TabIndex = 8;
             // 
             // tbname
             // 
-            this.tbname.Location = new System.Drawing.Point(237, 16);
+            this.tbname.Location = new System.Drawing.Point(53, 33);
             this.tbname.Name = "tbname";
-            this.tbname.Size = new System.Drawing.Size(75, 20);
+            this.tbname.Size = new System.Drawing.Size(178, 20);
             this.tbname.TabIndex = 9;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(318, 16);
+            this.button1.Location = new System.Drawing.Point(312, 85);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(207, 66);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "create event";
+            this.button1.Size = new System.Drawing.Size(64, 103);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "Create Event";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(318, 154);
+            this.button2.Location = new System.Drawing.Point(312, 194);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(207, 155);
-            this.button2.TabIndex = 11;
+            this.button2.Size = new System.Drawing.Size(64, 104);
+            this.button2.TabIndex = 15;
             this.button2.Text = "Events";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -154,7 +154,7 @@
             this.AcceptButton = this.Connect;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(547, 321);
+            this.ClientSize = new System.Drawing.Size(388, 310);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tbname);
@@ -167,9 +167,12 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(404, 349);
+            this.MinimumSize = new System.Drawing.Size(404, 349);
             this.Name = "Form1";
             this.Text = "Client-master";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
