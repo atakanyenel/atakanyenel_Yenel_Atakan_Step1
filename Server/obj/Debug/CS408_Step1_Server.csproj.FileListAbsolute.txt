@@ -7,3 +7,12 @@ D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Server\obj
 D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Server\obj\Debug\CS408_Step1_Server.csproj.GenerateResource.Cache
 D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Server\obj\Debug\CS408_Step1_Server.exe
 D:\Users\SUUSER\Desktop\CS 408\project\atakanyenel_Yenel_Atakan_Step1\Server\obj\Debug\CS408_Step1_Server.pdb
+C:\Users\TszHo\Desktop\GitHub\atakanyenel_Yenel_Atakan_Step1\Server\bin\Debug\CS408_Step1_Server.exe.config
+C:\Users\TszHo\Desktop\GitHub\atakanyenel_Yenel_Atakan_Step1\Server\obj\Debug\CS408_Step1_Server.exe
+C:\Users\TszHo\Desktop\GitHub\atakanyenel_Yenel_Atakan_Step1\Server\obj\Debug\CS408_Step1_Server.pdb
+C:\Users\TszHo\Desktop\GitHub\atakanyenel_Yenel_Atakan_Step1\Server\bin\Debug\CS408_Step1_Server.exe
+C:\Users\TszHo\Desktop\GitHub\atakanyenel_Yenel_Atakan_Step1\Server\bin\Debug\CS408_Step1_Server.pdb
+C:\Users\TszHo\Desktop\GitHub\atakanyenel_Yenel_Atakan_Step1\Server\obj\Debug\CS408_Step1_Server.csprojResolveAssemblyReference.cache
+C:\Users\TszHo\Desktop\GitHub\atakanyenel_Yenel_Atakan_Step1\Server\obj\Debug\CS408_Step1_Server.Server.resources
+C:\Users\TszHo\Desktop\GitHub\atakanyenel_Yenel_Atakan_Step1\Server\obj\Debug\CS408_Step1_Server.Properties.Resources.resources
+C:\Users\TszHo\Desktop\GitHub\atakanyenel_Yenel_Atakan_Step1\Server\obj\Debug\CS408_Step1_Server.csproj.GenerateResource.Cache

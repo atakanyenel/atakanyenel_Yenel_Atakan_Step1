@@ -38,5 +38,10 @@ namespace ClientSide
         {
             this.Close();
         }
+
+        private void cbOrganizers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.AcceptButton = button1;
+        }
     }
 }

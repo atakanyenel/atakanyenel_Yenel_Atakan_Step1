@@ -51,10 +51,11 @@
             // cbOrganizers
             // 
             this.cbOrganizers.FormattingEnabled = true;
-            this.cbOrganizers.Location = new System.Drawing.Point(12, 12);
+            this.cbOrganizers.Location = new System.Drawing.Point(12, 14);
             this.cbOrganizers.Name = "cbOrganizers";
-            this.cbOrganizers.Size = new System.Drawing.Size(121, 21);
+            this.cbOrganizers.Size = new System.Drawing.Size(133, 21);
             this.cbOrganizers.TabIndex = 0;
+            this.cbOrganizers.SelectedIndexChanged += new System.EventHandler(this.cbOrganizers_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -79,7 +80,7 @@
             // 
             this.txtOrganizer.Location = new System.Drawing.Point(12, 169);
             this.txtOrganizer.Name = "txtOrganizer";
-            this.txtOrganizer.Size = new System.Drawing.Size(197, 20);
+            this.txtOrganizer.Size = new System.Drawing.Size(214, 20);
             this.txtOrganizer.TabIndex = 11;
             // 
             // label2
@@ -95,7 +96,7 @@
             // 
             this.txtPlace.Location = new System.Drawing.Point(12, 91);
             this.txtPlace.Name = "txtPlace";
-            this.txtPlace.Size = new System.Drawing.Size(200, 20);
+            this.txtPlace.Size = new System.Drawing.Size(214, 20);
             this.txtPlace.TabIndex = 9;
             // 
             // label1
@@ -111,7 +112,7 @@
             // 
             this.txtDescription.Location = new System.Drawing.Point(12, 130);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(200, 20);
+            this.txtDescription.Size = new System.Drawing.Size(214, 20);
             this.txtDescription.TabIndex = 7;
             // 
             // groupBox1
@@ -120,7 +121,7 @@
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Location = new System.Drawing.Point(12, 246);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 52);
+            this.groupBox1.Size = new System.Drawing.Size(214, 52);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Attending";
@@ -128,7 +129,7 @@
             // radioButton2
             // 
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(97, 19);
+            this.radioButton2.Location = new System.Drawing.Point(128, 19);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(39, 17);
             this.radioButton2.TabIndex = 1;
@@ -139,7 +140,7 @@
             // radioButton1
             // 
             this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 19);
+            this.radioButton1.Location = new System.Drawing.Point(48, 19);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(43, 17);
             this.radioButton1.TabIndex = 0;
@@ -152,7 +153,7 @@
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(232, 16);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 199);
+            this.listBox1.Size = new System.Drawing.Size(144, 212);
             this.listBox1.TabIndex = 14;
             // 
             // label4
@@ -168,7 +169,7 @@
             // 
             this.txtTitle.Location = new System.Drawing.Point(12, 52);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(200, 20);
+            this.txtTitle.Size = new System.Drawing.Size(214, 20);
             this.txtTitle.TabIndex = 15;
             // 
             // label5
@@ -184,14 +185,14 @@
             // 
             this.txtDate.Location = new System.Drawing.Point(12, 208);
             this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(197, 20);
+            this.txtDate.Size = new System.Drawing.Size(214, 20);
             this.txtDate.TabIndex = 17;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(232, 222);
+            this.btnClose.Location = new System.Drawing.Point(232, 255);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(120, 36);
+            this.btnClose.Size = new System.Drawing.Size(144, 36);
             this.btnClose.TabIndex = 19;
             this.btnClose.Text = "CLOSE";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -201,7 +202,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(398, 323);
+            this.ClientSize = new System.Drawing.Size(388, 310);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtDate);
@@ -217,6 +218,8 @@
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cbOrganizers);
+            this.MaximumSize = new System.Drawing.Size(404, 349);
+            this.MinimumSize = new System.Drawing.Size(404, 349);
             this.Name = "seeevents";
             this.Text = "seeevents";
             this.Load += new System.EventHandler(this.seeevents_Load);

@@ -288,5 +288,10 @@ namespace CS408_Step1_Server
                    e.Cancel = true;
             }
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            this.AcceptButton = start;
+        }
     }
 }
