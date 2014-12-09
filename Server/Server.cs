@@ -46,6 +46,11 @@ namespace CS408_Step1_Server
         };
         DateTime Time;
         List<client> clientarray=new List<client>();
+        //There should be a list for events here instead of locally in the client
+        //the events class should be moved to server
+        //Click the create button should send the event to server
+        //server needs to break down an event string
+        //List<events> eventArray = new List<events>();
         Thread thraccept;
         Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         Socket n;
@@ -230,7 +235,6 @@ namespace CS408_Step1_Server
         //he is disconnecting.
         bool DECIDE(ref string  message)
          {
-    
               if (message.ElementAt(0) == 'm')
              {
                  message=message.Substring(1, message.Length - 2);
@@ -239,7 +243,6 @@ namespace CS408_Step1_Server
             else if(message.ElementAt(0)=='e') //This is for event
             {
                 message = message.Substring(1, message.Length - 2);
-
             }
               return false;
          }

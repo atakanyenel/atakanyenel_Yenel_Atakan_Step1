@@ -48,7 +48,6 @@ namespace ClientSide
             txtOrganizer.Clear();
             txtPlace.Clear();
             dtpDate.Value = DateTime.Now;
-
         }
 
         private void newevent_Load(object sender, EventArgs e)
@@ -59,6 +58,21 @@ namespace ClientSide
         private void button3_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dtpDate_ValueChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void txtOrganizer_TextChanged(object sender, EventArgs e)
+        {
+            this.AcceptButton = button1;
+        }
+
+        private void txtTitle_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
 

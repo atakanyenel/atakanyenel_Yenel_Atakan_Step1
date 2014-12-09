@@ -138,6 +138,7 @@ namespace ClientSide
                 if (tbsend.Text != "")
                 {
                     richtextbox.Text = richtextbox.Text + tbname.Text + ": " + tbsend.Text + "\r\n";
+                    //you may want to change m to something more complicated
                     string sentmessage = "m" + tbsend.Text;
                     byte[] buffer = Encoding.Default.GetBytes(sentmessage);
                     c.Send(buffer);
