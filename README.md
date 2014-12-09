@@ -7,4 +7,3 @@ Each user can schedule any number of events. Organizing user enters the details 
 A particular user can organize and attend any number of events. Moreover, the event management operations can be performed at any time while the user is connected to the server.
 As in the step 1, all of the operations must be clearly shown on the client and server GUIs.
 For programming rules and submission specifications, please read the corresponding sections at the end of this document.
-------------------------------
