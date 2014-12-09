@@ -40,6 +40,9 @@ namespace ClientSide
             events.function_event = new_event;
 
             MessageBox.Show("You have created an event: " + title);
+            //turn event into a string of info
+            //suggest format: <e><date>{date}<place><des>{description}<org>{organizer}<t>{title}
+            //send this string to server (almost) like a normal text
         }
 
         private void button2_Click(object sender, EventArgs e)
