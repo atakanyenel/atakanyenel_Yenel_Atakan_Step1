@@ -19,19 +19,19 @@ namespace ClientSide
 
         private void seeevents_Load(object sender, EventArgs e)
         {
-            string[] Event = events.function_event;
-            cbOrganizers.Items.Add(Event[4]);
+            string created_event = events.function_create_event;
+            //cbOrganizers.Items.Add(Event[4]);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             
-            string[] Event = events.function_event;
-            txtDescription.Text = Event[3];
-            txtOrganizer.Text = Event[4];
-            txtPlace.Text = Event[2];
-            txtTitle.Text = Event[1];
-            txtDate.Text = Event[0];
+            //string[] Event = events.function_createevent;
+            //txtDescription.Text = Event[3];
+            //txtOrganizer.Text = Event[4];
+            //txtPlace.Text = Event[2];
+            //txtTitle.Text = Event[1];
+            //txtDate.Text = Event[0];
         }
 
         private void btnClose_Click(object sender, EventArgs e)

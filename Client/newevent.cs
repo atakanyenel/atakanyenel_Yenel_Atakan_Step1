@@ -16,33 +16,43 @@ namespace ClientSide
 {
     public partial class newevent : Form
     {
+        //string test_test;
+        //public string event_name_test()
+        //{
+        //    return test_test;
+        //}
+
         public newevent()
         {
             InitializeComponent();
         }
 
+        //public string[] random_name(){
+
+        //    string[] new_event;
+        //    return new_event;
+        //}
+
+
+
         private void button1_Click(object sender, EventArgs e)
         {
+             
             string date = dtpDate.Value.ToShortDateString();
-            
             string place = txtPlace.Text;
             string description = txtDescription.Text;
             string organizer = txtOrganizer.Text;
             string title = txtTitle.Text;
-
-            string[] new_event = {date, title, place, description, organizer};
 
             events.function_date = dtpDate.Value.ToShortDateString();
             events.function_place = txtPlace.Text;
             events.function_description = txtDescription.Text;
             events.function_organizer = txtOrganizer.Text;
             events.function_title = txtTitle.Text;
-            events.function_event = new_event;
+            //events.function_event = new_event;
+            events.function_create_event = "%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer +"\r\n";
 
-            MessageBox.Show("You have created an event: " + title);
-            //turn event into a string of info
-            //suggest format: <e><date>{date}<place><des>{description}<org>{organizer}<t>{title}
-            //send this string to server (almost) like a normal text
+            MessageBox.Show("Event created:" + title);
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -50,6 +60,7 @@ namespace ClientSide
             txtDescription.Clear();
             txtOrganizer.Clear();
             txtPlace.Clear();
+            txtTitle.Clear();
             dtpDate.Value = DateTime.Now;
         }
 

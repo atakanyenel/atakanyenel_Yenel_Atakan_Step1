@@ -12,7 +12,7 @@ namespace ClientSide
         static string title;
         static string description;
         static string organizer;
-        static string[] Event;
+        static string create_event;
         static string place;
 
         public static string function_date
@@ -37,15 +37,15 @@ namespace ClientSide
                 place = value;
             }
         }
-        public static string[] function_event
+        public static string function_create_event
         {
             get
             {
-                return Event;
+                return create_event;
             }
             set
             {
-                Event = value;
+                create_event = value;
             }
         }
         public static string function_title

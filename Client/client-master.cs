@@ -17,8 +17,11 @@ using System.Net.Sockets;
  
 namespace ClientSide
 {
+    
     public partial class Form1 : Form
     {
+        
+        //string event_created = events.function_create_event; // global variable
         Thread thrReceive;
         bool unique;
         bool condition=true;
@@ -108,12 +111,43 @@ namespace ClientSide
                 condition = true;
                 while (condition)
                 {
+                    
                     byte[] buffer = new byte[64];
                     c.Receive(buffer);
                     string receivedmessage = Encoding.Default.GetString(buffer);
                     receivedmessage = receivedmessage.Substring(0, receivedmessage.IndexOf("\0"));
-                    if(receivedmessage!="")
-                    richtextbox.Text = richtextbox.Text + receivedmessage + "\r\n";
+                    if (receivedmessage != "")
+                    {
+                        if (check_symbol(ref receivedmessage) == 1)
+                        {
+                            // 1 is event
+                            int i = 0;
+                            int location = receivedmessage.IndexOf('%',i);
+                            while ( location!= -1){
+                                int location2 = receivedmessage.IndexOf('%', i+1);
+                                MessageBox.Show(location2.ToString());
+                                string value_get = receivedmessage.Substring(location, location2 - location);
+                                i++;
+                                location = receivedmessage.IndexOf('%', i);
+                                MessageBox.Show(value_get);
+                            }
+                            int name = receivedmessage.IndexOf('%');
+
+
+                        }
+                        else if (check_symbol(ref receivedmessage) == 2)
+                        {
+                            // 2 is message
+                            richtextbox.Text = richtextbox.Text + receivedmessage.Substring(1) + "\r\n";
+                        }
+                        else if (check_symbol(ref receivedmessage) == 3)
+                        {
+                            // 3 is attendance
+
+                        }
+                    }
+
+                    
                 }
             }
             catch
@@ -131,22 +165,56 @@ namespace ClientSide
         
         // A function for sending messages. If a client wants to send an empty message a messagebox appears. 
         // If a message can not be sent because of some other malfunction the whole method is in try/catch so it does not crash
-        private void btnsend_Click(object sender, EventArgs e)
+
+        int check_symbol(ref string message)
         {
+            if (message.ElementAt(0) == '%') // event
+            {
+                message = message.Substring(1, message.Length - 2);
+                return 1;
+            }
+            else if (message.ElementAt(0) == '#') //message
+            {
+                message = message.Substring(1, message.Length - 2);
+                return 2;
+            }
+            else if (message.ElementAt(0) == '&') //This is for attendance
+            {
+                message = message.Substring(1, message.Length - 2);
+                return 3;
+            }
+            return 0;
+        }
+        private void btnsend_Click(object sender, EventArgs e)
+        { 
             try
             {
-                if (tbsend.Text != "")
+                string isItEvent = events.function_create_event;
+                string tbsendTextBox = tbsend.Text;
+                Console.WriteLine(isItEvent);
+                if ((isItEvent != "")&&(tbsendTextBox == ""))
                 {
-                    richtextbox.Text = richtextbox.Text + tbname.Text + ": " + tbsend.Text + "\r\n";
-                    //you may want to change m to something more complicated
-                    string sentmessage = "m" + tbsend.Text;
-                    byte[] buffer = Encoding.Default.GetBytes(sentmessage);
+                    //send event string
+                    byte[] buffer = Encoding.Default.GetBytes(isItEvent);
+                    //This is not correct
+                    richtextbox.Text = richtextbox.Text + isItEvent + "\r\n";
+                    //display event info
+                    richtextbox.Text = richtextbox.Text + "You have created: " + events.function_title + "\r\n";
                     c.Send(buffer);
-                    tbsend.Text = "";
+                }
+                else if (tbsendTextBox != "")
+                {
+                    //send message
+                    richtextbox.Text = richtextbox.Text + tbname.Text + ": " + tbsendTextBox + "\r\n";
+                    tbsendTextBox = "#" + tbname.Text + ": " + tbsendTextBox + "\r\n";
+                    //you may want to change m to something more complicated             
+                    byte[] buffer = Encoding.Default.GetBytes(tbsendTextBox);
+                    c.Send(buffer);
                 }
                 else {
                     MessageBox.Show("You can't send empty messages.");
                 }
+                tbsend.Clear();
             }
             catch 
             {
@@ -181,6 +249,12 @@ namespace ClientSide
         {
             var newevent = new newevent();
             newevent.Show();
+            
+            //string created_event = newevent.event_name_test();
+
+            //while(created_event == "");
+            //richtextbox.Text = "llll";
+            //richtextbox.Text = created_event;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -191,7 +265,7 @@ namespace ClientSide
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

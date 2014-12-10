@@ -183,7 +183,7 @@ namespace CS408_Step1_Server
                         string newmessage = Encoding.Default.GetString(buffer2);
                              //That doesn't work
                         int pos = clientarray.IndexOf(clientarray.Find(client => client.getsocket() == yeni));
-                        if (DECIDE(ref newmessage))
+                        if (check_symbol(ref newmessage)>0)
                         {
                             string clientsendername = clientarray[pos].getname();
                             newmessage = clientsendername + ": " + newmessage;
@@ -233,19 +233,40 @@ namespace CS408_Step1_Server
         
         //This function decides if the incoming message a message from the client or si the client informing the server that 
         //he is disconnecting.
-        bool DECIDE(ref string  message)
-         {
-              if (message.ElementAt(0) == 'm')
-             {
-                 message=message.Substring(1, message.Length - 2);
-             return true;
-             }
-            else if(message.ElementAt(0)=='e') //This is for event
+        //bool DECIDE(ref string  message)
+        // {
+        //      if (message.ElementAt(0) == 'm')
+        //     {
+        //         message=message.Substring(1, message.Length - 2);
+        //     return true;
+        //     }
+        //    else if(message.ElementAt(0)=='e') //This is for event
+        //    {
+        //        message = message.Substring(1, message.Length - 2);
+        //    }
+        //      return false;
+        // }
+
+        int check_symbol(ref string message)
+        {
+            if (message.ElementAt(0) == '%') // event
             {
                 message = message.Substring(1, message.Length - 2);
+                return 1;
             }
-              return false;
-         }
+            else if (message.ElementAt(0) == '#') //message
+            {
+                message = message.Substring(1, message.Length - 2);
+                return 2;
+            }
+            else if (message.ElementAt(0) == '&') //This is for attendance
+            {
+                message = message.Substring(1, message.Length - 2);
+                return 3;
+            }
+            return 0;
+        }
+
         private bool checkname(string name)
         {
 

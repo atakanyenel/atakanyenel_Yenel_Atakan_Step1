@@ -20,3 +20,14 @@ C:\Users\TszHo\Desktop\GitHub\atakanyenel_Yenel_Atakan_Step1\Client\bin\Debug\Cl
 C:\Users\TszHo\Desktop\GitHub\atakanyenel_Yenel_Atakan_Step1\Client\bin\Debug\ClientSide.exe
 C:\Users\TszHo\Desktop\GitHub\atakanyenel_Yenel_Atakan_Step1\Client\bin\Debug\ClientSide.pdb
 C:\Users\TszHo\Desktop\GitHub\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSide.pdb
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\Client\bin\Debug\ClientSide.exe.config
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSide.exe
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSide.pdb
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\Client\bin\Debug\ClientSide.exe
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\Client\bin\Debug\ClientSide.pdb
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSide.csprojResolveAssemblyReference.cache
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSide.Form1.resources
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSide.newevent.resources
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSide.Properties.Resources.resources
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSide.seeevents.resources
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSide.csproj.GenerateResource.Cache
