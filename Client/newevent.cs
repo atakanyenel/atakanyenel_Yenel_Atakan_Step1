@@ -55,6 +55,10 @@ namespace ClientSide
             MessageBox.Show("Event created:" + title);
         }
 
+        //need to handle sending event info to server
+        //1. copy some of the codes here
+        //2. return a value to client master, and then add a line to send the return value to server in master
+
         private void button2_Click(object sender, EventArgs e)
         {
             txtDescription.Clear();

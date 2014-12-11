@@ -1,6 +1,4 @@
-﻿//This is not necessary once event in server have been implemented successfully
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +12,7 @@ namespace ClientSide
         static string title;
         static string description;
         static string organizer;
-        static string create_event;
+        static string[] Event;
         static string place;
 
         public static string function_date
@@ -39,15 +37,15 @@ namespace ClientSide
                 place = value;
             }
         }
-        public static string function_create_event
+        public static string[] function_event
         {
             get
             {
-                return create_event;
+                return Event;
             }
             set
             {
-                create_event = value;
+                Event = value;
             }
         }
         public static string function_title
