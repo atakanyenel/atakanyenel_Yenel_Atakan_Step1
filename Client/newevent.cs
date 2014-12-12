@@ -8,6 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using System.Threading;
+using System.Net;
+using System.Net.Sockets;
+
+
 /*
  Frequently used places as Combo box !!
  */
@@ -50,7 +55,7 @@ namespace ClientSide
             events.function_organizer = txtOrganizer.Text;
             events.function_title = txtTitle.Text;
             //events.function_event = new_event;
-            events.function_create_event = "%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer +"\r\n";
+            events.function_create_event = "%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%";
 
             MessageBox.Show("Event created:" + title);
         }

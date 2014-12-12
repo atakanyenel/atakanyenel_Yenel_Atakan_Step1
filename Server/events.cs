@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClientSide
+namespace CS408_Step1_Server
 {
     class events
     {
@@ -14,6 +14,60 @@ namespace ClientSide
         static string organizer;
         static string[] Event;
         static string place;
+
+        public void setDate(string date2)
+        {
+            date = date2;
+        }
+
+        public void setTitle(string date2)
+        {
+            title = date2;
+        }
+
+        public void setDesc(string date2)
+        {
+            description = date2;
+        }
+
+        public void setOrganizer(string date2)
+        {
+            organizer = date2;
+
+        }
+        public void setPlace(string date2)
+        {
+            place = date2;
+        }
+
+        //**//
+        
+        public string getDate()
+        {
+            return date;
+        }
+
+        public string getTitle()
+        {
+            return title;
+        }
+
+        public string getDesc()
+        {
+            return description;
+        }
+
+        public string getOrganizer()
+        {
+            return organizer;
+
+        }
+        public string getPlace()
+        {
+            return place;
+        }
+
+
 
         public static string function_date
         {

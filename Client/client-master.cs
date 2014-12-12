@@ -121,6 +121,7 @@ namespace ClientSide
                         if (check_symbol(ref receivedmessage) == 1)
                         {
                             // 1 is event
+                            // change this
                             int i = 0;
                             int location = receivedmessage.IndexOf('%',i);
                             while ( location!= -1){
@@ -138,7 +139,7 @@ namespace ClientSide
                         else if (check_symbol(ref receivedmessage) == 2)
                         {
                             // 2 is message
-                            richtextbox.Text = richtextbox.Text + receivedmessage.Substring(1) + "\r\n";
+                            richtextbox.Text = richtextbox.Text + receivedmessage.Substring(0) + "\r\n";
                         }
                         else if (check_symbol(ref receivedmessage) == 3)
                         {
@@ -170,17 +171,17 @@ namespace ClientSide
         {
             if (message.ElementAt(0) == '%') // event
             {
-                message = message.Substring(1, message.Length - 2);
+                message = message.Substring(0, message.Length - 2);
                 return 1;
             }
             else if (message.ElementAt(0) == '#') //message
             {
-                message = message.Substring(1, message.Length - 2);
+                message = message.Substring(0, message.Length - 2);
                 return 2;
             }
             else if (message.ElementAt(0) == '&') //This is for attendance
             {
-                message = message.Substring(1, message.Length - 2);
+                message = message.Substring(0, message.Length - 2);
                 return 3;
             }
             return 0;
@@ -261,11 +262,34 @@ namespace ClientSide
         {
             var seeevents = new seeevents();
             seeevents.Show();
+
+
+
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void tbsend_TextChanged(object sender, EventArgs e)
+        {
+            //string tbsendTextBox = tbsend.Text;
+            //string isItEvent = events.function_create_event;
+            
+            //richtextbox.Text = richtextbox.Text + isItEvent + "\r\n";
+            
+            //tbsendTextBox = "#" + tbname.Text + ": " + tbsendTextBox + "\r\n";
+            //tbsend.Text = isItEvent;
+            ////you may want to change m to something more complicated             
+            //byte[] buffer = Encoding.Default.GetBytes(isItEvent);
+            //c.Send(buffer);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // request to server and get the info about events
         }
     }
 }
