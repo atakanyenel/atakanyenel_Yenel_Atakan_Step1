@@ -273,6 +273,9 @@ namespace ClientSide
         private void button1_Click(object sender, EventArgs e)
         {
             var newevent = new newevent();
+            //possible solution to sending problem:
+            //var newevent = new newevent(this);
+            //http://pi.vu/BILX (useful StockExchange question)
             newevent.Show();
 
             //string created_event = newevent.event_name_test();

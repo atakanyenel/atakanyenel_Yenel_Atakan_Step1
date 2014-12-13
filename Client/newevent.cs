@@ -21,24 +21,25 @@ namespace ClientSide
 {
     public partial class newevent : Form
     {
-        //string test_test;
-        //public string event_name_test()
-        //{
-        //    return test_test;
-        //}
 
         public newevent()
         {
             InitializeComponent();
         }
 
-        //public string[] random_name(){
-
-        //    string[] new_event;
-        //    return new_event;
+        //possible send problem solution:
+        //
+        //private Form1 mainForm = null;
+        //public Form2(Form callingForm)
+        //{
+        //    mainForm = callingForm as Form1;
+        //    InitializeComponent();
         //}
-
-
+        //
+        //overload constructor, with an input of Form1, so it can access
+        //functions in Form1 (esp. btnsend_Click(object, EventArgs))
+        //but maybe we should move everything inside btnsend_Click to a
+        //seperate function, according to StockExchange(http://pi.vu/BILK)
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -54,7 +55,6 @@ namespace ClientSide
             events.function_description = txtDescription.Text;
             events.function_organizer = txtOrganizer.Text;
             events.function_title = txtTitle.Text;
-            //events.function_event = new_event;
             events.function_create_event = "%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%";
 
             MessageBox.Show("Event created:" + title);

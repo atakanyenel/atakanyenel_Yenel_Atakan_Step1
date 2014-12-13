@@ -32,12 +32,17 @@ namespace ClientSide
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //string[] Event = events.function_createevent;
-            //txtDescription.Text = Event[3];
-            //txtOrganizer.Text = Event[4];
-            //txtPlace.Text = Event[2];
-            //txtTitle.Text = Event[1];
-            //txtDate.Text = Event[0];
+            //"Request" Button
+             
+            /********************local
+            string[] Event = events.function_createevent;
+            txtDescription.Text = Event[3];
+            txtOrganizer.Text = Event[4];
+            txtPlace.Text = Event[2];
+            txtTitle.Text = Event[1];
+            txtDate.Text = Event[0];
+            *************************/
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)
