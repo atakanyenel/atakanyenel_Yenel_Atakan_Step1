@@ -210,7 +210,7 @@ namespace ClientSide
                         }
                         else if (check_symbol(ref receivedmessage) == 2) //message
                         {
-                            richtextbox.Text = richtextbox.Text + receivedmessage.Substring(0) + "\r\n";
+                            richtextbox.Text = richtextbox.Text + receivedmessage.Substring(1) + "\r\n";
                         }
                         else
                         {
@@ -245,7 +245,7 @@ namespace ClientSide
             }
             else if (message.ElementAt(0) == '#') //message
             {
-                message = message.Substring(0, message.Length-2);
+                message = message.Substring(0, message.Length-1);
                 return 2;
             }
             else if (message.ElementAt(0) == '&') //attendance
