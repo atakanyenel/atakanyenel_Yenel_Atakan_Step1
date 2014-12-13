@@ -14,7 +14,7 @@ namespace CS408_Step1_Server
         static string organizer;
         static string[] Event;
         static string place;
-        tatic string[] Going;
+        static string[] Going;
         static string[] notGoing;
         static string[] notReply;
 

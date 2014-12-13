@@ -22,7 +22,7 @@ namespace ClientSide
         {
             mainForm = callingForm as Form1;
             InitializeComponent();
-            this.mainForm.isItRequest = "$";
+            this.mainForm.setIsItRequest("$");
             this.mainForm.sendButton();
         }
 

@@ -34,7 +34,22 @@ namespace ClientSide
             InitializeComponent();
             Form.CheckForIllegalCrossThreadCalls = false;
         }
-
+        public void setIsItEvent(string a)
+        {
+            isItEvent = a;
+        }
+        public void setIsItRequest(string a)
+        {
+            isItRequest = a;
+        }
+        public string getIsItEvent()
+        {
+            return isItEvent;
+        }
+        public string getIsItRequest()
+        {
+            return isItRequest;
+        }
         // the function for connecting the client to the server. A client uses an port number, IP number and a given name to connect to the server.
         // If the name textbox is empty or if the name alredy exists in the clients list that the user is asked to use another name
         // the connection part is handled in an try/catch method so if anything goes wrong the program does not crash but returns a message box.
@@ -125,7 +140,7 @@ namespace ClientSide
                         {
                             //we need to store these events into EvnetList
                             string a;
-                            string b = recievedmessage;
+                            string b = receivedmessage;
                             int index1 = 0;
                             int index2 = 0;
                             string[] event_info = new string[5];
@@ -213,7 +228,7 @@ namespace ClientSide
             return 0;
         }
 
-        private void sendButton()
+        public void sendButton()
         {
             try
             {
@@ -229,7 +244,7 @@ namespace ClientSide
                     //This is not correct
                     richtextbox.Text = richtextbox.Text + isItEvent + "\r\n";
                     //display event info
-                    richtextbox.Text = richtextbox.Text + "You have created: " + events.function_title + "\r\n";
+                    richtextbox.Text = richtextbox.Text + "You have created an event!\r\n";
                     c.Send(buffer);
                     isItEvent = "";
                 }

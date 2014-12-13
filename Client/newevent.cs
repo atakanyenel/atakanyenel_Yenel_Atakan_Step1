@@ -47,12 +47,12 @@ namespace ClientSide
             string organizer = txtOrganizer.Text;
             string title = txtTitle.Text;
 
-            events.function_date = dtpDate.Value.ToShortDateString();
-            events.function_place = txtPlace.Text;
-            events.function_description = txtDescription.Text;
-            events.function_organizer = txtOrganizer.Text;
-            events.function_title = txtTitle.Text;
-            this.mainForm.isItEvent = "%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%";
+            //events.function_date = dtpDate.Value.ToShortDateString();
+            //events.function_place = txtPlace.Text;
+            //events.function_description = txtDescription.Text;
+            //events.function_organizer = txtOrganizer.Text;
+            //events.function_title = txtTitle.Text;
+            this.mainForm.setIsItEvent("%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%");
 
             MessageBox.Show("Event created:" + title);
             this.mainForm.sendButton();

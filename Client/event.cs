@@ -1,5 +1,3 @@
-//Maybe we should delete this?
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,74 +12,131 @@ namespace ClientSide
         static string title;
         static string description;
         static string organizer;
-        static string create_event;
+        static string[] Event;
         static string place;
+        static string[] Going;
+        static string[] notGoing;
+        static string[] notReply;
 
-        public static string function_date
+        //set
+        public void setDate(string date2)
         {
-            get
-            {
-                return date;
-            }
-            set
-            {
-                date = value;
-            }
+            date = date2;
         }
-        public static string function_place
+
+        public void setTitle(string date2)
         {
-            get
-            {
-                return place;
-            }
-            set
-            {
-                place = value;
-            }
+            title = date2;
         }
-        public static string function_create_event
+
+        public void setDesc(string date2)
         {
-            get
-            {
-                return create_event;
-            }
-            set
-            {
-                create_event = value;
-            }
+            description = date2;
         }
-        public static string function_title
+
+        public void setOrganizer(string date2)
         {
-            get
-            {
-                return title;
-            }
-            set
-            {
-                title = value;
-            }
+            organizer = date2;
+
         }
-        public static string function_description
+        public void setPlace(string date2)
         {
-            get
-            {
-                return description;
-            }
-            set
-            {
-                description = value;
-            }
+            place = date2;
         }
-        public static string function_organizer
+
+        //get
+
+        public string getDate()
         {
-            get
-            {
-                return organizer;
-            }
-            set
-            {
-                organizer = value;
-            }
+            return date;
         }
+
+        public string getTitle()
+        {
+            return title;
+        }
+
+        public string getDesc()
+        {
+            return description;
+        }
+
+        public string getOrganizer()
+        {
+            return organizer;
+
+        }
+        public string getPlace()
+        {
+            return place;
+        }
+
+        //apparently List cannot access data using the mathods below
+        // public static string function_date
+        // {
+        //     get
+        //     {
+        //         return date;
+        //     }
+        //     set
+        //     {
+        //         date = value;
+        //     }
+        // }
+        // public static string function_place
+        // {
+        //     get
+        //     {
+        //         return place;
+        //     }
+        //     set
+        //     {
+        //         place = value;
+        //     }
+        // }
+        // public static string[] function_event
+        // {
+        //     get
+        //     {
+        //         return Event;
+        //     }
+        //     set
+        //     {
+        //         Event = value;
+        //     }
+        // }
+        // public static string function_title
+        // {
+        //     get
+        //     {
+        //         return title;
+        //     }
+        //     set
+        //     {
+        //         title = value;
+        //     }
+        // }
+        // public static string function_description
+        // {
+        //     get
+        //     {
+        //         return description;
+        //     }
+        //     set
+        //     {
+        //         description = value;
+        //     }
+        // }
+        // public static string function_organizer
+        // {
+        //     get
+        //     {
+        //         return organizer;
+        //     }
+        //     set
+        //     {
+        //         organizer = value;
+        //     }
+        // }
     }
 }
