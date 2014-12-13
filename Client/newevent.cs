@@ -56,6 +56,7 @@ namespace ClientSide
 
             MessageBox.Show("Event created:" + title);
             this.mainForm.sendButton();
+            clear();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -65,13 +66,18 @@ namespace ClientSide
 
         //need to handle sending event info to server
 
-        private void button2_Click(object sender, EventArgs e)
+        private void clear()
         {
             txtDescription.Clear();
             txtOrganizer.Clear();
             txtPlace.Clear();
             txtTitle.Clear();
             dtpDate.Value = DateTime.Now;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            clear();
         }
 
         private void newevent_Load(object sender, EventArgs e)

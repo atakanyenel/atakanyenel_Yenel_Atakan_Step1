@@ -47,7 +47,7 @@ namespace CS408_Step1_Server
 
 
         DateTime Time;
-        List<client> clientarray=new List<client>();
+        List<client> clientarray = new List<client>();
         List<events> eventsarray = new List<events>();
         Thread thraccept;
         Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -58,6 +58,8 @@ namespace CS408_Step1_Server
             InitializeComponent();
             Form.CheckForIllegalCrossThreadCalls = false;
         }
+
+        
 
         // function for START. With this function the server starts listening to the port that is given by the user.
         // It is handled in the try/cathch method to prevent crashing of the system.
@@ -214,30 +216,51 @@ namespace CS408_Step1_Server
                             b = b.Substring(1);
                             index1 = b.IndexOf("%");
                             event_info[4] = b.Substring(0, index1);
-                            //store all into into a new event in eventsarray
-                            eventsarray.Add(new events());
-                            eventsarray[eventsarray.Count - 1].setDate(event_info[0]);
-                            eventsarray[eventsarray.Count - 1].setTitle(event_info[1]);
-                            eventsarray[eventsarray.Count - 1].setPlace(event_info[2]);
-                            eventsarray[eventsarray.Count - 1].setDesc(event_info[3]);
-                            eventsarray[eventsarray.Count - 1].setOrganizer(event_info[4]);
+                            //if (eventsarray.Count > 0)
+                            //{
+                            //    richTextBox1.Text = richTextBox1.Text + "eventsarray.Count: " + eventsarray.Count.ToString() + "\r\n";
+                            //    richTextBox1.Text = richTextBox1.Text + "eventsarray[0].getDate: " + eventsarray[0].getDate() + "\r\n";
+                            //    richTextBox1.Text = richTextBox1.Text + "eventsarray[0].getTitle: " + eventsarray[0].getTitle() + "\r\n";
+                            //    richTextBox1.Text = richTextBox1.Text + "eventsarray[0].getPlace: " + eventsarray[0].getPlace() + "\r\n";
+                            //    richTextBox1.Text = richTextBox1.Text + "eventsarray[0].getDesc: " + eventsarray[0].getDesc() + "\r\n";
+                            //    richTextBox1.Text = richTextBox1.Text + "eventsarray[0].getOrganizer: " + eventsarray[0].getOrganizer() + "\r\n";
+                            //}
+                            
 
+                            //store all into into a new event in eventsarray
+                            events tempe = new events();
+                            tempe.setDate(event_info[0]);
+                            tempe.setTitle(event_info[1]);
+                            tempe.setPlace(event_info[2]);
+                            tempe.setDesc(event_info[3]);
+                            tempe.setOrganizer(event_info[4]);
+                            //something is wrong with .Add
+                            eventsarray.Add(tempe);
+                            
+                            
+                            //if (eventsarray.Count > 0)
+                            //{
+                            //    richTextBox1.Text = richTextBox1.Text + "eventsarray.Count: " + eventsarray.Count.ToString() + "\r\n";
+                            //    richTextBox1.Text = richTextBox1.Text + "eventsarray[0].getDate: " + eventsarray[0].getDate() + "\r\n";
+                            //    richTextBox1.Text = richTextBox1.Text + "eventsarray[0].getTitle: " + eventsarray[0].getTitle() + "\r\n";
+                            //    richTextBox1.Text = richTextBox1.Text + "eventsarray[0].getPlace: " + eventsarray[0].getPlace() + "\r\n";
+                            //    richTextBox1.Text = richTextBox1.Text + "eventsarray[0].getDesc: " + eventsarray[0].getDesc() + "\r\n";
+                            //    richTextBox1.Text = richTextBox1.Text + "eventsarray[0].getOrganizer: " + eventsarray[0].getOrganizer() + "\r\n";
+                            //}
+                            richTextBox1.Text = richTextBox1.Text + "eventsarray.Count: " + eventsarray.Count.ToString();
                             richTextBox1.Text = richTextBox1.Text + "Event " + event_info[1] + "has been added to List." + "\r\n";
                             //need to send request to everyone else
 
                             /**************for debugging *****************/
-                            //MessageBox.Show(newmessage);
-                            //MessageBox.Show(organizer + "\r\n" + description + title + place + date_pro);
-                            //MessageBox.Show(date_pro);
-                            //MessageBox.Show(organizer);
-                            //MessageBox.Show(description);
-                            //MessageBox.Show(title);
-                            //MessageBox.Show(place);
-                            // MessageBox.Show(eventsarray[eventsarray.Count - 1].getDate());
-                            // MessageBox.Show(eventsarray[eventsarray.Count - 1].getTitle());
-                            // MessageBox.Show(eventsarray[eventsarray.Count - 1].getPlace());
-                            // MessageBox.Show(eventsarray[eventsarray.Count - 1].getDesc());
-                            // MessageBox.Show(eventsarray[eventsarray.Count - 1].getOrganizer());
+                            //for (int i = 0; i < eventsarray.Count; i++ )
+                            //{
+                            //    richTextBox1.Text = richTextBox1.Text + "eventsarray.Count: " + eventsarray.Count.ToString() + "\r\n";
+                            //    richTextBox1.Text = richTextBox1.Text + "eventsarray[i].getDate: " + eventsarray[i].getDate() + "\r\n";
+                            //    richTextBox1.Text = richTextBox1.Text + "eventsarray[i].getTitle: " + eventsarray[i].getTitle() + "\r\n";
+                            //    richTextBox1.Text = richTextBox1.Text + "eventsarray[i].getPlace: " + eventsarray[i].getPlace() + "\r\n";
+                            //    richTextBox1.Text = richTextBox1.Text + "eventsarray[i].getDesc: " + eventsarray[i].getDesc() + "\r\n";
+                            //    richTextBox1.Text = richTextBox1.Text + "eventsarray[i].getOrganizer: " + eventsarray[i].getOrganizer() + "\r\n";
+                            //}
                             /**************for debugging *****************/
                         }
                         else if (check_symbol(ref newmessage) == 3) // attendance(symbol: &)
