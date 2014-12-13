@@ -14,6 +14,11 @@ namespace CS408_Step1_Server
         static string organizer;
         static string[] Event;
         static string place;
+        //need an array to store yes
+        //need an array to store no
+        //(do we need an array to store not answered?)
+
+        //set
 
         public void setDate(string date2)
         {
@@ -40,8 +45,8 @@ namespace CS408_Step1_Server
             place = date2;
         }
 
-        //**//
-        
+        //get
+
         public string getDate()
         {
             return date;
@@ -67,73 +72,72 @@ namespace CS408_Step1_Server
             return place;
         }
 
-
-
-        public static string function_date
-        {
-            get
-            {
-                return date;
-            }
-            set
-            {
-                date = value;
-            }
-        }
-        public static string function_place
-        {
-            get
-            {
-                return place;
-            }
-            set
-            {
-                place = value;
-            }
-        }
-        public static string[] function_event
-        {
-            get
-            {
-                return Event;
-            }
-            set
-            {
-                Event = value;
-            }
-        }
-        public static string function_title
-        {
-            get
-            {
-                return title;
-            }
-            set
-            {
-                title = value;
-            }
-        }
-        public static string function_description
-        {
-            get
-            {
-                return description;
-            }
-            set
-            {
-                description = value;
-            }
-        }
-        public static string function_organizer
-        {
-            get
-            {
-                return organizer;
-            }
-            set
-            {
-                organizer = value;
-            }
-        }
+        //apparently List cannot access data using the mathods below
+        // public static string function_date
+        // {
+        //     get
+        //     {
+        //         return date;
+        //     }
+        //     set
+        //     {
+        //         date = value;
+        //     }
+        // }
+        // public static string function_place
+        // {
+        //     get
+        //     {
+        //         return place;
+        //     }
+        //     set
+        //     {
+        //         place = value;
+        //     }
+        // }
+        // public static string[] function_event
+        // {
+        //     get
+        //     {
+        //         return Event;
+        //     }
+        //     set
+        //     {
+        //         Event = value;
+        //     }
+        // }
+        // public static string function_title
+        // {
+        //     get
+        //     {
+        //         return title;
+        //     }
+        //     set
+        //     {
+        //         title = value;
+        //     }
+        // }
+        // public static string function_description
+        // {
+        //     get
+        //     {
+        //         return description;
+        //     }
+        //     set
+        //     {
+        //         description = value;
+        //     }
+        // }
+        // public static string function_organizer
+        // {
+        //     get
+        //     {
+        //         return organizer;
+        //     }
+        //     set
+        //     {
+        //         organizer = value;
+        //     }
+        // }
     }
 }

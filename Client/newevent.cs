@@ -42,7 +42,7 @@ namespace ClientSide
 
         private void button1_Click(object sender, EventArgs e)
         {
-             
+
             string date = dtpDate.Value.ToShortDateString();
             string place = txtPlace.Text;
             string description = txtDescription.Text;
@@ -61,8 +61,6 @@ namespace ClientSide
         }
 
         //need to handle sending event info to server
-        //1. copy some of the codes here
-        //2. return a value to client master, and then add a line to send the return value to server in master
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -85,7 +83,7 @@ namespace ClientSide
 
         private void dtpDate_ValueChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void txtOrganizer_TextChanged(object sender, EventArgs e)

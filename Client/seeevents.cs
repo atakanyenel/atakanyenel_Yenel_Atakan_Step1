@@ -19,22 +19,19 @@ namespace ClientSide
 
         private void seeevents_Load(object sender, EventArgs e)
         {
-
-            // message is $
-            // for loop in server in will send total list
+            // message is "$"
+            // for loop in server in will send the whole event list
+            // using eventsarray.Count()
             // encode it
-            // send it n times
-           // client decodes it
+            // "%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%"
+            // client will decodes it
 
             //string created_event = events.function_create_event;
             //cbOrganizers.Items.Add(Event[4]);
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-
             //string[] Event = events.function_createevent;
             //txtDescription.Text = Event[3];
             //txtOrganizer.Text = Event[4];
