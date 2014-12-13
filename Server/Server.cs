@@ -198,7 +198,6 @@ namespace CS408_Step1_Server
                         else if (check_symbol(ref newmessage) == 1) // event
                         {
                             //recieves an event, so add it to eventsarray
-                            MessageBox.Show(newmessage);
                             //event info extraction
                             string a;
                             string b = newmessage;
@@ -224,6 +223,7 @@ namespace CS408_Step1_Server
                             eventsarray[eventsarray.Count - 1].setOrganizer(event_info[4]);
 
                             /**************for debugging *****************/
+                            //MessageBox.Show(newmessage);
                             //MessageBox.Show(organizer + "\r\n" + description + title + place + date_pro);
                             //MessageBox.Show(date_pro);
                             //MessageBox.Show(organizer);
