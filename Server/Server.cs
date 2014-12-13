@@ -343,7 +343,7 @@ namespace CS408_Step1_Server
                 message = message.Substring(0, message.Length - 2);
                 return 3;
             }
-            if (message == '$') // request
+            if (message == "$") // request
             {
                 return 4;
             }
