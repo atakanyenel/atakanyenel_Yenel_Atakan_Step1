@@ -27,6 +27,7 @@ namespace ClientSide
         bool condition=true;
         string isItEvent = "" ;
         string isItRequest = "" ;
+        string isItAtte = "" ;
         Socket c = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         List<events> EventList = new List<events>();
         public Form1()
@@ -276,6 +277,14 @@ namespace ClientSide
                     //for debugging:
                     richtextbox.Text = richtextbox.Text + "Seeevent just sent a request: " + isItRequest + "\r\n";
                     isItRequest = "";
+                }
+                else if (isItAtte != "") //just attendence
+                {
+                    byte[] buffer = Encoding.Default.GetBytes(isItAtte);
+                    c.Send(buffer);
+                    //for debugging:
+                    richtextbox.Text = richtextbox.Text + "Seeevent just sent a  attendence " + isItAtte + "\r\n";
+                    isItAtte = "";
                 }
                 else if (tbsendTextBox != "") //just message
                 {

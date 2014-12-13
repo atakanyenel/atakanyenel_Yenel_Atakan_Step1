@@ -18,7 +18,8 @@ namespace ClientSide
         }
 
         private Form1 mainForm = null;
-
+        private int eventID = -1;
+        private int YoN = -1;
         public seeevents(Form callingForm)
         {
             mainForm = callingForm as Form1;
@@ -26,7 +27,7 @@ namespace ClientSide
             this.reshreshEvents(mainForm);
         }
 
-        private void refreshEvents(Form callingForm)
+        private void refreshEvents()
         {
             this.mainForm.setIsItRequest("$");
             this.mainForm.sendButton();
@@ -34,13 +35,23 @@ namespace ClientSide
             {
                 cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
             }
+            //do we need to refresh cbOrganizers?
         }
 
         // create a refresh button
         // private void {This should be a refresh button}(object sender, EventArgs e)
         // {
-        //     refreshEvents(mainForm);
-        //     you may want to refresh cbOrganizer or something
+        //     refreshEvents();
+        // }
+
+        // private void sendAtte()
+        // {
+        //     //Format: ${event id}${username}${yes/no}$
+        //     //event id is obtained when select event in cbOrganizer
+        //     //username is seleted from client-master
+        //     //YoN means Yes or No, 1 is yes ,0 is no (or maybe we can use boolean)
+        //     string isItAtte = "&" + eventID + "&" + this.mainForm.tbname.Text + "&" + YoN.ToString() + "&";
+        //     this.mainForm.setIsItAtte("isItAtte");
         // }
 
         private void btnClose_Click(object sender, EventArgs e)

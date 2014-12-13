@@ -37,4 +37,6 @@ Additional tasks
 
 7) Add Refresh (i.e. Request) button (back) to seeevents.cs
 
+8) Server needs to handle and process attendance update
+
 For more details, please check the pdf.
