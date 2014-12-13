@@ -20,10 +20,8 @@ namespace CS408_Step1_Server
 {
     public partial class Server : Form
     {
-       
         class client
         {
-             
             public string name;
             public Socket clisoc;
             public int attending;
@@ -45,7 +43,6 @@ namespace CS408_Step1_Server
             }
         };
 
-        
         DateTime Time;
         List<client> clientarray=new List<client>();
         List<events> eventsarray = new List<events>();
@@ -54,7 +51,7 @@ namespace CS408_Step1_Server
         //the events class should be moved to server
         //Click the create button should send the event to server
         //server needs to break down an event string
-        //List<events> eventArray = new List<events>();
+
         Thread thraccept;
         Socket s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         Socket n;
@@ -80,7 +77,6 @@ namespace CS408_Step1_Server
                     textBox1.Enabled = false;
                     start.Text = "Stop!";
                     richTextBox1.Text += "Server is now listening at port " + textBox1.Text + ".\r\n";
-
                 }
                 catch
                 {
@@ -101,9 +97,6 @@ namespace CS408_Step1_Server
                             c.getsocket().Close();
                         }
                         clientarray.Clear();
-                       
-                                             //  thraccept.Abort();//after the user clicks on stop! this block of code determines what happens.
-                        
                         s.Close();
                         s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                         richTextBox1.Text += "Server stopped listening at port " + textBox1.Text + ".\r\n";
@@ -112,8 +105,6 @@ namespace CS408_Step1_Server
                     }
                     else
                     {
-
-                   
                     }
                 }
                 else if (clientnumber == 0)
@@ -128,10 +119,8 @@ namespace CS408_Step1_Server
                         richTextBox1.Text += "Server stopped listening at port " + textBox1.Text + ".\r\n";
                     }
                 } 
-            
             }
         }
-
         // communication with the clients
         private void Accept()
         {
@@ -146,7 +135,6 @@ namespace CS408_Step1_Server
                 }
             }
             catch { 
-               
             }
         }
         // the function where the magic happens
@@ -185,12 +173,10 @@ namespace CS408_Step1_Server
                         byte[] buffer2 = new byte[64];
                         yeni.Receive(buffer2);
                         string newmessage = Encoding.Default.GetString(buffer2);
-                             //That doesn't work
                         int pos = clientarray.IndexOf(clientarray.Find(client => client.getsocket() == yeni));
                         if (check_symbol(ref newmessage)==2)
                         {
                             string clientsendername = clientarray[pos].getname();
-                            //newmessage = clientsendername + ": " + newmessage;
                             sendmessage = Encoding.Default.GetBytes(newmessage);
 
                             for (int k = 0; k < clientarray.Count; k++)
@@ -206,15 +192,7 @@ namespace CS408_Step1_Server
                         }
                         else if (check_symbol(ref newmessage) == 1) // event
                         {
-                            //events.function_create_event = "%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%" +"\r\n"
-                            //events thisevent = new events();
-
                             MessageBox.Show(newmessage);
-
-                            //int index1 = newmessage.IndexOf("%");
-                            //string d_string = newmessage.Substring(1);
-                            //int index2 = d_string.IndexOf("%");
-                            //string date_pro = d_string.Substring(1, index2 - index1 -1); // reformat date
 
                             string b = newmessage;
                             int index1 = 0;
@@ -229,12 +207,10 @@ namespace CS408_Step1_Server
                                 index2 = a.IndexOf("%");
                                 event_info[i] = b.Substring(1, index2);
                                 b = b.Substring(index2 + 1);
-                                
                             }
                             b = b.Substring(1);
                             index1 = b.IndexOf("%");
                             event_info[4] = b.Substring(0, index1);
-                            
 
                             eventsarray.Add(new events());
                             eventsarray[eventsarray.Count - 1].setDate(event_info[0]);
@@ -243,33 +219,17 @@ namespace CS408_Step1_Server
                             eventsarray[eventsarray.Count - 1].setDesc(event_info[3]);
                             eventsarray[eventsarray.Count - 1].setOrganizer(event_info[4]);
 
-
                             MessageBox.Show(eventsarray[eventsarray.Count - 1].getDate());
                             MessageBox.Show(eventsarray[eventsarray.Count - 1].getTitle());
                             MessageBox.Show(eventsarray[eventsarray.Count - 1].getPlace());
                             MessageBox.Show(eventsarray[eventsarray.Count - 1].getDesc());
                             MessageBox.Show(eventsarray[eventsarray.Count - 1].getOrganizer());
 
-
                             clientarray[clientarray.Count - 1].setname(strclientname);
                             clientarray[clientarray.Count - 1].setsocket(yeni);
-
-
-
-                            //MessageBox.Show(organizer + "\r\n" + description + title + place + date_pro);
-
-                            //MessageBox.Show(date_pro);
-                            //MessageBox.Show(organizer);
-                            //MessageBox.Show(description);
-                            //MessageBox.Show(title);
-                            //MessageBox.Show(place);
-
-
-
                         }
                         else if (check_symbol(ref newmessage) == 3) // attendance
                         {
-
                         }
 
                         else if (check_symbol(ref newmessage) == 4) // event request
@@ -277,9 +237,8 @@ namespace CS408_Step1_Server
                             for (int i = 0; i <= eventsarray.Count - 1; i++ )
                             {
                                 // send request
-                                //events.function_create_event = "%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%";
-                                string event_request = "%" + eventsarray[i].getDate() + "%" + eventsarray[i].getTitle() + "%" + eventsarray[i].getPlace() + "%" + eventsarray[i].getDesc() + "%" + eventsarray[i].getOrganizer() + "%";
-                                byte[] buffer = new byte[1024];
+                                string event_request = "$" + eventsarray[i].getDate() + "$" + eventsarray[i].getTitle() + "$" + eventsarray[i].getPlace() + "$" + eventsarray[i].getDesc() + "$" + eventsarray[i].getOrganizer() + "$";
+                                byte[] buffer = new byte[2024];
                                 buffer = Encoding.Default.GetBytes(event_request);
                                 yeni.Send(buffer);  
                             }
@@ -311,30 +270,14 @@ namespace CS408_Step1_Server
             }
             catch
             {
-
             }
         }
-        
-        //This function decides if the incoming message a message from the client or si the client informing the server that 
-        //he is disconnecting.
-        //bool DECIDE(ref string  message)
-        // {
-        //      if (message.ElementAt(0) == 'm')
-        //     {
-        //         message=message.Substring(1, message.Length - 2);
-        //     return true;
-        //     }
-        //    else if(message.ElementAt(0)=='e') //This is for event
-        //    {
-        //        message = message.Substring(1, message.Length - 2);
-        //    }
-        //      return false;
-        // }
 
         int check_symbol(ref string message)
         {
             if (message.ElementAt(0) == '%') // event
             {
+                //richTextBox1.Text += "Event has been created"; // add organizer name
                 message = message.Substring(0, message.Length - 2);
                 return 1;
             }
@@ -350,8 +293,8 @@ namespace CS408_Step1_Server
             }
             if (message.ElementAt(0) == '$') // request
             {
-
-                
+                //message = message.Substring(0, message.Length - 2);
+                //richTextBox1.Text += "Rquest for event has been made"; // by username
                 return 4;
             }
             return 0;
@@ -369,9 +312,7 @@ namespace CS408_Step1_Server
                     return notfound;
                 }
             }
-            
             return notfound;
-
         }
         // When a user tries to shut down the server, we implemented a safety mechanism. It inform the user how many clinets are connected and if he/she
         // really wants to shut down the server. When the server shuts down all the clients also shut down.
@@ -383,11 +324,9 @@ namespace CS408_Step1_Server
                 DialogResult DR = MessageBox.Show("There are " + clientnumber + " client(s) connected to server.\n Are you sure ?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (DR == DialogResult.Yes)
                 {
-
                     System.Environment.Exit(1);
                 }
                 else {
-
                     e.Cancel = true;
                 }
             }

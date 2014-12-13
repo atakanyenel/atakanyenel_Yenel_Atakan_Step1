@@ -20,7 +20,6 @@ namespace ClientSide
     
     public partial class Form1 : Form
     {
-        
         //string event_created = events.function_create_event; // global variable
         Thread thrReceive;
         bool unique;
@@ -31,6 +30,7 @@ namespace ClientSide
             InitializeComponent();
             Form.CheckForIllegalCrossThreadCalls = false;
         }
+        List<events> eventsarray_client_side = new List<events>();
 
         // the function for connecting the client to the server. A client uses an port number, IP number and a given name to connect to the server.
         // If the name textbox is empty or if the name alredy exists in the clients list that the user is asked to use another name
@@ -69,7 +69,6 @@ namespace ClientSide
                         {
                             MessageBox.Show("Choose a different name!");
                             c.Close();
-
                         }
                         this.AcceptButton = this.btnsend;
                     }
@@ -98,11 +97,9 @@ namespace ClientSide
                 }
                 catch
                 { 
-                   
                 }
             }
         }
-
         // a function for receive
         private void Receive()
         {
@@ -111,17 +108,15 @@ namespace ClientSide
                 condition = true;
                 while (condition)
                 {
-                    
                     byte[] buffer = new byte[64];
                     c.Receive(buffer);
                     string receivedmessage = Encoding.Default.GetString(buffer);
+                    string received_event = receivedmessage; // without substring
                     receivedmessage = receivedmessage.Substring(0, receivedmessage.IndexOf("\0"));
                     if (receivedmessage != "")
                     {
-                        if (check_symbol(ref receivedmessage) == 1)
+                        if (check_symbol(ref receivedmessage) == 1) // 1 is event
                         {
-                            // 1 is event
-                            // change this
                             int i = 0;
                             int location = receivedmessage.IndexOf('%',i);
                             while ( location!= -1){
@@ -133,22 +128,53 @@ namespace ClientSide
                                 MessageBox.Show(value_get);
                             }
                             int name = receivedmessage.IndexOf('%');
-
-
                         }
-                        else if (check_symbol(ref receivedmessage) == 2)
+                        else if (check_symbol(ref receivedmessage) == 2) // 2 is message
                         {
-                            // 2 is message
                             richtextbox.Text = richtextbox.Text + receivedmessage.Substring(0) + "\r\n";
                         }
-                        else if (check_symbol(ref receivedmessage) == 3)
+                        else if (check_symbol(ref receivedmessage) == 3) // 3 is attendance
                         {
-                            // 3 is attendance
+                            // still needs to be implemented
+                            // no solution yet
+                        }
+                        else if (check_symbol(ref received_event) == 4) // 3 request an event 
+                        {
+                            MessageBox.Show("RECEIVED EVENT:" + received_event);
 
+                            string b = received_event;
+                            int index1 = 0;
+                            int index2 = 0;
+
+                            string a;
+                            string[] event_info = new string[5];
+
+                            for (int i = 0; i < 4; i++)
+                            {
+                                index1 = b.IndexOf("$");
+                                a = b.Substring(index1 + 1);
+                                index2 = a.IndexOf("$");
+                                event_info[i] = b.Substring(1, index2);
+                                b = b.Substring(index2 + 1);
+                            }
+                            b = b.Substring(1);
+                            index1 = b.IndexOf("$");
+                            event_info[4] = b.Substring(0, index1);
+
+                            eventsarray_client_side.Add(new events());
+                            eventsarray_client_side[eventsarray_client_side.Count - 1].setDate(event_info[0]);
+                            eventsarray_client_side[eventsarray_client_side.Count - 1].setTitle(event_info[1]);
+                            eventsarray_client_side[eventsarray_client_side.Count - 1].setPlace(event_info[2]);
+                            eventsarray_client_side[eventsarray_client_side.Count - 1].setDesc(event_info[3]);
+                            eventsarray_client_side[eventsarray_client_side.Count - 1].setOrganizer(event_info[4]);
+
+                            MessageBox.Show(eventsarray_client_side[eventsarray_client_side.Count - 1].getDate());
+                            MessageBox.Show(eventsarray_client_side[eventsarray_client_side.Count - 1].getTitle());
+                            MessageBox.Show(eventsarray_client_side[eventsarray_client_side.Count - 1].getPlace());
+                            MessageBox.Show(eventsarray_client_side[eventsarray_client_side.Count - 1].getDesc());
+                            MessageBox.Show(eventsarray_client_side[eventsarray_client_side.Count - 1].getOrganizer());
                         }
                     }
-
-                    
                 }
             }
             catch
@@ -163,7 +189,7 @@ namespace ClientSide
                 Connect.BackColor = DefaultBackColor;
             }
         }
-        
+
         // A function for sending messages. If a client wants to send an empty message a messagebox appears. 
         // If a message can not be sent because of some other malfunction the whole method is in try/catch so it does not crash
 
@@ -184,6 +210,11 @@ namespace ClientSide
                 message = message.Substring(0, message.Length - 2);
                 return 3;
             }
+            else if (message.ElementAt(0) == '$') //This is for request
+            {
+                message = message.Substring(0, message.Length - 2);
+                return 4;
+            }
             return 0;
         }
         private void btnsend_Click(object sender, EventArgs e)
@@ -192,7 +223,6 @@ namespace ClientSide
             {
                 string isItEvent = events.function_create_event;
                 string tbsendTextBox = tbsend.Text;
-                Console.WriteLine(isItEvent);
                 if ((isItEvent != "")&&(tbsendTextBox == ""))
                 {
                     //send event string
@@ -208,7 +238,6 @@ namespace ClientSide
                     //send message
                     richtextbox.Text = richtextbox.Text + tbname.Text + ": " + tbsendTextBox + "\r\n";
                     tbsendTextBox = "#" + tbname.Text + ": " + tbsendTextBox + "\r\n";
-                    //you may want to change m to something more complicated             
                     byte[] buffer = Encoding.Default.GetBytes(tbsendTextBox);
                     c.Send(buffer);
                 }
@@ -250,22 +279,12 @@ namespace ClientSide
         {
             var newevent = new newevent();
             newevent.Show();
-            
-            //string created_event = newevent.event_name_test();
-
-            //while(created_event == "");
-            //richtextbox.Text = "llll";
-            //richtextbox.Text = created_event;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             var seeevents = new seeevents();
             seeevents.Show();
-
-
-
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -275,21 +294,25 @@ namespace ClientSide
 
         private void tbsend_TextChanged(object sender, EventArgs e)
         {
-            //string tbsendTextBox = tbsend.Text;
-            //string isItEvent = events.function_create_event;
-            
-            //richtextbox.Text = richtextbox.Text + isItEvent + "\r\n";
-            
-            //tbsendTextBox = "#" + tbname.Text + ": " + tbsendTextBox + "\r\n";
-            //tbsend.Text = isItEvent;
-            ////you may want to change m to something more complicated             
-            //byte[] buffer = Encoding.Default.GetBytes(isItEvent);
-            //c.Send(buffer);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            // request to server and get the info about events
+            // send a request to server for events
+            // send a symbol and the server responds properly
+            // current application and should be changed - see events button!!!!
+
+            string request_event = "$";
+            byte[] buffer = Encoding.Default.GetBytes(request_event);
+            string test = Encoding.Default.GetString(buffer);
+            MessageBox.Show(test);
+            byte[] buffer1 = Encoding.Default.GetBytes(request_event);
+            
+            c.Send(buffer1);
+
+            // gets the events
+            // saves them into a list
+            // fils the combobox with titles
         }
     }
 }
