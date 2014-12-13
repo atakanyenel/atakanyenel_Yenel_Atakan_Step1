@@ -13,6 +13,9 @@ namespace ClientSide
         private string description;
         private string organizer;
         private string place;
+        List<string> goingList = new List<string>();
+        List<string> notGoingList = new List<string>();
+        List<string> notReply = new List<string>();
 
         public void setDate(string newValue)
         {

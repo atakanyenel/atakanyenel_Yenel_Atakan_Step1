@@ -264,6 +264,9 @@ namespace CS408_Step1_Server
                                 richTextBox1.Text = richTextBox1.Text + "eventsarray[i].getOrganizer: " + eventsarray[i].getOrganizer() + "\r\n\r\n";
                             }
                             /**************for debugging *****************/
+
+                            //send notification to everyone else
+                            //add all other users to notReply List
                         }
                         else if (check_symbol(ref newmessage) == 3) // attendance(symbol: &)
                         {
