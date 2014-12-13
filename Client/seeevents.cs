@@ -17,6 +17,18 @@ namespace ClientSide
             InitializeComponent();
         }
 
+<<<<<<< HEAD
+=======
+        private Form1 mainForm = null;
+        public seeevents(Form callingForm)
+        {
+            mainForm = callingForm as Form1;
+            InitializeComponent();
+            this.mainForm.setIsItRequest("$");
+            this.mainForm.sendButton();
+        }
+
+>>>>>>> parent of 70367f5... Just a lot of get and set functions
         private void seeevents_Load(object sender, EventArgs e)
         {
 

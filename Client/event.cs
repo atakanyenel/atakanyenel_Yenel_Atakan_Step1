@@ -16,6 +16,28 @@ namespace ClientSide
         static string organizer;
         static string create_event;
         static string place;
+<<<<<<< HEAD
+=======
+        static string[] Going;
+        static string[] notGoing;
+        static string[] notReply;
+
+        //set
+        public void setDate(string date2)
+        {
+            date = date2;
+        }
+
+        public void setTitle(string date2)
+        {
+            title = date2;
+        }
+
+        public void setDesc(string date2)
+        {
+            description = date2;
+        }
+>>>>>>> parent of 70367f5... Just a lot of get and set functions
 
         public static string function_date
         {

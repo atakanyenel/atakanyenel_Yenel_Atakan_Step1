@@ -243,6 +243,10 @@ namespace CS408_Step1_Server
                             eventsarray[eventsarray.Count - 1].setDesc(event_info[3]);
                             eventsarray[eventsarray.Count - 1].setOrganizer(event_info[4]);
 
+<<<<<<< HEAD
+=======
+                            richTextBox1.Text = richTextBox1.Text + "Event " + event_info[1] + "has been added to List." + "\r\n";
+>>>>>>> parent of 70367f5... Just a lot of get and set functions
 
                             MessageBox.Show(eventsarray[eventsarray.Count - 1].getDate());
                             MessageBox.Show(eventsarray[eventsarray.Count - 1].getTitle());
