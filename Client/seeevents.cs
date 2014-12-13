@@ -17,46 +17,30 @@ namespace ClientSide
             InitializeComponent();
         }
 
-        private Form1 mainForm = null;
-        public seeevents(Form callingForm)
-        {
-            mainForm = callingForm as Form1;
-            InitializeComponent();
-            this.mainForm.setIsItRequest("$");
-            this.mainForm.sendButton();
-            //there should be get(sth)  functions for this.mainForm.EventList
-            //it should be able to use this.mainForm.get(sth)
-        }
-
         private void seeevents_Load(object sender, EventArgs e)
         {
-            // message is "$"
-            // for loop in server in will send the whole event list
-            // using eventsarray.Count()
+
+            // message is $
+            // for loop in server in will send total list
             // encode it
-            // "%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%"
-            // client will decodes it
+            // send it n times
+           // client decodes it
 
             //string created_event = events.function_create_event;
             //cbOrganizers.Items.Add(Event[4]);
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-=======
-            //"Request" Button
+            
 
-            /********************local
-            string[] Event = events.function_createevent;
-            txtDescription.Text = Event[3];
-            txtOrganizer.Text = Event[4];
-            txtPlace.Text = Event[2];
-            txtTitle.Text = Event[1];
-            txtDate.Text = Event[0];
-            *************************/
-
->>>>>>> origin/master
+            //string[] Event = events.function_createevent;
+            //txtDescription.Text = Event[3];
+            //txtOrganizer.Text = Event[4];
+            //txtPlace.Text = Event[2];
+            //txtTitle.Text = Event[1];
+            //txtDate.Text = Event[0];
         }
 
         private void btnClose_Click(object sender, EventArgs e)
