@@ -246,6 +246,7 @@ namespace CS408_Step1_Server
 <<<<<<< HEAD
 =======
                             richTextBox1.Text = richTextBox1.Text + "Event " + event_info[1] + "has been added to List." + "\r\n";
+<<<<<<< HEAD
 >>>>>>> parent of 70367f5... Just a lot of get and set functions
 
                             MessageBox.Show(eventsarray[eventsarray.Count - 1].getDate());
@@ -259,6 +260,8 @@ namespace CS408_Step1_Server
                             clientarray[clientarray.Count - 1].setsocket(yeni);
 
 
+=======
+>>>>>>> parent of 70367f5... Just a lot of get and set functions
 
                             //MessageBox.Show(organizer + "\r\n" + description + title + place + date_pro);
 

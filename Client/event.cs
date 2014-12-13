@@ -17,7 +17,10 @@ namespace ClientSide
         static string create_event;
         static string place;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of 70367f5... Just a lot of get and set functions
         static string[] Going;
         static string[] notGoing;
         static string[] notReply;
