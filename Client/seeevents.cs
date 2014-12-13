@@ -17,6 +17,15 @@ namespace ClientSide
             InitializeComponent();
         }
 
+        private Form1 mainForm = null;
+        public seeevents(Form callingForm)
+        {
+            mainForm = callingForm as Form1;
+            InitializeComponent();
+            this.mainForm.isItRequest = "$";
+            this.mainForm.sendButton();
+        }
+
         private void seeevents_Load(object sender, EventArgs e)
         {
             // message is "$"
@@ -33,7 +42,7 @@ namespace ClientSide
         private void button1_Click(object sender, EventArgs e)
         {
             //"Request" Button
-             
+
             /********************local
             string[] Event = events.function_createevent;
             txtDescription.Text = Event[3];

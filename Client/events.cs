@@ -14,9 +14,11 @@ namespace ClientSide
         static string organizer;
         static string[] Event;
         static string place;
+        static string[] Going;
+        static string[] notGoing;
+        static string[] notReply;
 
         //set
-
         public void setDate(string date2)
         {
         date = date2;

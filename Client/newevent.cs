@@ -28,22 +28,19 @@ namespace ClientSide
         }
 
         //possible send problem solution:
-        //
-        //private Form1 mainForm = null;
-        //public Form2(Form callingForm)
-        //{
-        //    mainForm = callingForm as Form1;
-        //    InitializeComponent();
-        //}
-        //
+        private Form1 mainForm = null;
+        public newevent(Form callingForm)
+        {
+           mainForm = callingForm as Form1;
+           InitializeComponent();
+        }
         //overload constructor, with an input of Form1, so it can access
         //functions in Form1 (esp. btnsend_Click(object, EventArgs))
         //but maybe we should move everything inside btnsend_Click to a
         //seperate function, according to StockExchange(http://pi.vu/BILK)
 
-        private void button1_Click(object sender, EventArgs e)
+        private void createButton()
         {
-
             string date = dtpDate.Value.ToShortDateString();
             string place = txtPlace.Text;
             string description = txtDescription.Text;
@@ -55,9 +52,15 @@ namespace ClientSide
             events.function_description = txtDescription.Text;
             events.function_organizer = txtOrganizer.Text;
             events.function_title = txtTitle.Text;
-            events.function_create_event = "%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%";
+            this.mainForm.isItEvent = "%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%";
 
             MessageBox.Show("Event created:" + title);
+            this.mainForm.sendButton();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+                createButton();
         }
 
         //need to handle sending event info to server

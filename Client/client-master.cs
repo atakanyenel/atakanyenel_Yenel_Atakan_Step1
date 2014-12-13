@@ -25,6 +25,8 @@ namespace ClientSide
         Thread thrReceive;
         bool unique;
         bool condition=true;
+        string isItEvent = "" ;
+        string isItRequest = "" ;
         Socket c = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         List<events> EventList = new List<events>();
         public Form1()
@@ -210,14 +212,17 @@ namespace ClientSide
             }
             return 0;
         }
-        private void btnsend_Click(object sender, EventArgs e)
+
+        private void sendButton()
         {
             try
             {
-                string isItEvent = events.function_create_event;
                 string tbsendTextBox = tbsend.Text;
-                Console.WriteLine(isItEvent);
-                if ((isItEvent != "")&&(tbsendTextBox == ""))
+                MessageBox.Show("The next Box should have text iff you just clicked the create button on event:");
+                MessageBox.Show(isItEvent);
+                MessageBox.Show("The next Box should have text iff you just open See event form: ");
+                MessageBox.Show(isItRequest);
+                if (isItEvent != "") //just event
                 {
                     //send event string
                     byte[] buffer = Encoding.Default.GetBytes(isItEvent);
@@ -226,17 +231,27 @@ namespace ClientSide
                     //display event info
                     richtextbox.Text = richtextbox.Text + "You have created: " + events.function_title + "\r\n";
                     c.Send(buffer);
+                    isItEvent = "";
                 }
-                else if (tbsendTextBox != "")
+                else if (isItRequest != "") //just request
+                {
+                    //isItRequest should always be just "$"
+                    byte[] buffer = Encoding.Default.GetBytes(isItRequest);
+                    c.Send(buffer);
+                    //for debugging:
+                    richtextbox.Text = richtextbox.Text + "Seeevent just sent a request: " + isItRequest + "\r\n";
+                    isItRequest = "";
+                }
+                else if (tbsendTextBox != "") //just message
                 {
                     //send message
                     richtextbox.Text = richtextbox.Text + tbname.Text + ": " + tbsendTextBox + "\r\n";
                     tbsendTextBox = "#" + tbname.Text + ": " + tbsendTextBox + "\r\n";
-                    //you may want to change m to something more complicated
                     byte[] buffer = Encoding.Default.GetBytes(tbsendTextBox);
                     c.Send(buffer);
                 }
-                else {
+                else
+                {
                     MessageBox.Show("You can't send empty messages.");
                 }
                 tbsend.Clear();
@@ -245,8 +260,13 @@ namespace ClientSide
             {
                 MessageBox.Show("ERROR: Unable to send message !");
             }
-
         }
+
+        private void btnsend_Click(object sender, EventArgs e)
+        {
+            sendButton();
+        }
+
         // It is the same as at the server side. When a client wants to close the window he is asked if he/she is sure ...
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -272,27 +292,18 @@ namespace ClientSide
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var newevent = new newevent();
+            //Create Event
             //possible solution to sending problem:
-            //var newevent = new newevent(this);
-            //http://pi.vu/BILX (useful StockExchange question)
+            var newevent = new newevent(this);
             newevent.Show();
-
-            //string created_event = newevent.event_name_test();
-
-            //while(created_event == "");
-            //richtextbox.Text = "llll";
-            //richtextbox.Text = created_event;
+            //http://pi.vu/BILX (useful StockExchange question)
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var seeevents = new seeevents();
+            //Check events
+            var seeevents = new seeevents(this);
             seeevents.Show();
-
-
-
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -302,16 +313,7 @@ namespace ClientSide
 
         private void tbsend_TextChanged(object sender, EventArgs e)
         {
-            //string tbsendTextBox = tbsend.Text;
-            //string isItEvent = events.function_create_event;
 
-            //richtextbox.Text = richtextbox.Text + isItEvent + "\r\n";
-
-            //tbsendTextBox = "#" + tbname.Text + ": " + tbsendTextBox + "\r\n";
-            //tbsend.Text = isItEvent;
-            ////you may want to change m to something more complicated
-            //byte[] buffer = Encoding.Default.GetBytes(isItEvent);
-            //c.Send(buffer);
         }
 
         private void button3_Click(object sender, EventArgs e)

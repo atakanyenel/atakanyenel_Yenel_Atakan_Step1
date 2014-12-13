@@ -14,9 +14,9 @@ namespace CS408_Step1_Server
         static string organizer;
         static string[] Event;
         static string place;
-        //need an array to store yes
-        //need an array to store no
-        //(do we need an array to store not answered?)
+        tatic string[] Going;
+        static string[] notGoing;
+        static string[] notReply;
 
         //set
 

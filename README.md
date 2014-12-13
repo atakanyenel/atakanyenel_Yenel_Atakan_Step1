@@ -5,9 +5,9 @@ What we need to do in step 2:
 
 1) Event Management
 
-1.1) Each user can schedule any number of events
+1.1) [DONE] Each user can schedule any number of events
 
-1.2) Organizer input with GUI
+1.2) [DONE] Organizer input with GUI
 
 1.3) Invitation to all other users
 
@@ -33,7 +33,7 @@ To-Do
 
 5) (If we have enough time) send event directly from newevents.cs and send request from seeevents.cs
 
-6) fix the exception when closing GUI under certain circumstances
+6) (If we know how) fix the exception when closing GUI under certain circumstances
 
 
 Project Step 2:
