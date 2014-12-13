@@ -18,32 +18,30 @@ namespace ClientSide
         }
 
         private Form1 mainForm = null;
+
         public seeevents(Form callingForm)
         {
             mainForm = callingForm as Form1;
             InitializeComponent();
+            this.reshreshEvents(mainForm);
+        }
+
+        private void refreshEvents(Form callingForm)
+        {
             this.mainForm.setIsItRequest("$");
             this.mainForm.sendButton();
-            //there should be get(sth)  functions for this.mainForm.EventList
-            //it should be able to use this.mainForm.get(sth)
             for (int i=0; i<this.mainForm.getEventListCount(); i++)
             {
                 cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
             }
         }
 
-        //private void seeevents_Load(object sender, EventArgs e)
-        //{
-        //    // message is "$"
-        //    // for loop in server in will send the whole event list
-        //    // using eventsarray.Count()
-        //    // encode it
-        //    // "%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%"
-        //    // client will decodes it
-
-        //    //string created_event = events.function_create_event;
-        //    //cbOrganizers.Items.Add(Event[4]);
-        //}
+        // create a refresh button
+        // private void {This should be a refresh button}(object sender, EventArgs e)
+        // {
+        //     refreshEvents(mainForm);
+        //     you may want to refresh cbOrganizer or something
+        // }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
