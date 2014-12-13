@@ -17,8 +17,6 @@ namespace ClientSide
             InitializeComponent();
         }
 
-<<<<<<< HEAD
-=======
         private Form1 mainForm = null;
         public seeevents(Form callingForm)
         {
@@ -26,33 +24,36 @@ namespace ClientSide
             InitializeComponent();
             this.mainForm.setIsItRequest("$");
             this.mainForm.sendButton();
+            //there should be get(sth)  functions for this.mainForm.EventList
+            //it should be able to use this.mainForm.get(sth)
         }
 
->>>>>>> parent of 70367f5... Just a lot of get and set functions
         private void seeevents_Load(object sender, EventArgs e)
         {
-
-            // message is $
-            // for loop in server in will send total list
+            // message is "$"
+            // for loop in server in will send the whole event list
+            // using eventsarray.Count()
             // encode it
-            // send it n times
-           // client decodes it
+            // "%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%"
+            // client will decodes it
 
             //string created_event = events.function_create_event;
             //cbOrganizers.Items.Add(Event[4]);
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            //"Request" Button
 
-            //string[] Event = events.function_createevent;
-            //txtDescription.Text = Event[3];
-            //txtOrganizer.Text = Event[4];
-            //txtPlace.Text = Event[2];
-            //txtTitle.Text = Event[1];
-            //txtDate.Text = Event[0];
+            /********************local
+            string[] Event = events.function_createevent;
+            txtDescription.Text = Event[3];
+            txtOrganizer.Text = Event[4];
+            txtPlace.Text = Event[2];
+            txtTitle.Text = Event[1];
+            txtDate.Text = Event[0];
+            *************************/
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)

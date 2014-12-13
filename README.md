@@ -1,7 +1,5 @@
 atakanyenel_Yenel_Atakan_Step1
 ==============================
-<<<<<<< HEAD
-=======
 
 What we need to do in step 2:
 
@@ -25,20 +23,19 @@ What we need to do in step 2:
 
 To-Do
 
-1) Remove one of the event/events in client
+1) [DONE]Remove one of the event/events in client
 
 2) complete seeevents.cs
 
-3) implement sent request function in seeevents.cs (and may client-master.cs as well)
+3) [Maybe DONE]implement sent request function in seeevents.cs (and may client-master.cs as well)
 
-4) seeevents.cs need to be able to access List<events> stored in client-master
+4) [Maybe DONE]seeevents.cs need to be able to access List<events> stored in client-master
 
-5) (If we have enough time) send event directly from newevents.cs and send request from seeevents.cs
+5) [50%]send event directly from newevents.cs and send request from seeevents.cs
 
 6) (If we know how) fix the exception when closing GUI under certain circumstances
 
 
->>>>>>> parent of 70367f5... Just a lot of get and set functions
 Project Step 2:
 Second step of the project is built on the first step. In this step, in addition to the message transfer feature of step 1, event management feature is added to the application.
 ￼￼￼￼￼￼￼￼￼
