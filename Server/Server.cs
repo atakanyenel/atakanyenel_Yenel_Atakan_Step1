@@ -222,6 +222,8 @@ namespace CS408_Step1_Server
                             eventsarray[eventsarray.Count - 1].setDesc(event_info[3]);
                             eventsarray[eventsarray.Count - 1].setOrganizer(event_info[4]);
 
+                            richTextBox1.Text = richTextBox1.Text + "Event " + event_info[1] + "has been added to List." + "\r\n";
+
                             /**************for debugging *****************/
                             //MessageBox.Show(newmessage);
                             //MessageBox.Show(organizer + "\r\n" + description + title + place + date_pro);
@@ -269,7 +271,7 @@ namespace CS408_Step1_Server
                                 //Recieved a request of event lists, so server will send them
                                 //"%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%";
                                 string event_request = "%" + eventsarray[i].getDate() + "%" + eventsarray[i].getTitle() + "%" + eventsarray[i].getPlace() + "%" + eventsarray[i].getDesc() + "%" + eventsarray[i].getOrganizer() + "%";
-                                byte[] buffer = new byte[1024];
+                                byte[] buffer = new byte[64];
                                 buffer = Encoding.Default.GetBytes(event_request);
                                 yeni.Send(buffer);
                             }
@@ -341,7 +343,7 @@ namespace CS408_Step1_Server
                 message = message.Substring(0, message.Length - 2);
                 return 3;
             }
-            if (message.ElementAt(0) == '$') // request
+            if (message == '$') // request
             {
                 return 4;
             }
