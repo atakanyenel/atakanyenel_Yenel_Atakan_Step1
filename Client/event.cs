@@ -13,33 +13,41 @@ namespace ClientSide
         private string description;
         private string organizer;
         private string place;
-        List<string> goingList = new List<string>();
-        List<string> notGoingList = new List<string>();
-        List<string> notReply = new List<string>();
+        private List<string> goingList = new List<string>();
+        private List<string> notGoingList = new List<string>();
+        private List<string> notReplyList = new List<string>();
 
         public void setDate(string newValue)
         {
             date = newValue;
         }
-
-        public void setTitle(string newValue1)
+        public void setTitle(string newValue)
         {
-            title = newValue1;
+            title = newValue;
         }
-
-        public void setDesc(string newValue2)
+        public void setDesc(string newValue)
         {
-            description = newValue2;
+            description = newValue;
         }
-
-        public void setOrganizer(string newValue3)
+        public void setOrganizer(string newValue)
         {
-            organizer = newValue3;
-
+            organizer = newValue;
         }
-        public void setPlace(string newValue4)
+        public void setPlace(string newValue)
         {
-            place = newValue4;
+            place = newValue;
+        }
+        public void addGoingList(string newValue)
+        {
+            goingList.Add(newValue);
+        }
+        public void addNotGoingList(string newValue)
+        {
+            notGoingList.Add(newValue);
+        }
+        public void addNotReplyList(string newValue)
+        {
+            notReplyList.Add(newValue);
         }
 
         //get
@@ -48,25 +56,33 @@ namespace ClientSide
         {
             return date;
         }
-
         public string getTitle()
         {
             return title;
         }
-
         public string getDesc()
         {
             return description;
         }
-
         public string getOrganizer()
         {
             return organizer;
-
         }
         public string getPlace()
         {
             return place;
+        }
+        public string getGoingList(int i)
+        {
+            return goingList[i];
+        }
+        public string getNotGoingList(int i)
+        {
+            return notGoingList[i];
+        }
+        public string getNotReplyList(int i)
+        {
+            return notReplyList[i];
         }
     }
 }

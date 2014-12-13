@@ -217,17 +217,7 @@ namespace CS408_Step1_Server
                             b = b.Substring(1);
                             index1 = b.IndexOf("%");
                             event_info[4] = b.Substring(0, index1);
-                            // if (eventsarray.Count > 0)
-                            // {
-                            //     richTextBox1.Text = richTextBox1.Text + "Before Insert: \r\n";
-                            //     richTextBox1.Text = richTextBox1.Text + "eventsarray.Count: " + eventsarray.Count.ToString() + "\r\n";
-                            //     richTextBox1.Text = richTextBox1.Text + "eventsarray[0].getDate: " + eventsarray[0].getDate() + "\r\n";
-                            //     richTextBox1.Text = richTextBox1.Text + "eventsarray[0].getTitle: " + eventsarray[0].getTitle() + "\r\n";
-                            //     richTextBox1.Text = richTextBox1.Text + "eventsarray[0].getPlace: " + eventsarray[0].getPlace() + "\r\n";
-                            //     richTextBox1.Text = richTextBox1.Text + "eventsarray[0].getDesc: " + eventsarray[0].getDesc() + "\r\n";
-                            //     richTextBox1.Text = richTextBox1.Text + "eventsarray[0].getOrganizer: " + eventsarray[0].getOrganizer() + "\r\n\r\n";
-                            // }
-                            //
+
                             //store all into into a new event in eventsarray
                             events tempe = new events();
                             tempe.setDate(event_info[0]);
@@ -237,17 +227,6 @@ namespace CS408_Step1_Server
                             tempe.setOrganizer(event_info[4]);
                             eventsarray.Add(tempe);
 
-
-                            // if (eventsarray.Count > 0)
-                            // {
-                            //     richTextBox1.Text = richTextBox1.Text + "After Insert: \r\n";
-                            //     richTextBox1.Text = richTextBox1.Text + "eventsarray.Count: " + eventsarray.Count.ToString() + "\r\n";
-                            //     richTextBox1.Text = richTextBox1.Text + "eventsarray[0].getDate: " + eventsarray[0].getDate() + "\r\n";
-                            //     richTextBox1.Text = richTextBox1.Text + "eventsarray[0].getTitle: " + eventsarray[0].getTitle() + "\r\n";
-                            //     richTextBox1.Text = richTextBox1.Text + "eventsarray[0].getPlace: " + eventsarray[0].getPlace() + "\r\n";
-                            //     richTextBox1.Text = richTextBox1.Text + "eventsarray[0].getDesc: " + eventsarray[0].getDesc() + "\r\n";
-                            //     richTextBox1.Text = richTextBox1.Text + "eventsarray[0].getOrganizer: " + eventsarray[0].getOrganizer() + "\r\n\r\n";
-                            // }
                             richTextBox1.Text = richTextBox1.Text + "eventsarray.Count: " + eventsarray.Count.ToString() + "\r\n";
                             richTextBox1.Text = richTextBox1.Text + "Event " + event_info[1] + " has been added to List." + "\r\n\r\n";
                             //need to send request to everyone else
