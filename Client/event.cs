@@ -8,40 +8,35 @@ namespace ClientSide
 {
     class events
     {
-        static string date;
-        static string title;
-        static string description;
-        static string organizer;
-        static string[] Event;
-        static string place;
-        List<string> goingList = new List<string>();
-        List<string> notGoingList = new List<string>();
-        List<string> notReply = new List<string>();
+        private string date;
+        private string title;
+        private string description;
+        private string organizer;
+        private string place;
 
-        //set
-        public void setDate(string date2)
+        public void setDate(string newValue)
         {
-            date = date2;
+            date = newValue;
         }
 
-        public void setTitle(string date2)
+        public void setTitle(string newValue1)
         {
-            title = date2;
+            title = newValue1;
         }
 
-        public void setDesc(string date2)
+        public void setDesc(string newValue2)
         {
-            description = date2;
+            description = newValue2;
         }
 
-        public void setOrganizer(string date2)
+        public void setOrganizer(string newValue3)
         {
-            organizer = date2;
+            organizer = newValue3;
 
         }
-        public void setPlace(string date2)
+        public void setPlace(string newValue4)
         {
-            place = date2;
+            place = newValue4;
         }
 
         //get
@@ -70,73 +65,5 @@ namespace ClientSide
         {
             return place;
         }
-
-        //apparently List cannot access data using the mathods below
-        // public static string function_date
-        // {
-        //     get
-        //     {
-        //         return date;
-        //     }
-        //     set
-        //     {
-        //         date = value;
-        //     }
-        // }
-        // public static string function_place
-        // {
-        //     get
-        //     {
-        //         return place;
-        //     }
-        //     set
-        //     {
-        //         place = value;
-        //     }
-        // }
-        // public static string[] function_event
-        // {
-        //     get
-        //     {
-        //         return Event;
-        //     }
-        //     set
-        //     {
-        //         Event = value;
-        //     }
-        // }
-        // public static string function_title
-        // {
-        //     get
-        //     {
-        //         return title;
-        //     }
-        //     set
-        //     {
-        //         title = value;
-        //     }
-        // }
-        // public static string function_description
-        // {
-        //     get
-        //     {
-        //         return description;
-        //     }
-        //     set
-        //     {
-        //         description = value;
-        //     }
-        // }
-        // public static string function_organizer
-        // {
-        //     get
-        //     {
-        //         return organizer;
-        //     }
-        //     set
-        //     {
-        //         organizer = value;
-        //     }
-        // }
     }
 }

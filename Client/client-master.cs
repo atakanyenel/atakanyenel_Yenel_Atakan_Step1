@@ -179,13 +179,14 @@ namespace ClientSide
                             b = b.Substring(1);
                             index1 = b.IndexOf("%");
                             event_info[4] = b.Substring(0, index1);
-                            EventList.Add(new events());
-                            EventList[EventList.Count - 1].setDate(event_info[0]);
-                            EventList[EventList.Count - 1].setTitle(event_info[1]);
-                            EventList[EventList.Count - 1].setPlace(event_info[2]);
-                            EventList[EventList.Count - 1].setDesc(event_info[3]);
-                            EventList[EventList.Count - 1].setOrganizer(event_info[4]);
 
+                            events tempe = new events();
+                            tempe.setDate(event_info[0]);
+                            tempe.setTitle(event_info[1]);
+                            tempe.setPlace(event_info[2]);
+                            tempe.setDesc(event_info[3]);
+                            tempe.setOrganizer(event_info[4]);
+                            EventList.Add(tempe);
                             /**************for debugging *****************/
                             MessageBox.Show(receivedmessage);
                             MessageBox.Show(EventList[EventList.Count - 1].getDate());
@@ -194,19 +195,6 @@ namespace ClientSide
                             MessageBox.Show(EventList[EventList.Count - 1].getDesc());
                             MessageBox.Show(EventList[EventList.Count - 1].getOrganizer());
                             /**************for debugging *****************/
-
-                            // int i = 0;
-                            // int location = receivedmessage.IndexOf('%',i);
-                            // while ( location!= -1){
-                            //     int location2 = receivedmessage.IndexOf('%', i+1);
-                            //     MessageBox.Show(location2.ToString());
-                            //     string value_get = receivedmessage.Substring(location, location2 - location);
-                            //     i++;
-                            //     location = receivedmessage.IndexOf('%', i);
-                            //     MessageBox.Show(value_get);
-                            // }
-                            // int name = receivedmessage.IndexOf('%');
-
                         }
                         else if (check_symbol(ref receivedmessage) == 2) //message
                         {
