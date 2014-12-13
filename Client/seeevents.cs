@@ -24,6 +24,8 @@ namespace ClientSide
             InitializeComponent();
             this.mainForm.setIsItRequest("$");
             this.mainForm.sendButton();
+            //there should be get(sth)  functions for this.mainForm.EventList
+            //it should be able to use this.mainForm.get(sth)
         }
 
         private void seeevents_Load(object sender, EventArgs e)

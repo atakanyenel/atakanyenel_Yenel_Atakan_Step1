@@ -14,9 +14,9 @@ namespace ClientSide
         static string organizer;
         static string[] Event;
         static string place;
-        static string[] Going;
-        static string[] notGoing;
-        static string[] notReply;
+        List<string> goingList = new List<string>;
+        List<string> notGoingList = new List<string>;
+        List<string> notReply = new List<string>;
 
         //set
         public void setDate(string date2)

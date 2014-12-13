@@ -223,6 +223,7 @@ namespace CS408_Step1_Server
                             eventsarray[eventsarray.Count - 1].setOrganizer(event_info[4]);
 
                             richTextBox1.Text = richTextBox1.Text + "Event " + event_info[1] + "has been added to List." + "\r\n";
+                            //need to send request to everyone else
 
                             /**************for debugging *****************/
                             //MessageBox.Show(newmessage);

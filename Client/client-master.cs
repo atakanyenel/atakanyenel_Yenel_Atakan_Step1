@@ -34,6 +34,8 @@ namespace ClientSide
             InitializeComponent();
             Form.CheckForIllegalCrossThreadCalls = false;
         }
+
+        //DO NOT create set functions for events date/title/org/desc/place
         public void setIsItEvent(string a)
         {
             isItEvent = a;
@@ -49,6 +51,30 @@ namespace ClientSide
         public string getIsItRequest()
         {
             return isItRequest;
+        }
+        public int getEventListCount()
+        {
+            return EventList.Count();
+        }
+        public string getEventListGetDate(int i)
+        {
+            return EventList[i].getDate();
+        }
+        public string getEventListGetTitle(int i)
+        {
+            return EventList[i].getTitle();
+        }
+        public string getEventListGetDesc(int i)
+        {
+            return EventList[i].getDesc();
+        }
+        public string getEventListGetOrganize(int i)
+        {
+            return EventList[i].getOrganize();
+        }
+        public string getEventListGetPlace(int i)
+        {
+            return EventList[i].getPlace();
         }
         // the function for connecting the client to the server. A client uses an port number, IP number and a given name to connect to the server.
         // If the name textbox is empty or if the name alredy exists in the clients list that the user is asked to use another name
