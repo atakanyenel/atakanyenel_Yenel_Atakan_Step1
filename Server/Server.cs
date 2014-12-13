@@ -230,13 +230,14 @@ namespace CS408_Step1_Server
                             
 
                             //store all into into a new event in eventsarray
-                            
+
+                            events tempe = new events();
+
                             tempe.setDate(event_info[0]);
                             tempe.setTitle(event_info[1]);
                             tempe.setPlace(event_info[2]);
                             tempe.setDesc(event_info[3]);
                             tempe.setOrganizer(event_info[4]);
-                            //something is wrong with .Add
                             eventsarray.Add(tempe);
 
 
