@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CS408_Step1_Server
+namespace ClientSide
 {
     class events
     {
@@ -19,57 +19,56 @@ namespace CS408_Step1_Server
         static string[] notReply;
 
         //set
-
         public void setDate(string date2)
         {
-            date = date2;
+        date = date2;
         }
 
         public void setTitle(string date2)
         {
-            title = date2;
+        title = date2;
         }
 
         public void setDesc(string date2)
         {
-            description = date2;
+        description = date2;
         }
 
         public void setOrganizer(string date2)
         {
-            organizer = date2;
+        organizer = date2;
 
         }
         public void setPlace(string date2)
         {
-            place = date2;
+        place = date2;
         }
 
         //get
 
         public string getDate()
         {
-            return date;
+        return date;
         }
 
         public string getTitle()
         {
-            return title;
+        return title;
         }
 
         public string getDesc()
         {
-            return description;
+        return description;
         }
 
         public string getOrganizer()
         {
-            return organizer;
+        return organizer;
 
         }
         public string getPlace()
         {
-            return place;
+        return place;
         }
 
         //apparently List cannot access data using the mathods below

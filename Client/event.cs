@@ -1,5 +1,3 @@
-﻿//This is not necessary once event in server have been implemented successfully
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +12,29 @@ namespace ClientSide
         static string title;
         static string description;
         static string organizer;
-        static string create_event;
+        static string[] Event;
         static string place;
+        List<string> goingList = new List<string>;
+        List<string> notGoingList = new List<string>;
+        List<string> notReply = new List<string>;
 
+        //set
+        public void setDate(string date2)
+        {
+            date = date2;
+        }
+
+        public void setTitle(string date2)
+        {
+            title = date2;
+        }
+
+        public void setDesc(string date2)
+        {
+            description = date2;
+        }
+
+<<<<<<< HEAD
         public void setDate(string date2)
         {
             date = date2;
@@ -70,70 +88,111 @@ namespace ClientSide
         }
 
         public static string function_date
+=======
+        public void setOrganizer(string date2)
+>>>>>>> origin/master
         {
-            get
-            {
-                return date;
-            }
-            set
-            {
-                date = value;
-            }
+            organizer = date2;
+
         }
-        public static string function_place
+        public void setPlace(string date2)
         {
-            get
-            {
-                return place;
-            }
-            set
-            {
-                place = value;
-            }
+            place = date2;
         }
-        public static string function_create_event
+
+        //get
+
+        public string getDate()
         {
-            get
-            {
-                return create_event;
-            }
-            set
-            {
-                create_event = value;
-            }
+            return date;
         }
-        public static string function_title
+
+        public string getTitle()
         {
-            get
-            {
-                return title;
-            }
-            set
-            {
-                title = value;
-            }
+            return title;
         }
-        public static string function_description
+
+        public string getDesc()
         {
-            get
-            {
-                return description;
-            }
-            set
-            {
-                description = value;
-            }
+            return description;
         }
-        public static string function_organizer
+
+        public string getOrganizer()
         {
-            get
-            {
-                return organizer;
-            }
-            set
-            {
-                organizer = value;
-            }
+            return organizer;
+
         }
+        public string getPlace()
+        {
+            return place;
+        }
+
+        //apparently List cannot access data using the mathods below
+        // public static string function_date
+        // {
+        //     get
+        //     {
+        //         return date;
+        //     }
+        //     set
+        //     {
+        //         date = value;
+        //     }
+        // }
+        // public static string function_place
+        // {
+        //     get
+        //     {
+        //         return place;
+        //     }
+        //     set
+        //     {
+        //         place = value;
+        //     }
+        // }
+        // public static string[] function_event
+        // {
+        //     get
+        //     {
+        //         return Event;
+        //     }
+        //     set
+        //     {
+        //         Event = value;
+        //     }
+        // }
+        // public static string function_title
+        // {
+        //     get
+        //     {
+        //         return title;
+        //     }
+        //     set
+        //     {
+        //         title = value;
+        //     }
+        // }
+        // public static string function_description
+        // {
+        //     get
+        //     {
+        //         return description;
+        //     }
+        //     set
+        //     {
+        //         description = value;
+        //     }
+        // }
+        // public static string function_organizer
+        // {
+        //     get
+        //     {
+        //         return organizer;
+        //     }
+        //     set
+        //     {
+        //         organizer = value;
+        //     }
+        // }
     }
 }
