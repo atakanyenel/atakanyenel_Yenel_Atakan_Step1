@@ -70,7 +70,7 @@ namespace ClientSide
         }
         public string getEventListGetOrganize(int i)
         {
-            return EventList[i].getOrganize();
+            return EventList[i].getOrganizer();
         }
         public string getEventListGetPlace(int i)
         {
@@ -155,7 +155,6 @@ namespace ClientSide
                 condition = true;
                 while (condition)
                 {
-
                     byte[] buffer = new byte[64];
                     c.Receive(buffer);
                     string receivedmessage = Encoding.Default.GetString(buffer);
@@ -210,8 +209,6 @@ namespace ClientSide
                                 MessageBox.Show("There is a problem. Try Again");
                         }
                     }
-
-
                 }
             }
             catch
@@ -234,17 +231,17 @@ namespace ClientSide
         {
             if (message.ElementAt(0) == '%') // event
             {
-                message = message.Substring(0, message.Length - 2);
+                message = message.Substring(0, message.Length);
                 return 1;
             }
             else if (message.ElementAt(0) == '#') //message
             {
-                message = message.Substring(0, message.Length - 2);
+                message = message.Substring(0, message.Length);
                 return 2;
             }
             else if (message.ElementAt(0) == '&') //attendance
             {
-                message = message.Substring(0, message.Length - 2);
+                message = message.Substring(0, message.Length);
                 return 3;
             }
             else if(message.ElementAt(0) == '$') //request
@@ -290,6 +287,8 @@ namespace ClientSide
                     tbsendTextBox = "#" + tbname.Text + ": " + tbsendTextBox + "\r\n";
                     byte[] buffer = Encoding.Default.GetBytes(tbsendTextBox);
                     c.Send(buffer);
+                    tbsend.Clear();
+                    tbsendTextBox = "";
                 }
                 else
                 {
