@@ -1,4 +1,4 @@
-﻿//This is not necessary once event in server have been implemented successfully
+//Maybe we should delete this?
 
 using System;
 using System.Collections.Generic;
