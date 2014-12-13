@@ -186,6 +186,15 @@ namespace ClientSide
                             EventList[EventList.Count - 1].setDesc(event_info[3]);
                             EventList[EventList.Count - 1].setOrganizer(event_info[4]);
 
+                            /**************for debugging *****************/
+                            MessageBox.Show(receivedmessage);
+                            MessageBox.Show(EventList[EventList.Count - 1].getDate());
+                            MessageBox.Show(EventList[EventList.Count - 1].getTitle());
+                            MessageBox.Show(EventList[EventList.Count - 1].getPlace());
+                            MessageBox.Show(EventList[EventList.Count - 1].getDesc());
+                            MessageBox.Show(EventList[EventList.Count - 1].getOrganizer());
+                            /**************for debugging *****************/
+
                             // int i = 0;
                             // int location = receivedmessage.IndexOf('%',i);
                             // while ( location!= -1){
@@ -236,7 +245,7 @@ namespace ClientSide
             }
             else if (message.ElementAt(0) == '#') //message
             {
-                message = message.Substring(0, message.Length);
+                message = message.Substring(0, message.Length-2);
                 return 2;
             }
             else if (message.ElementAt(0) == '&') //attendance

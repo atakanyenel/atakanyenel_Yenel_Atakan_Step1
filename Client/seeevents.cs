@@ -44,7 +44,7 @@ namespace ClientSide
         private void button1_Click(object sender, EventArgs e)
         {
             //"Request" Button
-
+            //will be removed
             /********************local
             string[] Event = events.function_createevent;
             txtDescription.Text = Event[3];
