@@ -19,7 +19,7 @@ What we need to do in step 2:
 
 1.4) [50%] Select "Attending" or "Not Attending" with GUI
 
-1.4.1) Server react to response 
+1.4.1) Server react to response
 
 1.5) Able to modify answer between yes and no only
 
@@ -47,13 +47,9 @@ Additional tasks
 
 6) (If we know how) fix the exception when closing GUI under certain circumstances
 
-<<<<<<< HEAD
 7) [50%] Add Refresh (i.e. Request) button (back) to seeevents.cs
 
 7.1) Refresh is not perfect, cbOrganizer combo box got some repetition, but not all. Reason unkonwn
-=======
-7) [DONE] Add Refresh (i.e. Request) button (back) to seeevents.cs
->>>>>>> FETCH_HEAD
 
 8) Server needs to handle and process attendance update
 
