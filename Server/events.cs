@@ -17,6 +17,7 @@ namespace CS408_Step1_Server
         private List<string> notGoingList = new List<string>();
         private List<string> notReplyList = new List<string>();
 
+        //set
         public void setDate(string newValue)
         {
             date = newValue;
@@ -51,7 +52,6 @@ namespace CS408_Step1_Server
         }
 
         //get
-
         public string getDate()
         {
             return date;
