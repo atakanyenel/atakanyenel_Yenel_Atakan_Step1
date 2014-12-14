@@ -25,7 +25,7 @@ Additional tasks
 
 1) [DONE]Remove one of the event/events in client
 
-2) complete seeevents.cs
+2) [50% with bugs] complete seeevents.cs
 
 3) [DONE]implement sent request function in seeevents.cs and newevents.cs
 
@@ -35,7 +35,7 @@ Additional tasks
 
 6) (If we know how) fix the exception when closing GUI under certain circumstances
 
-7) Add Refresh (i.e. Request) button (back) to seeevents.cs
+7) [DONE] Add Refresh (i.e. Request) button (back) to seeevents.cs
 
 8) Server needs to handle and process attendance update
 
