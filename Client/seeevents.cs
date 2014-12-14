@@ -20,31 +20,31 @@ namespace ClientSide
         private Form1 mainForm = null;
         private int eventID = -1;
         private int YoN = -1;
+
         public seeevents(Form callingForm)
         {
             mainForm = callingForm as Form1;
             InitializeComponent();
-            this.reshreshEvents(mainForm);
+            this.mainForm.setIsItRequest("$");
+            this.mainForm.sendButton();
+            for (int i = 0; i < this.mainForm.getEventListCount(); i++)
+            {
+                cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
+            }
         }
 
         private void refreshEvents()
         {
             this.mainForm.setIsItRequest("$");
             this.mainForm.sendButton();
-            for (int i=0; i<this.mainForm.getEventListCount(); i++)
+            cbOrganizers.Items.Clear();
+            for (int i = 0; i < this.mainForm.getEventListCount(); i++)
             {
                 cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
             }
-            //do we need to refresh cbOrganizers?
         }
 
-        // create a refresh button
-        // private void {This should be a refresh button}(object sender, EventArgs e)
-        // {
-        //     refreshEvents();
-        // }
-
-        // private void sendAtte()
+        // private void sendAtte(we need 3 inputs here)
         // {
         //     //Format: ${event id}${username}${yes/no}$
         //     //event id is obtained when select event in cbOrganizer
@@ -72,6 +72,21 @@ namespace ClientSide
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void r5button_Click(object sender, EventArgs e)
+        {
+             refreshEvents();
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            //call sendAtte(event id, username, no)
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            //call sendAtte(event id, username, yes)
         }
     }
 }

@@ -45,6 +45,7 @@
             this.txtDate = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.r5button = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,7 +54,7 @@
             this.cbOrganizers.FormattingEnabled = true;
             this.cbOrganizers.Location = new System.Drawing.Point(15, 25);
             this.cbOrganizers.Name = "cbOrganizers";
-            this.cbOrganizers.Size = new System.Drawing.Size(211, 21);
+            this.cbOrganizers.Size = new System.Drawing.Size(149, 21);
             this.cbOrganizers.TabIndex = 0;
             this.cbOrganizers.SelectedIndexChanged += new System.EventHandler(this.cbOrganizers_SelectedIndexChanged);
             // 
@@ -127,6 +128,7 @@
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "No";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton1
             // 
@@ -138,13 +140,14 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Yes";
             this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(232, 16);
+            this.listBox1.Location = new System.Drawing.Point(232, 9);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(144, 238);
+            this.listBox1.Size = new System.Drawing.Size(144, 251);
             this.listBox1.TabIndex = 14;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -182,9 +185,9 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(232, 262);
+            this.btnClose.Location = new System.Drawing.Point(232, 266);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(144, 36);
+            this.btnClose.Size = new System.Drawing.Size(144, 32);
             this.btnClose.TabIndex = 19;
             this.btnClose.Text = "CLOSE";
             this.btnClose.UseVisualStyleBackColor = true;
@@ -199,11 +202,22 @@
             this.label6.TabIndex = 20;
             this.label6.Text = "Select an event";
             // 
+            // r5button
+            // 
+            this.r5button.Location = new System.Drawing.Point(170, 25);
+            this.r5button.Name = "r5button";
+            this.r5button.Size = new System.Drawing.Size(56, 21);
+            this.r5button.TabIndex = 21;
+            this.r5button.Text = "Refresh";
+            this.r5button.UseVisualStyleBackColor = true;
+            this.r5button.Click += new System.EventHandler(this.r5button_Click);
+            // 
             // seeevents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(388, 310);
+            this.Controls.Add(this.r5button);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.label5);
@@ -223,7 +237,6 @@
             this.MinimumSize = new System.Drawing.Size(404, 349);
             this.Name = "seeevents";
             this.Text = "seeevents";
-            //this.Load += new System.EventHandler(this.seeevents_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -250,5 +263,6 @@
         private System.Windows.Forms.TextBox txtDate;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button r5button;
     }
 }
