@@ -315,6 +315,24 @@ namespace CS408_Step1_Server
             }
         }
 
+        /***********************************replaced with check_symbol
+        This function decides if the incoming message a message from the client or si the client informing the server that
+        he is disconnecting.
+        bool DECIDE(ref string  message)
+        {
+             if (message.ElementAt(0) == 'm')
+            {
+                message=message.Substring(1, message.Length - 2);
+            return true;
+            }
+           else if(message.ElementAt(0)=='e') //This is for event
+           {
+               message = message.Substring(1, message.Length - 2);
+           }
+             return false;
+        }
+        ************************************/
+
         //return what the first symbol is/what is the purpose of message
         int check_symbol(ref string message)
         {
