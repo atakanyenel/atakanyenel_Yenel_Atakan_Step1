@@ -76,6 +76,18 @@ namespace ClientSide
         {
             return goingList[i];
         }
+        public string getGoingListCount()
+        {
+            return goingList.Count;
+        }
+        public string getNotGoingListCount()
+        {
+            return notGoingList.Count;
+        }
+        public string getNotReplyListCount()
+        {
+            return notReplyList.Count;
+        }
         public string getNotGoingList(int i)
         {
             return notGoingList[i];
