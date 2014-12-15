@@ -1,0 +1,13 @@
+C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe.config
+C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication1\bin\Debug\ClientSide.exe
+C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication1\bin\Debug\CS408_Step1_Server.exe
+C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication1\bin\Debug\ClientSide.pdb
+C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication1\bin\Debug\CS408_Step1_Server.pdb
+C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csprojResolveAssemblyReference.cache
+C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
