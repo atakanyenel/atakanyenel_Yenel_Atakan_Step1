@@ -86,20 +86,42 @@ namespace CS408_Step1_Server
         }
 
         //search functions for the 3 lists
-        //use list.Find() built-in function
-        //http://msdn.microsoft.com/en-us/library/x0b5b5bc(v=vs.110).aspx
         //update event.cs in client as well
-        // public int searchGoingList(string un)
-        // {
-        //
-        // }
-        // public int searchNotGoingList(string un)
-        // {
-        //
-        // }
-        // public int searchNotReplyList(string un)
-        // {
-        //
-        // }
+        public int searchGoingList(string un)
+        {
+            x = goingList.Count();
+            for (int i = 0; i<x; i++)
+            {
+                if (goingList[i] == un)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        public int searchNotGoingList(string un)
+        {
+            x = notGoingList.Count();
+            for (int i = 0; i<x; i++)
+            {
+                if (notGoingList[i] == un)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        public int searchNotReplyList(string un)
+        {
+            x = notReplyList.Count();
+            for (int i = 0; i<x; i++)
+            {
+                if (notReplyList[i] == un)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
     }
 }

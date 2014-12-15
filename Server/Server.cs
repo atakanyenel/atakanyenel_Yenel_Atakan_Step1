@@ -27,6 +27,7 @@ namespace CS408_Step1_Server
             public string name;
             public Socket clisoc;
             public int attending;
+            //Step 3: list of friends(can be string of client)
             internal void setname(string strclientname)
             {
                 name = strclientname;
@@ -59,8 +60,6 @@ namespace CS408_Step1_Server
             InitializeComponent();
             Form.CheckForIllegalCrossThreadCalls = false;
         }
-
-
 
         // function for START. With this function the server starts listening to the port that is given by the user.
         // It is handled in the try/cathch method to prevent crashing of the system.
