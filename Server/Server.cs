@@ -267,7 +267,9 @@ namespace CS408_Step1_Server
                             i1 = B.IndexOf("&");
                             atte_rec[2] = B.Substring(0, i1);
                             //convert event id into int
-                            //convert yes or no into boolean(maybe)->answer
+                            //convert yes or no into int >> store in correspndent list
+                            //search if the same username exists in the other lists first
+                            //if yes, remove it
                             //decide where the username should be store according to event and answer
                             //(if we have a list of not answer in event, we will need to update that too)
                         }

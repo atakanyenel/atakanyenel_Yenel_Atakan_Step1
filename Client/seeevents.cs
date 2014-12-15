@@ -63,6 +63,8 @@ namespace ClientSide
         private void cbOrganizers_SelectedIndexChanged(object sender, EventArgs e)
         {
             //this.AcceptButton = button1;
+            //update eventID
+            //update listBox1
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -83,6 +85,7 @@ namespace ClientSide
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             YoN = 0; //Not going
+            //when user select event in cbOrganizer it shoudl update eventID
             sendAtte();
         }
 
