@@ -23,7 +23,7 @@ namespace ClientSide
 
         //string event_created = events.function_create_event; // global variable
         Thread thrReceive;
-        bool unique;
+        // bool unique
         bool condition=true;
         string isItEvent = "" ;
         string isItRequest = "" ;
@@ -56,6 +56,11 @@ namespace ClientSide
         public string getIsItRequest()
         {
             return isItRequest;
+        }
+        public string getIsItOwner()
+        {
+            string Owner = tbname.Text;
+            return Owner;
         }
         public string getIsItAtte()
         {

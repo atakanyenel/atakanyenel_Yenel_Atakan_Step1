@@ -49,6 +49,7 @@ namespace ClientSide
             string date = dtpDate.Value.ToShortDateString();
             string place = txtPlace.Text;
             string description = txtDescription.Text;
+           
             string organizer = txtOrganizer.Text;
             string title = txtTitle.Text;
             this.mainForm.setIsItEvent("%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%");
@@ -81,7 +82,7 @@ namespace ClientSide
 
         private void newevent_Load(object sender, EventArgs e)
         {
-
+            txtOrganizer.Text = this.mainForm.getIsItOwner();
         }
 
         private void button3_Click(object sender, EventArgs e)
