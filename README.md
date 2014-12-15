@@ -45,14 +45,18 @@ Additional tasks
 
 5) [DONE]send event directly from newevents.cs and send request directly from seeevents.cs
 
-6) (If we know how) fix the exception when closing GUI under certain circumstances
+6) [50%] Add Refresh (i.e. Request) button (back) to seeevents.cs
 
-7) [50%] Add Refresh (i.e. Request) button (back) to seeevents.cs
+6.1) Refresh is not perfect, cbOrganizer combo box got some repetition, but not all. Reason unkonwn
 
-7.1) Refresh is not perfect, cbOrganizer combo box got some repetition, but not all. Reason unkonwn
+7) Server needs to handle and process attendance update
 
-8) Server needs to handle and process attendance update
+7.1) most set and get functions have already been implemented.
 
-8.1) most set and get functions have already been implemented.
+Known Issues
+
+1) Exception when closing GUI under certain(unknown) circumstances
+
+2) "There is a problem. Try again" keeps poping up when connecting 2+ clients, but the connection is in fact successful
 
 For more details, please check the pdf.
