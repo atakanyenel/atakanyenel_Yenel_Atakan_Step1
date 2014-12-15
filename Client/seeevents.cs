@@ -25,7 +25,22 @@ namespace ClientSide
         {
             mainForm = callingForm as Form1;
             InitializeComponent();
-            refreshEvents();
+            //refreshEvents();
+
+            cbOrganizers.Items.Clear();
+            this.mainForm.setIsItRequest("$");
+            this.mainForm.sendButton();
+            int count = this.mainForm.getEventListCount();
+
+            if (count > 0)
+            {
+                cbOrganizers.Items.Clear();
+                for (int i = 0; i < count; i++)
+                {
+                    cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
+                    listBox1.Items.Add(this.mainForm.getEventListGetTitle(i));
+                }
+            }
         }
 
         private void refreshEvents()
@@ -34,17 +49,18 @@ namespace ClientSide
             this.mainForm.setIsItRequest("$");
             this.mainForm.sendButton();
             int count = this.mainForm.getEventListCount();
-            while (count<1)
-            {
-                refreshEvents();
-                listBox1.Items.Clear();
-                count = this.mainForm.getEventListCount();
+
+            if(count > 0){
                 cbOrganizers.Items.Clear();
+                for (int i = 0; i<count; i++)
+                {
+                    cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
+                    listBox1.Items.Add(this.mainForm.getEventListGetTitle(i));
+                }
             }
-            for (int i = 0; i<count; i++)
+            else
             {
-                cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
-                listBox1.Items.Add(this.mainForm.getEventListGetTitle(i));
+                //refreshEvents();
             }
         }
 
@@ -66,7 +82,7 @@ namespace ClientSide
 
         private void cbOrganizers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selected_event = cbOrganizers.Text;
+           string selected_event = cbOrganizers.Text;
            eventID = this.mainForm.searchEventList(selected_event);
 
            txtDate.Text = this.mainForm.getEventListGetDate(eventID);

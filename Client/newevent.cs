@@ -41,16 +41,22 @@ namespace ClientSide
 
         private void createButton()
         {
+
+            if (txtDescription.Text == "" || txtTitle.Text == "" || txtPlace.Text == "" ){
+                MessageBox.Show("Please fill all the fields !!");
+            }
+            else{
             string date = dtpDate.Value.ToShortDateString();
             string place = txtPlace.Text;
             string description = txtDescription.Text;
             string organizer = txtOrganizer.Text;
             string title = txtTitle.Text;
-
             this.mainForm.setIsItEvent("%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%");
             MessageBox.Show("Event created:" + title);
             this.mainForm.sendButton();
             clear();
+            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
