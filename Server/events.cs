@@ -139,15 +139,15 @@ namespace CS408_Step1_Server
         //remove
         public void removeGoingList(string un)
         {
-            goingList.remove(un);
+            goingList.Remove(un);
         }
         public void removeNotGoingList(string un)
         {
-            notGoingList.remove(un);
+            notGoingList.Remove(un);
         }
         public void removeNotReplyList(string un)
         {
-            notReplyList.remove(un);
+            notReplyList.Remove(un);
         }
     }
 }

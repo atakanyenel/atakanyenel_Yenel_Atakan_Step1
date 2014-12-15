@@ -63,9 +63,9 @@ namespace CS408_Step1_Server
 
         public bool removeUser(string un)
         {
-            removeGoingList(un);
-            removeNotGoingList(un);
-            removeNotReplyList(un);
+            eventsarray.removeGoingList(un);
+            eventsarray.removeNotGoingList(un);
+            eventsarray.removeNotReplyList(un);
         }
 
         // function for START. With this function the server starts listening to the port that is given by the user.
@@ -273,17 +273,17 @@ namespace CS408_Step1_Server
                             i1 = B.IndexOf("&");
                             atte_rec[2] = B.Substring(0, i1);
                             //convert event id into int
-                            int eID = atte_rec[0].ToInt32();
+                            int eID = Convert.ToInt32(atte_rec[0]);
                             //remove that username from all instance of that event
                             eventsarray[eID].removeuser(atte_rec[1]);
                             //decide where the username should be store according to event and answer
                             if (atte_rec[2] == "1") //going
                             {
-                                eventarray[eID].addGoingList(atte_rec[1]);
+                                eventsarray[eID].addGoingList(atte_rec[1]);
                             }
                             else if (atte_rec[2] == "2") //not going
                             {
-                                eventarray[eID].addNotGoingList(atte_rec[1]);
+                                eventsarray[eID].addNotGoingList(atte_rec[1]);
                             }
                             else
                             {
