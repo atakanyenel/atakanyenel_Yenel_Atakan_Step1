@@ -87,7 +87,7 @@ namespace CS408_Step1_Server
                 }
                 catch
                 {
-                    MessageBox.Show("ERROR: Unable to start server.");
+                    MessageBox.Show("ERROR: SERVER IS UNABLE TO START");
                 }
 
                 // if a user wants to close the server a messagebox appears. It is the same procedure s with the server closing.

@@ -46,6 +46,11 @@ namespace ClientSide
         private void refreshEvents()
         {
             cbOrganizers.Items.Clear();
+            //listBox1.Text = " Invited: \r\n";
+            //listBox1.Text += " Accepted: \r\n";
+            //listBox1.Text += " Rejected: \r\n";
+
+            
             this.mainForm.setIsItRequest("$");
             this.mainForm.sendButton();
             int count = this.mainForm.getEventListCount();
@@ -55,13 +60,16 @@ namespace ClientSide
                 for (int i = 0; i<count; i++)
                 {
                     cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
-                    listBox1.Items.Add(this.mainForm.getEventListGetTitle(i));
                 }
             }
             else
             {
                 //refreshEvents();
             }
+
+           
+
+            
         }
 
         private void sendAtte()
@@ -90,6 +98,8 @@ namespace ClientSide
            txtPlace.Text = this.mainForm.getEventListGetPlace(eventID);
            txtTitle.Text = selected_event;
            txtOrganizer.Text = this.mainForm.getEventListGetOrganize(eventID);
+
+           
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)

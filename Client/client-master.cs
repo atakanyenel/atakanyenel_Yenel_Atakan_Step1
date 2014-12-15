@@ -113,7 +113,7 @@ namespace ClientSide
                 try
                 {
                     if (tbname.Text == "")
-                        MessageBox.Show("There should be a name");
+                        MessageBox.Show("PLEASE INSERT YOUR NAME");
                     else
                     {
                         c = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -138,7 +138,7 @@ namespace ClientSide
                         }
                         else
                         {
-                            MessageBox.Show("Choose a different name!");
+                            MessageBox.Show("YOUR NAME IS INVALID");
                             c.Close();
 
                         }
@@ -147,7 +147,7 @@ namespace ClientSide
                 }
                 catch
                 {
-                    MessageBox.Show("ERROR: Unable to Connect!!");
+                    MessageBox.Show("ERROR: UNABLE TO CONNECT");
                 }
             }
             else         // this code block stands for disconnection
@@ -237,7 +237,7 @@ namespace ClientSide
             }
             catch
             {
-                MessageBox.Show("There is a problem with the Server. Try Again");
+                MessageBox.Show("THERE IS A PROBLEM WITH THE SERVER. PLEASE RETRY");
                 Connect.Enabled = true;
                 Connect.Text = "Connect";
                 tbsend.Text = "";
@@ -330,13 +330,13 @@ namespace ClientSide
                 }
                 else
                 {
-                    MessageBox.Show("You can't send empty messages.");
+                    MessageBox.Show("EMPTY MESSAGE CAN NOT BE SENT");
                 }
                 tbsend.Clear();
             }
             catch
             {
-                MessageBox.Show("ERROR: Unable to send message !");
+                MessageBox.Show("ERROR: UNABLE TO SEND A MESSAGE !");
             }
         }
 
@@ -378,8 +378,18 @@ namespace ClientSide
         private void button2_Click(object sender, EventArgs e)
         {
             //See event button
-            var seeevents = new seeevents(this);
-            seeevents.Show();
+
+            
+            if (getEventListCount() != 0)
+            {
+               var seeevents = new seeevents(this);
+               seeevents.Show();
+            }
+            else
+            {
+                MessageBox.Show("THERE ARE NO EVENTS TO DISPLAY");
+            }
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)

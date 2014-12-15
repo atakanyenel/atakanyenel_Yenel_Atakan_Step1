@@ -43,7 +43,7 @@ namespace ClientSide
         {
 
             if (txtDescription.Text == "" || txtTitle.Text == "" || txtPlace.Text == "" ){
-                MessageBox.Show("Please fill all the fields !!");
+                MessageBox.Show("FILL ALL THE FIELDS");
             }
             else{
             string date = dtpDate.Value.ToShortDateString();
@@ -53,7 +53,7 @@ namespace ClientSide
             string organizer = txtOrganizer.Text;
             string title = txtTitle.Text;
             this.mainForm.setIsItEvent("%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%");
-            MessageBox.Show("Event created:" + title);
+            MessageBox.Show("EVENT CREATED:" + title);
             this.mainForm.sendButton();
             clear();
             }
