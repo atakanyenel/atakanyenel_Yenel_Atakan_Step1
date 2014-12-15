@@ -44,15 +44,16 @@ namespace ClientSide
             }
         }
 
-        // private void sendAtte(we need 3 inputs here)
-        // {
-        //     //Format: ${event id}${username}${yes/no}$
-        //     //event id is obtained when select event in cbOrganizer
-        //     //username is seleted from client-master
-        //     //YoN means Yes or No, 1 is yes ,0 is no (or maybe we can use boolean)
-        //     string isItAtte = "&" + eventID + "&" + this.mainForm.tbname.Text + "&" + YoN.ToString() + "&";
-        //     this.mainForm.setIsItAtte("isItAtte");
-        // }
+        private void sendAtte()
+        {
+            //Format: ${event id}${username}${yes/no}$
+            //event id is obtained when select event in cbOrganizer
+            //username is seleted from client-master
+            //YoN means Yes or No, 1 is yes ,0 is no (or maybe we can use boolean)
+            string isItAtte = "&" + eventID.ToString() + "&" + this.mainForm.tbname.Text + "&" + YoN.ToString() + "&";
+            this.mainForm.setIsItAtte("isItAtte");
+            //this.mainForm.sendButton();
+        }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -81,12 +82,14 @@ namespace ClientSide
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            //call sendAtte(event id, username, no)
+            YoN = 0; //Not going
+            sendAtte();
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            //call sendAtte(event id, username, yes)
+            YoN = 1; //going
+            sendAtte();
         }
     }
 }
