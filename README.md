@@ -58,9 +58,12 @@ Known Issues
 1) Exception when closing GUI under certain(unknown) circumstances
 
 2) "There is a problem. Try again" keeps poping up when connecting 2+ clients, but the connection is in fact successful
+ 
+3) index out of bound for seeevent (getTitle). The item can not be located.
 
 Step 3:
 
 1) Only friends can communicate, invite, etc 
 
 For more details, please check the pdf.
+

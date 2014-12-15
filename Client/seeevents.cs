@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace ClientSide
@@ -33,11 +33,16 @@ namespace ClientSide
             cbOrganizers.Items.Clear();
             this.mainForm.setIsItRequest("$");
             this.mainForm.sendButton();
-            
-            for (int i = 0; i < this.mainForm.getEventListCount(); i++)
+
+            //Thread.Sleep(20);
+            int i = 0;
+            do
             {
                 cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
+                i++;
             }
+            while (i < this.mainForm.getEventListCount());
+
         }
 
         private void sendAtte()
