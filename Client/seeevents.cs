@@ -50,7 +50,7 @@ namespace ClientSide
             //event id is obtained when select event in cbOrganizer
             //username is seleted from client-master
             //YoN means Yes or No, 1 is yes ,0 is no (or maybe we can use boolean)
-            string isItAtte = "&" + eventID.ToString() + "&" + this.mainForm.tbname.Text + "&" + YoN.ToString() + "&";
+            string isItAtte = "&" + eventID.ToString() + "&" + this.mainForm.getTbName() + "&" + YoN.ToString() + "&";
             this.mainForm.setIsItAtte("isItAtte");
             //this.mainForm.sendButton();
         }

@@ -249,6 +249,11 @@ namespace ClientSide
             return 0;
         }
 
+        public string getTbName()
+        {
+            return tbname.Text;
+        }
+
         public void sendButton()
         {
             try

@@ -89,17 +89,17 @@ namespace CS408_Step1_Server
         //use list.Find() built-in function
         //http://msdn.microsoft.com/en-us/library/x0b5b5bc(v=vs.110).aspx
         //update event.cs in client as well
-        public int searchGoingList(string un)
-        {
-
-        }
-        public int searchNotGoingList(string un)
-        {
-
-        }
-        public int searchNotReplyList(string un)
-        {
-
-        }
+        // public int searchGoingList(string un)
+        // {
+        //
+        // }
+        // public int searchNotGoingList(string un)
+        // {
+        //
+        // }
+        // public int searchNotReplyList(string un)
+        // {
+        //
+        // }
     }
 }
