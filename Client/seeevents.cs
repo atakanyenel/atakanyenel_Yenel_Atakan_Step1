@@ -34,16 +34,13 @@ namespace ClientSide
             this.mainForm.setIsItRequest("$");
             this.mainForm.sendButton();
             int count = this.mainForm.getEventListCount();
-            if (count>0)
+            while (count<1)
             {
-                for (int i = 0; i<this.mainForm.getEventListCount(); i++)
-                {
-                    cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
-                }
+                refreshEvents();
             }
-            else
+            for (int i = 0; i<this.mainForm.getEventListCount(); i++)
             {
-                MessageBox.Show("Somethigns wrong");
+                cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
             }
         }
 
