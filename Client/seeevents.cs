@@ -37,10 +37,14 @@ namespace ClientSide
             while (count<1)
             {
                 refreshEvents();
+                listBox1.Items.Clear();
+                count = this.mainForm.getEventListCount();
+                cbOrganizers.Items.Clear();
             }
-            for (int i = 0; i<this.mainForm.getEventListCount(); i++)
+            for (int i = 0; i<count; i++)
             {
                 cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
+                listBox1.Items.Add(this.mainForm.getEventListGetTitle(i));
             }
         }
 
@@ -62,14 +66,7 @@ namespace ClientSide
 
         private void cbOrganizers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //this.AcceptButton = button1;
-            //update eventID
-            //update listBox1ent
-
             string selected_event = cbOrganizers.Text;
-
-            // compare this value with ID
-
            eventID = this.mainForm.searchEventList(selected_event);
 
            txtDate.Text = this.mainForm.getEventListGetDate(eventID);

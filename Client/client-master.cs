@@ -63,7 +63,7 @@ namespace ClientSide
         }
         public int getEventListCount()
         {
-            return EventList.Count();
+            return EventList.Count;
         }
         public string getEventListGetDate(int i)
         {
