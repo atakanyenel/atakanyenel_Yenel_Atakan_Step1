@@ -33,16 +33,18 @@ namespace ClientSide
             cbOrganizers.Items.Clear();
             this.mainForm.setIsItRequest("$");
             this.mainForm.sendButton();
-
-            //Thread.Sleep(20);
-            int i = 0;
-            do
+            int count = this.mainForm.getEventListCount();
+            if (count>0)
             {
-                cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
-                i++;
+                for (int i = 0; i<this.mainForm.getEventListCount(); i++)
+                {
+                    cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
+                }
             }
-            while (i < this.mainForm.getEventListCount());
-
+            else
+            {
+                MessageBox.Show("Somethigns wrong");
+            }
         }
 
         private void sendAtte()
@@ -78,16 +80,6 @@ namespace ClientSide
            txtPlace.Text = this.mainForm.getEventListGetPlace(eventID);
            txtTitle.Text = selected_event;
            txtOrganizer.Text = this.mainForm.getEventListGetOrganize(eventID);
-
-
-
-
-            
-
-
-            
-               
-
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)

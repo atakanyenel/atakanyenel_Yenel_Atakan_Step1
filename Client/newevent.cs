@@ -56,6 +56,7 @@ namespace ClientSide
         private void button1_Click(object sender, EventArgs e)
         {
             createButton();
+            this.ActiveControl = button3;
         }
 
         private void clear()
