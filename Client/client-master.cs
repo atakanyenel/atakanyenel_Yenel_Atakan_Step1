@@ -45,6 +45,10 @@ namespace ClientSide
         {
             isItRequest = a;
         }
+        public void setIsItAtte(string a)
+        {
+            isItAtte = a;
+        }
         public string getIsItEvent()
         {
             return isItEvent;
@@ -52,6 +56,10 @@ namespace ClientSide
         public string getIsItRequest()
         {
             return isItRequest;
+        }
+        public string getIsItAtte()
+        {
+            return isItAtte;
         }
         public int getEventListCount()
         {
