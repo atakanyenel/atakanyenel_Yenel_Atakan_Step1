@@ -259,10 +259,10 @@ namespace ClientSide
             try
             {
                 string tbsendTextBox = tbsend.Text;
-                MessageBox.Show("The next Box should have text iff you just clicked the create button on event:");
-                MessageBox.Show(isItEvent);
-                MessageBox.Show("The next Box should have text iff you just open See event form: ");
-                MessageBox.Show(isItRequest);
+                // MessageBox.Show("The next Box should have text iff you just clicked the create button on event:");
+                // MessageBox.Show(isItEvent);
+                // MessageBox.Show("The next Box should have text iff you just open See event form: ");
+                // MessageBox.Show(isItRequest);
                 if (isItEvent != "") //just event
                 {
                     //send event string
@@ -343,16 +343,14 @@ namespace ClientSide
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Create Event
-            //possible solution to sending problem:
+            //Create Event button
             var newevent = new newevent(this);
             newevent.Show();
-            //http://pi.vu/BILX (useful StockExchange question)
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //Check events
+            //See event button
             var seeevents = new seeevents(this);
             seeevents.Show();
         }
@@ -367,6 +365,7 @@ namespace ClientSide
 
         }
 
+        //remove this button
         private void button3_Click(object sender, EventArgs e)
         {
             // request to server and get the info about events

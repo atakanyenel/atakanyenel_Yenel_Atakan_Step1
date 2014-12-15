@@ -51,7 +51,6 @@ namespace ClientSide
         }
 
         //get
-
         public string getDate()
         {
             return date;
