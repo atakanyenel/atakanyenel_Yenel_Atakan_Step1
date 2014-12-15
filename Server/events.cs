@@ -89,7 +89,7 @@ namespace CS408_Step1_Server
         //update event.cs in client as well
         public int searchGoingList(string un)
         {
-            x = goingList.Count();
+            int x = goingList.Count();
             for (int i = 0; i<x; i++)
             {
                 if (goingList[i] == un)
@@ -101,7 +101,7 @@ namespace CS408_Step1_Server
         }
         public int searchNotGoingList(string un)
         {
-            x = notGoingList.Count();
+            int x = notGoingList.Count();
             for (int i = 0; i<x; i++)
             {
                 if (notGoingList[i] == un)
@@ -113,7 +113,7 @@ namespace CS408_Step1_Server
         }
         public int searchNotReplyList(string un)
         {
-            x = notReplyList.Count();
+            int x = notReplyList.Count();
             for (int i = 0; i<x; i++)
             {
                 if (notReplyList[i] == un)

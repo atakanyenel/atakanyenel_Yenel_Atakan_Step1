@@ -25,19 +25,15 @@ namespace ClientSide
         {
             mainForm = callingForm as Form1;
             InitializeComponent();
-            this.mainForm.setIsItRequest("$");
-            this.mainForm.sendButton();
-            for (int i = 0; i < this.mainForm.getEventListCount(); i++)
-            {
-                cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
-            }
+            refreshEvents();
         }
 
         private void refreshEvents()
         {
+            cbOrganizers.Items.Clear();
             this.mainForm.setIsItRequest("$");
             this.mainForm.sendButton();
-            cbOrganizers.Items.Clear();
+            
             for (int i = 0; i < this.mainForm.getEventListCount(); i++)
             {
                 cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
@@ -64,7 +60,29 @@ namespace ClientSide
         {
             //this.AcceptButton = button1;
             //update eventID
-            //update listBox1
+            //update listBox1ent
+
+            string selected_event = cbOrganizers.Text;
+
+            // compare this value with ID
+
+           eventID = this.mainForm.searchEventList(selected_event);
+
+           txtDate.Text = this.mainForm.getEventListGetDate(eventID);
+           txtDescription.Text = this.mainForm.getEventListGetDesc(eventID);
+           txtPlace.Text = this.mainForm.getEventListGetPlace(eventID);
+           txtTitle.Text = selected_event;
+           txtOrganizer.Text = this.mainForm.getEventListGetOrganize(eventID);
+
+
+
+
+            
+
+
+            
+               
+
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)

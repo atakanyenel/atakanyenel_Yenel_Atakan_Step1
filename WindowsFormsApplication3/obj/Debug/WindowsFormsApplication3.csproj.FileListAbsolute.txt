@@ -24,3 +24,16 @@ C:\Users\TszHo\Desktop\GitHub\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplica
 C:\Users\TszHo\Desktop\GitHub\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.Form2.resources
 C:\Users\TszHo\Desktop\GitHub\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.Properties.Resources.resources
 C:\Users\TszHo\Desktop\GitHub\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.csproj.GenerateResource.Cache
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe.config
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.exe
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication3\bin\Debug\WindowsFormsApplication3.pdb
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication3\bin\Debug\ClientSide.exe
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication3\bin\Debug\CS408_Step1_Server.exe
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication3\bin\Debug\ClientSide.pdb
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication3\bin\Debug\CS408_Step1_Server.pdb
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.csprojResolveAssemblyReference.cache
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.Form2.resources
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.Properties.Resources.resources
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.csproj.GenerateResource.Cache
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.exe
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\WindowsFormsApplication3\obj\Debug\WindowsFormsApplication3.pdb
