@@ -17,6 +17,8 @@ namespace WindowsFormsApplication3
         public Form2()
         {
             InitializeComponent();
+            clientclick();
+            serverclick();
         }
 
         public void clientclick()
