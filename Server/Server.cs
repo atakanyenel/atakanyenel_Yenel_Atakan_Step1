@@ -61,12 +61,7 @@ namespace CS408_Step1_Server
             Form.CheckForIllegalCrossThreadCalls = false;
         }
 
-        public bool removeUser(string un)
-        {
-            eventsarray.removeGoingList(un);
-            eventsarray.removeNotGoingList(un);
-            eventsarray.removeNotReplyList(un);
-        }
+
 
         // function for START. With this function the server starts listening to the port that is given by the user.
         // It is handled in the try/cathch method to prevent crashing of the system.
@@ -275,7 +270,9 @@ namespace CS408_Step1_Server
                             //convert event id into int
                             int eID = Convert.ToInt32(atte_rec[0]);
                             //remove that username from all instance of that event
-                            eventsarray[eID].removeuser(atte_rec[1]);
+                            eventsarray[eID].removeGoingList(atte_rec[2]);
+                            eventsarray[eID].removeNotGoingList(atte_rec[2]);
+                            eventsarray[eID].removeNotReplyList(atte_rec[2]);
                             //decide where the username should be store according to event and answer
                             if (atte_rec[2] == "1") //going
                             {
