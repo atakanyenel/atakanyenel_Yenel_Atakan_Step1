@@ -84,6 +84,18 @@ namespace CS408_Step1_Server
         {
             return notReplyList[i];
         }
+        public int getGoingListCount()
+        {
+            return goingList.Count;
+        }
+        public int getNotGoingListCount()
+        {
+            return notGoingList.Count;
+        }
+        public int getNotReplyListCount()
+        {
+            return notReplyList.Count;
+        }
 
         //search functions for the 3 lists
         //update event.cs in client as well
@@ -122,6 +134,20 @@ namespace CS408_Step1_Server
                 }
             }
             return -1;
+        }
+
+        //remove
+        public void removeGoingList(string un)
+        {
+            goingList.remove(un);
+        }
+        public void removeNotGoingList(string un)
+        {
+            notGoingList.remove(un);
+        }
+        public void removeNotReplyList(string un)
+        {
+            notReplyList.remove(un);
         }
     }
 }

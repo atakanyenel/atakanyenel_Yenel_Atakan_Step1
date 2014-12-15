@@ -61,6 +61,13 @@ namespace CS408_Step1_Server
             Form.CheckForIllegalCrossThreadCalls = false;
         }
 
+        public bool removeUser(string un)
+        {
+            removeGoingList(un);
+            removeNotGoingList(un);
+            removeNotReplyList(un);
+        }
+
         // function for START. With this function the server starts listening to the port that is given by the user.
         // It is handled in the try/cathch method to prevent crashing of the system.
         // If an error occurs a message box will appear and inform the server administrator about the error
@@ -266,11 +273,22 @@ namespace CS408_Step1_Server
                             i1 = B.IndexOf("&");
                             atte_rec[2] = B.Substring(0, i1);
                             //convert event id into int
-                            //convert yes or no into int >> store in correspndent list
-                            //search if the same username exists in the other lists first
-                            //if yes, remove it
+                            int eID = atte_rec[0].ToInt32();
+                            //remove that username from all instance of that event
+                            eventsarray[eID].removeuser(atte_rec[1]);
                             //decide where the username should be store according to event and answer
-                            //(if we have a list of not answer in event, we will need to update that too)
+                            if (atte_rec[2] == "1") //going
+                            {
+                                eventarray[eID].addGoingList(atte_rec[1]);
+                            }
+                            else if (atte_rec[2] == "2") //not going
+                            {
+                                eventarray[eID].addNotGoingList(atte_rec[1]);
+                            }
+                            else
+                            {
+                                MessageBox.Show("You can only choose between Yes or No");
+                            }
                         }
 
                         else if (check_symbol(ref newmessage) == 4) // event request(symbol: $)
