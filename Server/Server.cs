@@ -41,7 +41,7 @@ namespace CS408_Step1_Server
             }
             internal string getname()
             {
-            return name;
+                return name;
             }
         };
 
@@ -58,6 +58,20 @@ namespace CS408_Step1_Server
             InitializeComponent();
             Form.CheckForIllegalCrossThreadCalls = false;
         }
+
+        public Socket searchClient(string un)
+        {
+            int cc = clientarray.Count;
+            for (int i = 0; i < cc; i++)
+            {
+                if (clientarray[i].getname() == un)
+                {
+                    return clientarray[i].getsocket();
+                }
+            }
+            return null;
+        }
+
         // function for START. With this function the server starts listening to the port that is given by the user.
         // It is handled in the try/cathch method to prevent crashing of the system.
         // If an error occurs a message box will appear and inform the server administrator about the error
@@ -80,8 +94,9 @@ namespace CS408_Step1_Server
                 }
 
                 // if a user wants to close the server a messagebox appears. It is the same procedure s with the server closing.
-                // the procedure is differnet if there are clients connected and if there is none
-            else {
+            // the procedure is differnet if there are clients connected and if there is none
+            else
+            {
                 int clientnumber = clientarray.Count;
                 if (clientnumber > 0)
                 {
@@ -94,7 +109,7 @@ namespace CS408_Step1_Server
                         }
                         clientarray.Clear();
 
-                                             //  thraccept.Abort();//after the user clicks on stop! this block of code determines what happens.
+                        //  thraccept.Abort();//after the user clicks on stop! this block of code determines what happens.
 
                         s.Close();
                         s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -134,7 +149,8 @@ namespace CS408_Step1_Server
                     namereceive.Start(n);
                 }
             }
-            catch {
+            catch
+            {
             }
         }
 
@@ -156,7 +172,7 @@ namespace CS408_Step1_Server
                     byte[] send = Encoding.Default.GetBytes(serveranswer);
                     yeni.Send(send);
                     Time = DateTime.Now;
-                    richTextBox1.Text +="-> "+ strclientname + " has connected at " + Time + "." + "\r\n";
+                    richTextBox1.Text += "-> " + strclientname + " has connected at " + Time + "." + "\r\n";
                     byte[] sendmessage = new byte[64];
                     string joinedmsg = strclientname + " has joined the conversation.";
                     sendmessage = Encoding.Default.GetBytes(joinedmsg);
@@ -174,7 +190,7 @@ namespace CS408_Step1_Server
                         yeni.Receive(buffer2);
                         string newmessage = Encoding.Default.GetString(buffer2);
                         int pos = clientarray.IndexOf(clientarray.Find(client => client.getsocket() == yeni));
-                        if (check_symbol(ref newmessage)==2) //message
+                        if (check_symbol(ref newmessage) == 2) //message
                         {
                             string clientsendername = clientarray[pos].getname();
                             sendmessage = Encoding.Default.GetBytes(newmessage);
@@ -185,7 +201,7 @@ namespace CS408_Step1_Server
                                 else
                                 {
                                     Time = DateTime.Now;
-                                    richTextBox1.Text = richTextBox1.Text+"-> " + clientsendername + " sent a message at " + Time + ".\r\n";
+                                    richTextBox1.Text = richTextBox1.Text + "-> " + clientsendername + " sent a message at " + Time + ".\r\n";
                                 }
                             }
                         }
@@ -196,9 +212,10 @@ namespace CS408_Step1_Server
                             int index1 = 0;
                             int index2 = 0;
                             string[] event_info = new string[5];
-                            for (int i = 0; i<4; i++){
-                                index1= b.IndexOf("%");
-                                a = b.Substring(index1 +1);
+                            for (int i = 0; i < 4; i++)
+                            {
+                                index1 = b.IndexOf("%");
+                                a = b.Substring(index1 + 1);
                                 index2 = a.IndexOf("%");
                                 event_info[i] = b.Substring(1, index2);
                                 b = b.Substring(index2 + 1);
@@ -223,7 +240,7 @@ namespace CS408_Step1_Server
                             /**************for debugging *****************/
                             for (int i = 0; i < eventsarray.Count; i++)
                             {
-                                richTextBox1.Text = richTextBox1.Text + "Looping: "+ i.ToString()  + "\r\n" ;
+                                richTextBox1.Text = richTextBox1.Text + "Looping: " + i.ToString() + "\r\n";
                                 richTextBox1.Text = richTextBox1.Text + "eventsarray.Count: " + eventsarray.Count.ToString() + "\r\n";
                                 richTextBox1.Text = richTextBox1.Text + "eventsarray[i].getDate: " + eventsarray[i].getDate() + "\r\n";
                                 richTextBox1.Text = richTextBox1.Text + "eventsarray[i].getTitle: " + eventsarray[i].getTitle() + "\r\n";
@@ -235,19 +252,41 @@ namespace CS408_Step1_Server
 
                             //send notification to everyone else
                             //add all other users to notReply List
+                            //sends event to all clients
+                            //this version: just the original client
+                            byte[] buffer = new byte[64];
+                            buffer = Encoding.Default.GetBytes(newmessage);
+                            foreach (client c in clientarray)
+                            {
+                                c.getsocket().Send(buffer);
+                            }
+                            buffer = Encoding.Default.GetBytes("#" + event_info[4] + "just created an new event!");
+                            foreach (client c in clientarray)
+                            {
+                                if (c.getsocket() != yeni)
+                                {
+                                    c.getsocket().Send(buffer);
+                                }
+                            }
                         }
                         else if (check_symbol(ref newmessage) == 3) // attendance(symbol: &)
                         {
+                            byte[] buffer = new byte[64];
+                            buffer = Encoding.Default.GetBytes(newmessage);
+                            foreach (client c in clientarray)
+                            {
+                                c.getsocket().Send(buffer);
+                            }
                             int i1 = 0;
-                            int i2=0;
+                            int i2 = 0;
                             string A;
                             string B = newmessage;
                             string[] atte_rec = new string[3];
                             //Format: "&"+{enent id}"&"{username}&{yes or no}"&"
-                            for (int i = 0; i<2; i++)
+                            for (int i = 0; i < 2; i++)
                             {
                                 i1 = B.IndexOf("&");
-                                A = B.Substring(i1+1);
+                                A = B.Substring(i1 + 1);
                                 i2 = A.IndexOf("&");
                                 atte_rec[i] = B.Substring(1, i2);
                                 B = B.Substring(i2 + 1);
@@ -255,18 +294,29 @@ namespace CS408_Step1_Server
                             B = B.Substring(1);
                             i1 = B.IndexOf("&");
                             atte_rec[2] = B.Substring(0, i1);
+                            for (int i = 0; i < 3; i++)
+                            {
+                                MessageBox.Show(atte_rec[i]);
+                            }
                             //convert event id into int
                             int eID = Convert.ToInt32(atte_rec[0]);
                             //remove that username from all instance of that event
-                            eventsarray[eID].removeGoingList(atte_rec[2]);
-                            eventsarray[eID].removeNotGoingList(atte_rec[2]);
-                            eventsarray[eID].removeNotReplyList(atte_rec[2]);
+                            eventsarray[eID].removeGoingList(atte_rec[1]);
+                            eventsarray[eID].removeNotGoingList(atte_rec[1]);
+                            eventsarray[eID].removeNotReplyList(atte_rec[1]);
                             //decide where the username should be store according to event and answer
                             if (atte_rec[2] == "1") //going
                             {
                                 eventsarray[eID].addGoingList(atte_rec[1]);
+                                //int glc = eventsarray[eID].getGoingListCount();
+                                //for (int i = 0; i<glc; i++)
+                                //{
+                                //    MessageBox.Show("This one");
+                                //    MessageBox.Show(eventsarray[eID].getGoingList(i));
+                                //}
+
                             }
-                            else if (atte_rec[2] == "2") //not going
+                            else if (atte_rec[2] == "0") //not going
                             {
                                 eventsarray[eID].addNotGoingList(atte_rec[1]);
                             }
@@ -274,11 +324,17 @@ namespace CS408_Step1_Server
                             {
                                 MessageBox.Show("You can only choose between Yes or No");
                             }
+                            //send notificatino back to organizer
+                            //Someone just responded to your event!
+                            byte[] buffer20 = new byte[64];
+                            buffer20 = Encoding.Default.GetBytes("Someone just responded to your event!");
+                            Socket iney = searchClient(atte_rec[1]);
+                            iney.Send(buffer20);
                         }
 
                         else if (check_symbol(ref newmessage) == 4) // event request(symbol: $)
                         {
-                            for (int i = 0; i <= eventsarray.Count - 1; i++ )
+                            for (int i = 0; i < eventsarray.Count; i++)
                             {
                                 //Recieved a request of event lists, so server will send them
                                 //"%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%";
@@ -291,15 +347,15 @@ namespace CS408_Step1_Server
                         else
                         {
                             Time = DateTime.Now;
-                            richTextBox1.Text =richTextBox1.Text+"-> " + clientarray[pos].getname() + " has disconnected from the server at " + Time + ".\r\n ";
-                            newmessage=clientarray[pos].getname()+" has left the conversation.";
-							sendmessage=Encoding.Default.GetBytes(newmessage);
-							clientarray[pos].getsocket().Close();
+                            richTextBox1.Text = richTextBox1.Text + "-> " + clientarray[pos].getname() + " has disconnected from the server at " + Time + ".\r\n ";
+                            newmessage = clientarray[pos].getname() + " has left the conversation.";
+                            sendmessage = Encoding.Default.GetBytes(newmessage);
+                            clientarray[pos].getsocket().Close();
                             clientarray.RemoveAt(pos);
-							foreach(client c in clientarray)
-							{
-								c.getsocket().Send(sendmessage);
-							}
+                            foreach (client c in clientarray)
+                            {
+                                c.getsocket().Send(sendmessage);
+                            }
                             condition = false;
                         }
                     }
@@ -322,6 +378,7 @@ namespace CS408_Step1_Server
         //return what the first symbol is/what is the purpose of message
         int check_symbol(ref string message)
         {
+            // MessageBox.Show(message);
             if (message.ElementAt(0) == '%') // event
             {
                 message = message.Substring(0, message.Length - 2);
@@ -337,7 +394,7 @@ namespace CS408_Step1_Server
                 message = message.Substring(0, message.Length - 2);
                 return 3;
             }
-            if (message.ElementAt(0) == '$') // request
+            else if (message.ElementAt(0) == '$') // request
             {
                 return 4;
             }
@@ -362,7 +419,7 @@ namespace CS408_Step1_Server
         // really wants to shut down the server. When the server shuts down all the clients also shut down.
         private void Fom1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            int clientnumber=clientarray.Count;
+            int clientnumber = clientarray.Count;
             if (clientnumber > 0)
             {
                 DialogResult DR = MessageBox.Show("There are " + clientnumber + " client(s) connected to server.\n Are you sure ?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
@@ -371,20 +428,21 @@ namespace CS408_Step1_Server
 
                     System.Environment.Exit(1);
                 }
-                else {
+                else
+                {
 
                     e.Cancel = true;
                 }
             }
             else if (clientnumber == 0)
             {
-               DialogResult DR = MessageBox.Show("Are you sure ?", "Server ShutDown", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-               if (DR == DialogResult.Yes)
-               {
-                   System.Environment.Exit(1);
-               }
-               else
-                   e.Cancel = true;
+                DialogResult DR = MessageBox.Show("Are you sure ?", "Server ShutDown", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (DR == DialogResult.Yes)
+                {
+                    System.Environment.Exit(1);
+                }
+                else
+                    e.Cancel = true;
             }
         }
 

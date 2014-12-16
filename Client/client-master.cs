@@ -23,16 +23,17 @@ namespace ClientSide
         //string event_created = events.function_create_event; // global variable
         Thread thrReceive;
         // bool unique
-        bool condition=true;
-        string isItEvent = "" ;
-        string isItRequest = "" ;
-        string isItAtte = "" ;
+        bool condition = true;
+        string isItEvent = "";
+        string isItRequest = "";
+        string isItAtte = "";
         Socket c = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         List<events> EventList = new List<events>();
         public Form1()
         {
             InitializeComponent();
             Form.CheckForIllegalCrossThreadCalls = false;
+
         }
         //DO NOT create set functions for events date/title/org/desc/place
         public void setIsItEvent(string a)
@@ -165,6 +166,8 @@ namespace ClientSide
                             c.Close();
                         }
                         this.AcceptButton = this.btnsend;
+                        isItRequest = "$";
+                        sendButton();
                     }
                 }
                 catch
@@ -218,9 +221,10 @@ namespace ClientSide
                             int index1 = 0;
                             int index2 = 0;
                             string[] event_info = new string[5];
-                            for (int i = 0; i<4; i++){
-                                index1= b.IndexOf("%");
-                                a = b.Substring(index1 +1);
+                            for (int i = 0; i < 4; i++)
+                            {
+                                index1 = b.IndexOf("%");
+                                a = b.Substring(index1 + 1);
                                 index2 = a.IndexOf("%");
                                 event_info[i] = b.Substring(1, index2);
                                 b = b.Substring(index2 + 1);
@@ -237,22 +241,73 @@ namespace ClientSide
                             tempe.setOrganizer(event_info[4]);
                             EventList.Add(tempe);
                             /**************for debugging *****************/
-                            MessageBox.Show(receivedmessage);
-                            MessageBox.Show(EventList[EventList.Count - 1].getDate());
-                            MessageBox.Show(EventList[EventList.Count - 1].getTitle());
-                            MessageBox.Show(EventList[EventList.Count - 1].getPlace());
-                            MessageBox.Show(EventList[EventList.Count - 1].getDesc());
-                            MessageBox.Show(EventList[EventList.Count - 1].getOrganizer());
+                            // MessageBox.Show(receivedmessage);
+                            // MessageBox.Show(EventList[EventList.Count - 1].getDate());
+                            // MessageBox.Show(EventList[EventList.Count - 1].getTitle());
+                            // MessageBox.Show(EventList[EventList.Count - 1].getPlace());
+                            // MessageBox.Show(EventList[EventList.Count - 1].getDesc());
+                            // MessageBox.Show(EventList[EventList.Count - 1].getOrganizer());
                             /**************for debugging *****************/
                         }
                         else if (check_symbol(ref receivedmessage) == 2) //message
                         {
                             richtextbox.Text = richtextbox.Text + receivedmessage.Substring(1) + "\r\n";
                         }
+                        else if (check_symbol(ref receivedmessage) == 3) // attendance
+                        {
+                            // MessageBox.Show("This is client-master getting attendance update");
+                            int i1 = 0;
+                            int i2 = 0;
+                            string A;
+                            string B = receivedmessage;
+                            string[] atte_rec = new string[3];
+                            //Format: "&"+{enent id}"&"{username}&{yes or no}"&"
+                            for (int i = 0; i < 2; i++)
+                            {
+                                i1 = B.IndexOf("&");
+                                A = B.Substring(i1 + 1);
+                                i2 = A.IndexOf("&");
+                                atte_rec[i] = B.Substring(1, i2);
+                                B = B.Substring(i2 + 1);
+                            }
+                            B = B.Substring(1);
+                            i1 = B.IndexOf("&");
+                            atte_rec[2] = B.Substring(0, i1);
+                            //for (int i = 0; i < 3; i++)
+                            //{
+                            //    MessageBox.Show(atte_rec[i]);
+                            //}
+                            //convert event id into int
+                            int eID = Convert.ToInt32(atte_rec[0]);
+                            //remove that username from all instance of that event
+                            EventList[eID].removeGoingList(atte_rec[2]);
+                            EventList[eID].removeNotGoingList(atte_rec[2]);
+                            EventList[eID].removeNotReplyList(atte_rec[2]);
+                            //decide where the username should be store according to event and answer
+                            if (atte_rec[2] == "1") //going
+                            {
+                                EventList[eID].addGoingList(atte_rec[1]);
+                                int glc = EventList[eID].getGoingListCount();
+                                // for (int i = 0; i < glc; i++)
+                                // {
+                                //     MessageBox.Show("This one is added to going(client master)");
+                                //     MessageBox.Show(EventList[eID].getGoingList(i));
+                                // }
+
+                            }
+                            else if (atte_rec[2] == "0") //not going
+                            {
+                                EventList[eID].addNotGoingList(atte_rec[1]);
+                            }
+                            else
+                            {
+                                MessageBox.Show("You can only choose between Yes or No");
+                            }
+                        }
                         else
                         {
-                                //both 3(attendence) and 4(request) and anything else should not exist
-                                MessageBox.Show("There is a problem. Try Again");
+                            //both 3(attendence) and 4(request) and anything else should not exist
+                            //MessageBox.Show("There is a problem. Try Again");
                         }
                     }
                 }
@@ -282,7 +337,7 @@ namespace ClientSide
             }
             else if (message.ElementAt(0) == '#') //message
             {
-                message = message.Substring(0, message.Length-1);
+                message = message.Substring(0, message.Length - 1);
                 return 2;
             }
             else if (message.ElementAt(0) == '&') //attendance
@@ -290,7 +345,7 @@ namespace ClientSide
                 message = message.Substring(0, message.Length);
                 return 3;
             }
-            else if(message.ElementAt(0) == '$') //request
+            else if (message.ElementAt(0) == '$') //request
             {
                 return 4;
             }
@@ -370,25 +425,26 @@ namespace ClientSide
         // It is the same as at the server side. When a client wants to close the window he is asked if he/she is sure ...
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-                DialogResult DR = MessageBox.Show("Are you Sure?", "Close", MessageBoxButtons.YesNo);
+            DialogResult DR = MessageBox.Show("Are you Sure?", "Close", MessageBoxButtons.YesNo);
 
-                if (DialogResult.Yes == DR)
+            if (DialogResult.Yes == DR)
+            {
+                try
                 {
-                    try
-                    {
-                        byte[] buffer = new byte[64];
-                        string text = "d";
-                        buffer = Encoding.Default.GetBytes(text);
-                        c.Send(buffer);
-                        System.Environment.Exit(1);
-                    }
-                    catch {
-                        System.Environment.Exit(1);
-                    }
-                    }
-                else
-                    e.Cancel = true;
+                    byte[] buffer = new byte[64];
+                    string text = "d";
+                    buffer = Encoding.Default.GetBytes(text);
+                    c.Send(buffer);
+                    System.Environment.Exit(1);
+                }
+                catch
+                {
+                    System.Environment.Exit(1);
+                }
             }
+            else
+                e.Cancel = true;
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -400,12 +456,8 @@ namespace ClientSide
         private void button2_Click(object sender, EventArgs e)
         {
             //See event button
-        	// check if event is empty first should not be implemented here
-        	// currently list of events are still in server
-        	// so the answer will always be true, and see events will never run
             var seeevents = new seeevents(this);
             seeevents.Show();
-
         }
     }
 }

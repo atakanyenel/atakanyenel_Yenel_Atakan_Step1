@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ClientSide
 {
@@ -143,7 +144,7 @@ namespace ClientSide
             if (ans == true)
             {
                 //removed successfully
-                Console.WriteLine("User " + un + " has been removed from Going List.");
+                MessageBox.Show("User " + un + " has been removed from Going List.");
             }
         }
         public void removeNotGoingList(string un)
@@ -152,7 +153,7 @@ namespace ClientSide
             if (ans == true)
             {
                 //removed successfully
-                Console.WriteLine("User " + un + " has been removed from Not Going List.");
+                MessageBox.Show("User " + un + " has been removed from Not Going List.");
             }
         }
         public void removeNotReplyList(string un)
@@ -161,7 +162,7 @@ namespace ClientSide
             if (ans == true)
             {
                 //removed successfully
-                Console.WriteLine("User " + un + " has been removed from Not Reply List.");
+                MessageBox.Show("User " + un + " has been removed from Not Reply List.");
             }
         }
     }

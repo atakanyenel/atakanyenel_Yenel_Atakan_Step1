@@ -30,8 +30,8 @@ namespace ClientSide
             //refreshEvents();
 
             cbOrganizers.Items.Clear();
-            this.mainForm.setIsItRequest("$");
-            this.mainForm.sendButton();
+            //this.mainForm.setIsItRequest("$");
+            //this.mainForm.sendButton();
             int count = this.mainForm.getEventListCount();
             //attempt 1
             //and then we try to use different approach force constructor to
@@ -43,7 +43,6 @@ namespace ClientSide
                 for (int i = 0; i < count; i++)
                 {
                     cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
-                    listBox1.Items.Add(this.mainForm.getEventListGetTitle(i));
                 }
             }
         }
@@ -55,8 +54,8 @@ namespace ClientSide
             //listBox1.Text = " Invited: \r\n";
             //listBox1.Text += " Accepted: \r\n";
             //listBox1.Text += " Rejected: \r\n";
-            this.mainForm.setIsItRequest("$");
-            this.mainForm.sendButton();
+            //this.mainForm.setIsItRequest("$");
+            //this.mainForm.sendButton();
             int count = this.mainForm.getEventListCount();
 
             if(count > 0){
@@ -68,7 +67,7 @@ namespace ClientSide
             }
             else
             {
-                //refreshEvents();
+                refreshEvents();
             }
             // attempt 2
             // the server sends another message "@" AFTER finish transfering
@@ -84,7 +83,7 @@ namespace ClientSide
             //username is seleted from client-master
             //YoN means Yes or No, 1 is yes ,0 is no (or maybe we can use boolean)
             string isItAtte = "&" + eventID.ToString() + "&" + this.mainForm.getTbName() + "&" + YoN.ToString() + "&";
-            this.mainForm.setIsItAtte("isItAtte");
+            this.mainForm.setIsItAtte(isItAtte);
             this.mainForm.sendButton();
         }
 
