@@ -103,9 +103,9 @@ namespace ClientSide
 
         public void updatelistBox1()
         {
-            int gCount = this.mainForm.EventList[eventID].getGoingListCount();
-            int ngCount = this.mainForm.EventList[eventID].getNotGoingListCount();
-            int nrCount = this.mainForm.EventList[eventID].getNotReplyListCount();
+            int gCount = this.mainForm.getEventGoingCount(eventID);
+            int ngCount = this.mainForm.getEventNotGoingCount(eventID);
+            int nrCount = this.mainForm.getEventNotReplyCount(eventID);
             listBox1.Items.Add("Going:");
             if (gCount>0)
             {
@@ -124,7 +124,7 @@ namespace ClientSide
             {
                 for (int i = 0; i<ngCount; i++)
                 {
-                    listBox1.Items.Add(this.mainForm.EventList[eventID].getNotGoingList(i));
+                    //listBox1.Items.Add(this.mainForm.EventList[eventID].getNotGoingList(i));
                     listBox1.Items.Add(this.mainForm.getEventNotGoingList(eventID, i));
                 }
             }
@@ -137,7 +137,7 @@ namespace ClientSide
             {
                 for (int i = 0; i<nrCount; i++)
                 {
-                    listBox1.Items.Add(this.mainForm.EventList[eventID].getNotReplyList(i));
+                    //listBox1.Items.Add(this.mainForm.EventList[eventID].getNotReplyList(i));
                     listBox1.Items.Add(this.mainForm.getEventNotReplyList(eventID, i));
                 }
             }
