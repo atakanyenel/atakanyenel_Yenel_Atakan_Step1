@@ -12,15 +12,17 @@ namespace ClientSide
 {
     public partial class seeevents : Form
     {
+        private Form1 mainForm = null;
+        private int eventID = -1;
+        private int YoN = -1;
+
         public seeevents()
         {
             InitializeComponent();
         }
 
-        private Form1 mainForm = null;
-        private int eventID = -1;
-        private int YoN = -1;
-
+        //If we simply refresh in the constructor once, the single event seems
+        //to be able to arrive to client-master, but seeevent fail to read it
         public seeevents(Form callingForm)
         {
             mainForm = callingForm as Form1;
@@ -31,7 +33,10 @@ namespace ClientSide
             this.mainForm.setIsItRequest("$");
             this.mainForm.sendButton();
             int count = this.mainForm.getEventListCount();
-
+            //attempt 1
+            //and then we try to use different approach force constructor to
+            //read multiple times, and we gets multiple times of the event
+            //even though we have used clear
             if (count > 0)
             {
                 cbOrganizers.Items.Clear();
@@ -49,8 +54,6 @@ namespace ClientSide
             //listBox1.Text = " Invited: \r\n";
             //listBox1.Text += " Accepted: \r\n";
             //listBox1.Text += " Rejected: \r\n";
-
-            
             this.mainForm.setIsItRequest("$");
             this.mainForm.sendButton();
             int count = this.mainForm.getEventListCount();
@@ -66,7 +69,11 @@ namespace ClientSide
             {
                 //refreshEvents();
             }
-            
+            // attempt 2
+            // the server sends another message "@" AFTER finish transfering
+            // all events, and the seeevent will got stuck in a while loop
+            // while (this.mainForm.getUnique == false);
+            // which act as a lock.
         }
 
         private void sendAtte()
@@ -80,23 +87,20 @@ namespace ClientSide
             this.mainForm.sendButton();
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void cbOrganizers_SelectedIndexChanged(object sender, EventArgs e)
         {
            string selected_event = cbOrganizers.Text;
            eventID = this.mainForm.searchEventList(selected_event);
-
            txtDate.Text = this.mainForm.getEventListGetDate(eventID);
            txtDescription.Text = this.mainForm.getEventListGetDesc(eventID);
            txtPlace.Text = this.mainForm.getEventListGetPlace(eventID);
            txtTitle.Text = selected_event;
            txtOrganizer.Text = this.mainForm.getEventListGetOrganize(eventID);
+        }
 
-           
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void r5button_Click(object sender, EventArgs e)
@@ -107,7 +111,6 @@ namespace ClientSide
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             YoN = 0; //Not going
-            //when user select event in cbOrganizer it shoudl update eventID
             sendAtte();
         }
 
