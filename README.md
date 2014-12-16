@@ -57,6 +57,8 @@ Additional tasks
 
 7.1) most set and get functions have already been implemented.
 
+8) Add all other uses to NotReply list (done in srever) when event is created
+
 Known Issues
 
 1) Exception when closing GUI under certain(unknown) circumstances
