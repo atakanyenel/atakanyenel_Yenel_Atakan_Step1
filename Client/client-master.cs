@@ -20,7 +20,6 @@ namespace ClientSide
 
     public partial class Form1 : Form
     {
-
         //string event_created = events.function_create_event; // global variable
         Thread thrReceive;
         // bool unique
@@ -35,7 +34,6 @@ namespace ClientSide
             InitializeComponent();
             Form.CheckForIllegalCrossThreadCalls = false;
         }
-
         //DO NOT create set functions for events date/title/org/desc/place
         public void setIsItEvent(string a)
         {
@@ -140,7 +138,6 @@ namespace ClientSide
                         {
                             MessageBox.Show("YOUR NAME IS INVALID");
                             c.Close();
-
                         }
                         this.AcceptButton = this.btnsend;
                     }
@@ -378,8 +375,6 @@ namespace ClientSide
         private void button2_Click(object sender, EventArgs e)
         {
             //See event button
-
-            
             if (getEventListCount() != 0)
             {
                var seeevents = new seeevents(this);
@@ -389,23 +384,6 @@ namespace ClientSide
             {
                 MessageBox.Show("THERE ARE NO EVENTS TO DISPLAY");
             }
-            
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tbsend_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        //remove this button
-        private void button3_Click(object sender, EventArgs e)
-        {
-            // request to server and get the info about events
         }
     }
 }

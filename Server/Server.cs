@@ -23,7 +23,6 @@ namespace CS408_Step1_Server
 
         class client
         {
-
             public string name;
             public Socket clisoc;
             public int attending;
@@ -46,7 +45,6 @@ namespace CS408_Step1_Server
             }
         };
 
-
         DateTime Time;
         List<client> clientarray = new List<client>();
         List<events> eventsarray = new List<events>();
@@ -60,9 +58,6 @@ namespace CS408_Step1_Server
             InitializeComponent();
             Form.CheckForIllegalCrossThreadCalls = false;
         }
-
-
-
         // function for START. With this function the server starts listening to the port that is given by the user.
         // It is handled in the try/cathch method to prevent crashing of the system.
         // If an error occurs a message box will appear and inform the server administrator about the error
@@ -78,7 +73,6 @@ namespace CS408_Step1_Server
                     textBox1.Enabled = false;
                     start.Text = "Stop!";
                     richTextBox1.Text += "Server is now listening at port " + textBox1.Text + ".\r\n";
-
                 }
                 catch
                 {
@@ -110,8 +104,6 @@ namespace CS408_Step1_Server
                     }
                     else
                     {
-
-
                     }
                 }
                 else if (clientnumber == 0)
@@ -126,7 +118,6 @@ namespace CS408_Step1_Server
                         richTextBox1.Text += "Server stopped listening at port " + textBox1.Text + ".\r\n";
                     }
                 }
-
             }
         }
 
@@ -144,7 +135,6 @@ namespace CS408_Step1_Server
                 }
             }
             catch {
-
             }
         }
 
@@ -201,8 +191,6 @@ namespace CS408_Step1_Server
                         }
                         else if (check_symbol(ref newmessage) == 1) // event
                         {
-                            //recieves an event, so add it to eventsarray
-                            //event info extraction
                             string a;
                             string b = newmessage;
                             int index1 = 0;

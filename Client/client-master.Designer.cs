@@ -96,7 +96,6 @@
             this.tbsend.Name = "tbsend";
             this.tbsend.Size = new System.Drawing.Size(294, 20);
             this.tbsend.TabIndex = 11;
-            this.tbsend.TextChanged += new System.EventHandler(this.tbsend_TextChanged);
             // 
             // btnsend
             // 
@@ -173,7 +172,6 @@
             this.Name = "Form1";
             this.Text = "Client-master";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

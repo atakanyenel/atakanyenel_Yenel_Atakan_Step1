@@ -48,7 +48,6 @@
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(237, 20);
             this.dtpDate.TabIndex = 0;
-            this.dtpDate.ValueChanged += new System.EventHandler(this.dtpDate_ValueChanged);
             // 
             // txtDescription
             // 
@@ -86,6 +85,7 @@
             // 
             this.txtOrganizer.Location = new System.Drawing.Point(81, 122);
             this.txtOrganizer.Name = "txtOrganizer";
+            this.txtOrganizer.ReadOnly = true;
             this.txtOrganizer.Size = new System.Drawing.Size(168, 20);
             this.txtOrganizer.TabIndex = 4;
             this.txtOrganizer.TextChanged += new System.EventHandler(this.txtOrganizer_TextChanged);
@@ -144,7 +144,6 @@
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(168, 20);
             this.txtTitle.TabIndex = 1;
-            this.txtTitle.TextChanged += new System.EventHandler(this.txtTitle_TextChanged);
             // 
             // newevent
             // 

@@ -49,7 +49,6 @@ namespace ClientSide
             string date = dtpDate.Value.ToShortDateString();
             string place = txtPlace.Text;
             string description = txtDescription.Text;
-           
             string organizer = txtOrganizer.Text;
             string title = txtTitle.Text;
             this.mainForm.setIsItEvent("%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%");
@@ -90,21 +89,9 @@ namespace ClientSide
             this.Close();
         }
 
-        private void dtpDate_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtOrganizer_TextChanged(object sender, EventArgs e)
         {
             this.AcceptButton = button1;
         }
-
-        private void txtTitle_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
     }
 }

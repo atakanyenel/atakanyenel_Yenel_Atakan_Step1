@@ -116,7 +116,7 @@
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Attending";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            
             // 
             // radioButton2
             // 
@@ -150,7 +150,7 @@
             this.listBox1.ScrollAlwaysVisible = true;
             this.listBox1.Size = new System.Drawing.Size(144, 251);
             this.listBox1.TabIndex = 14;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            
             // 
             // label4
             // 
@@ -237,7 +237,7 @@
             this.MaximumSize = new System.Drawing.Size(404, 349);
             this.MinimumSize = new System.Drawing.Size(404, 349);
             this.Name = "seeevents";
-            this.Text = "seeevents";
+            this.Text = "EVENTS";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

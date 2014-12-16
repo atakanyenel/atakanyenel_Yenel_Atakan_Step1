@@ -66,9 +66,6 @@ namespace ClientSide
             {
                 //refreshEvents();
             }
-
-           
-
             
         }
 
@@ -100,16 +97,6 @@ namespace ClientSide
            txtOrganizer.Text = this.mainForm.getEventListGetOrganize(eventID);
 
            
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private void r5button_Click(object sender, EventArgs e)
