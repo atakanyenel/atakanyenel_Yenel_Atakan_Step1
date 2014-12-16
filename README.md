@@ -57,6 +57,10 @@ Known Issues
 
 4) Unable to send message to organizer when going/not going list changes, reason unknown
 
+5) Organiser got clear after clicking create button in newevent.cs
+
+6) closing server / connected client closes everything else
+
 Step 3:
 
 1) Only friends can communicate, invite, etc
