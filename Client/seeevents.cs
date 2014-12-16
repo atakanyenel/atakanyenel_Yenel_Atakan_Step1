@@ -51,6 +51,7 @@ namespace ClientSide
         private void refreshEvents()
         {
             cbOrganizers.Items.Clear();
+            listBox1.Items.Clear()
             //listBox1.Text = " Invited: \r\n";
             //listBox1.Text += " Accepted: \r\n";
             //listBox1.Text += " Rejected: \r\n";
@@ -96,6 +97,7 @@ namespace ClientSide
             txtPlace.Text = this.mainForm.getEventListGetPlace(eventID);
             txtTitle.Text = selected_event;
             txtOrganizer.Text = this.mainForm.getEventListGetOrganize(eventID);
+            listBox1.Items.Clear();
             updatelistBox1();
         }
 
@@ -145,7 +147,6 @@ namespace ClientSide
         private void cbOrganizers_SelectedIndexChanged(object sender, EventArgs e)
         {
             updateEventInfos();
-
         }
 
         private void btnClose_Click(object sender, EventArgs e)
