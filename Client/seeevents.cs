@@ -87,15 +87,65 @@ namespace ClientSide
             this.mainForm.sendButton();
         }
 
+        public void updateEventInfos()
+        {
+            string selected_event = cbOrganizers.Text;
+            eventID = this.mainForm.searchEventList(selected_event);
+            txtDate.Text = this.mainForm.getEventListGetDate(eventID);
+            txtDescription.Text = this.mainForm.getEventListGetDesc(eventID);
+            txtPlace.Text = this.mainForm.getEventListGetPlace(eventID);
+            txtTitle.Text = selected_event;
+            txtOrganizer.Text = this.mainForm.getEventListGetOrganize(eventID);
+            updatelistBox1();
+        }
+
+        public void updatelistBox1()
+        {
+            gCount = this.mainForm.EventList[eventID].getGoingListCount();
+            ngCount = this.mainForm.EventList[eventID].getNotGoingListCount();
+            nrCount = this.mainForm.EventList[eventID].getNotReplyListCount();
+            listBox1.Items.Add("Going:");
+            if (gCount>0)
+            {
+                for (int i = 0; i<gCount; i++)
+                {
+                    listBox1.Items.Add(this.mainForm.EventList[eventID].getGoingList(i));
+                }
+            }
+            else
+            {
+                listBox1.Items.Add("No one");
+            }
+            listBox1.Items.Add("Not Going:");
+            if (ngCount>0)
+            {
+                for (int i = 0; i<ngCount; i++)
+                {
+                    listBox1.Items.Add(this.mainForm.EventList[eventID].getNotGoingList(i));
+                }
+            }
+            else
+            {
+                listBox1.Items.Add("No one");
+            }
+            listBox1.Items.Add("Invited:");
+            if (gCount>0)
+            {
+                for (int i = 0; i<nrCount; i++)
+                {
+                    listBox1.Items.Add(this.mainForm.EventList[eventID].getNotReplyList(i));
+                }
+            }
+            else
+            {
+                listBox1.Items.Add("No one");
+            }
+        }
+
         private void cbOrganizers_SelectedIndexChanged(object sender, EventArgs e)
         {
-           string selected_event = cbOrganizers.Text;
-           eventID = this.mainForm.searchEventList(selected_event);
-           txtDate.Text = this.mainForm.getEventListGetDate(eventID);
-           txtDescription.Text = this.mainForm.getEventListGetDesc(eventID);
-           txtPlace.Text = this.mainForm.getEventListGetPlace(eventID);
-           txtTitle.Text = selected_event;
-           txtOrganizer.Text = this.mainForm.getEventListGetOrganize(eventID);
+            updateEventInfos();
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)

@@ -17,6 +17,7 @@ namespace ClientSide
         private List<string> notGoingList = new List<string>();
         private List<string> notReplyList = new List<string>();
 
+        //set
         public void setDate(string newValue)
         {
             date = newValue;
@@ -82,6 +83,86 @@ namespace ClientSide
         public string getNotReplyList(int i)
         {
             return notReplyList[i];
+        }
+        public int getGoingListCount()
+        {
+            return goingList.Count;
+        }
+        public int getNotGoingListCount()
+        {
+            return notGoingList.Count;
+        }
+        public int getNotReplyListCount()
+        {
+            return notReplyList.Count;
+        }
+
+        //search functions for the 3 lists
+        //update event.cs in client as well
+        public int searchGoingList(string un)
+        {
+            int x = goingList.Count();
+            for (int i = 0; i<x; i++)
+            {
+                if (goingList[i] == un)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        public int searchNotGoingList(string un)
+        {
+            int x = notGoingList.Count();
+            for (int i = 0; i<x; i++)
+            {
+                if (notGoingList[i] == un)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+        public int searchNotReplyList(string un)
+        {
+            int x = notReplyList.Count();
+            for (int i = 0; i<x; i++)
+            {
+                if (notReplyList[i] == un)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        //remove
+        public void removeGoingList(string un)
+        {
+            ans = goingList.Remove(un);
+            if (ans == true)
+            {
+                //removed successfully
+                MessageBox.Show("User " + un + " has been removed from Going List.");
+            }
+        }
+        public void removeNotGoingList(string un)
+        {
+            ans = notGoingList.Remove(un);
+            if (ans == true)
+            {
+                //removed successfully
+                MessageBox.Show("User " + un + " has been removed from Not Going List.");
+            }
+        }
+        public void removeNotReplyList(string un)
+        {
+            ans = notReplyList.Remove(un);
+            if (ans == true)
+            {
+                //removed successfully
+                MessageBox.Show("User " + un + " has been removed from Not Reply List.");
+            }
         }
     }
 }
