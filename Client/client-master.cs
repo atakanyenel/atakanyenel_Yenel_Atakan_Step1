@@ -400,15 +400,12 @@ namespace ClientSide
         private void button2_Click(object sender, EventArgs e)
         {
             //See event button
-            if (getEventListCount() != 0)
-            {
-               var seeevents = new seeevents(this);
-               seeevents.Show();
-            }
-            else
-            {
-                MessageBox.Show("THERE ARE NO EVENTS TO DISPLAY");
-            }
+        	// check if event is empty first should not be implemented here
+        	// currently list of events are still in server
+        	// so the answer will always be true, and see events will never run
+            var seeevents = new seeevents(this);
+            seeevents.Show();
+
         }
     }
 }
