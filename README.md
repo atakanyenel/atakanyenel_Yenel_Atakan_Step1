@@ -5,9 +5,9 @@ What we need to do in step 2:
 
 1) Event Management
 
-1.1) [Maybe DONE] Each user can schedule any number of events
+1.1) [DONE] Each user can schedule any number of events
 
-1.1.1) Appear to have some bug, reason unknown
+1.1.1) seeevent cannot retrive every events
 
 1.2) [DONE] Organizer input with GUI
 
@@ -17,11 +17,15 @@ What we need to do in step 2:
 
 1.3.1.1) Question: how to make sure every user but the organizer will get the invitation message?
 
-1.4) [50%] Select "Attending" or "Not Attending" with GUI
+1.4) [75%] Select "Attending" or "Not Attending" with GUI
 
 1.4.1) Server react to response
 
-1.5) Able to modify answer between yes and no only
+1.4.1.1) Implemented but have not been tested yet
+
+1.5) [Maybe Done] Able to modify answer between yes and no only
+
+1.5.1) Implemented but have not been tested yet
 
 1.6) Notification on organizer when list of attendance changes in GUI
 
@@ -58,12 +62,11 @@ Known Issues
 1) Exception when closing GUI under certain(unknown) circumstances
 
 2) "There is a problem. Try again" keeps poping up when connecting 2+ clients, but the connection is in fact successful
- 
-3) index out of bound for seeevent (getTitle). The item can not be located.
+
+3) Cannot get correct amount of events
 
 Step 3:
 
-1) Only friends can communicate, invite, etc 
+1) Only friends can communicate, invite, etc
 
 For more details, please check the pdf.
-

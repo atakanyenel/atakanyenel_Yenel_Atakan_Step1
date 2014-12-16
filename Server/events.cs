@@ -139,15 +139,30 @@ namespace CS408_Step1_Server
         //remove
         public void removeGoingList(string un)
         {
-            goingList.Remove(un);
+            ans = goingList.Remove(un);
+            if (ans == true)
+            {
+                //removed successfully
+                MessageBox.Show("User " + un + " has been removed from Going List.");
+            }
         }
         public void removeNotGoingList(string un)
         {
-            notGoingList.Remove(un);
+            ans = notGoingList.Remove(un);
+            if (ans == true)
+            {
+                //removed successfully
+                MessageBox.Show("User " + un + " has been removed from Not Going List.");
+            }
         }
         public void removeNotReplyList(string un)
         {
-            notReplyList.Remove(un);
+            ans = notReplyList.Remove(un);
+            if (ans == true)
+            {
+                //removed successfully
+                MessageBox.Show("User " + un + " has been removed from Not Reply List.");
+            }
         }
     }
 }
