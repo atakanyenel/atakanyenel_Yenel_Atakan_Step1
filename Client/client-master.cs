@@ -102,15 +102,15 @@ namespace ClientSide
             return -1;
         }
 
-        public string getEventGoingList(int eventID, int i)
+        public string getEventGoingList(int eID, int i)
         {
             return EventList[eID].getGoingList(i);
         }
-        public string getEventNotGoingList(int eventID, int i)
+        public string getEventNotGoingList(int eID, int i)
         {
             return EventList[eID].getNotGoingList(i);
         }
-        public string getEventNotReplyList(int eventID, int i)
+        public string getEventNotReplyList(int eID, int i)
         {
             return EventList[eID].getNotReplyList(i);
         }
