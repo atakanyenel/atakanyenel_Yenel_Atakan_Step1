@@ -51,7 +51,7 @@ namespace ClientSide
         private void refreshEvents()
         {
             cbOrganizers.Items.Clear();
-            listBox1.Items.Clear()
+            listBox1.Items.Clear();
             //listBox1.Text = " Invited: \r\n";
             //listBox1.Text += " Accepted: \r\n";
             //listBox1.Text += " Rejected: \r\n";
@@ -103,9 +103,9 @@ namespace ClientSide
 
         public void updatelistBox1()
         {
-            gCount = this.mainForm.EventList[eventID].getGoingListCount();
-            ngCount = this.mainForm.EventList[eventID].getNotGoingListCount();
-            nrCount = this.mainForm.EventList[eventID].getNotReplyListCount();
+            int gCount = this.mainForm.EventList[eventID].getGoingListCount();
+            int ngCount = this.mainForm.EventList[eventID].getNotGoingListCount();
+            int nrCount = this.mainForm.EventList[eventID].getNotReplyListCount();
             listBox1.Items.Add("Going:");
             if (gCount>0)
             {

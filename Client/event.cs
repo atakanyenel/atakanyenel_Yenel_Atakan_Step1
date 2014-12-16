@@ -139,29 +139,29 @@ namespace ClientSide
         //remove
         public void removeGoingList(string un)
         {
-            ans = goingList.Remove(un);
+            bool ans = goingList.Remove(un);
             if (ans == true)
             {
                 //removed successfully
-                MessageBox.Show("User " + un + " has been removed from Going List.");
+                Console.WriteLine("User " + un + " has been removed from Going List.");
             }
         }
         public void removeNotGoingList(string un)
         {
-            ans = notGoingList.Remove(un);
+            bool ans = notGoingList.Remove(un);
             if (ans == true)
             {
                 //removed successfully
-                MessageBox.Show("User " + un + " has been removed from Not Going List.");
+                Console.WriteLine("User " + un + " has been removed from Not Going List.");
             }
         }
         public void removeNotReplyList(string un)
         {
-            ans = notReplyList.Remove(un);
+            bool ans = notReplyList.Remove(un);
             if (ans == true)
             {
                 //removed successfully
-                MessageBox.Show("User " + un + " has been removed from Not Reply List.");
+                Console.WriteLine("User " + un + " has been removed from Not Reply List.");
             }
         }
     }

@@ -101,6 +101,11 @@ namespace ClientSide
             }
             return -1;
         }
+
+        public string getEventList(int x, int y)
+        {
+            return "";
+        }
         // the function for connecting the client to the server. A client uses an port number, IP number and a given name to connect to the server.
         // If the name textbox is empty or if the name alredy exists in the clients list that the user is asked to use another name
         // the connection part is handled in an try/catch method so if anything goes wrong the program does not crash but returns a message box.
