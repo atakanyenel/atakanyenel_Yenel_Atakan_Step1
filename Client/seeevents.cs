@@ -111,7 +111,8 @@ namespace ClientSide
             {
                 for (int i = 0; i<gCount; i++)
                 {
-                    listBox1.Items.Add(this.mainForm.EventList[eventID].getGoingList(i));
+                    // listBox1.Items.Add(this.mainForm.EventList[eventID].getGoingList(i));
+                    listBox1.Items.Add(this.mainForm.getEventGoingList(eventID, i));
                 }
             }
             else
@@ -124,6 +125,7 @@ namespace ClientSide
                 for (int i = 0; i<ngCount; i++)
                 {
                     listBox1.Items.Add(this.mainForm.EventList[eventID].getNotGoingList(i));
+                    listBox1.Items.Add(this.mainForm.getEventNotGoingList(eventID, i));
                 }
             }
             else
@@ -136,6 +138,7 @@ namespace ClientSide
                 for (int i = 0; i<nrCount; i++)
                 {
                     listBox1.Items.Add(this.mainForm.EventList[eventID].getNotReplyList(i));
+                    listBox1.Items.Add(this.mainForm.getEventNotReplyList(eventID, i));
                 }
             }
             else
