@@ -12,11 +12,6 @@ using System.Threading;
 using System.Net;
 using System.Net.Sockets;
 
-
-/*
- Frequently used places as Combo box !!
- */
-
 namespace ClientSide
 {
     public partial class newevent : Form
@@ -27,7 +22,6 @@ namespace ClientSide
             InitializeComponent();
         }
 
-        //possible send problem solution:
         private Form1 mainForm = null;
         public newevent(Form callingForm)
         {
@@ -37,11 +31,9 @@ namespace ClientSide
         //overload constructor, with an input of Form1, so it can access
         //functions in Form1 (esp. btnsend_Click(object, EventArgs))
         //but maybe we should move everything inside btnsend_Click to a
-        //seperate function, according to StockExchange(http://pi.vu/BILK)
 
         private void createButton()
         {
-
             if (txtDescription.Text == "" || txtTitle.Text == "" || txtPlace.Text == "" ){
                 MessageBox.Show("FILL ALL THE FIELDS");
             }
@@ -56,7 +48,6 @@ namespace ClientSide
             this.mainForm.sendButton();
             clear();
             }
-            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -68,7 +59,6 @@ namespace ClientSide
         private void clear()
         {
             txtDescription.Clear();
-            txtOrganizer.Clear();
             txtPlace.Clear();
             txtTitle.Clear();
             dtpDate.Value = DateTime.Now;

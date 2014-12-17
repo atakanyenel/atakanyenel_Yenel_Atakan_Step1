@@ -20,9 +20,7 @@ namespace ClientSide
 
     public partial class Form1 : Form
     {
-        //string event_created = events.function_create_event; // global variable
         Thread thrReceive;
-        // bool unique
         bool condition = true;
         string isItEvent = "";
         string isItRequest = "";
@@ -198,7 +196,6 @@ namespace ClientSide
                 }
             }
         }
-
         // a function for receive
         private void Receive()
         {
@@ -240,14 +237,6 @@ namespace ClientSide
                             tempe.setDesc(event_info[3]);
                             tempe.setOrganizer(event_info[4]);
                             EventList.Add(tempe);
-                            /**************for debugging *****************/
-                            // MessageBox.Show(receivedmessage);
-                            // MessageBox.Show(EventList[EventList.Count - 1].getDate());
-                            // MessageBox.Show(EventList[EventList.Count - 1].getTitle());
-                            // MessageBox.Show(EventList[EventList.Count - 1].getPlace());
-                            // MessageBox.Show(EventList[EventList.Count - 1].getDesc());
-                            // MessageBox.Show(EventList[EventList.Count - 1].getOrganizer());
-                            /**************for debugging *****************/
                         }
                         else if (check_symbol(ref receivedmessage) == 2) //message
                         {
@@ -255,7 +244,6 @@ namespace ClientSide
                         }
                         else if (check_symbol(ref receivedmessage) == 3) // attendance
                         {
-                            // MessageBox.Show("This is client-master getting attendance update");
                             int i1 = 0;
                             int i2 = 0;
                             string A;
@@ -273,10 +261,6 @@ namespace ClientSide
                             B = B.Substring(1);
                             i1 = B.IndexOf("&");
                             atte_rec[2] = B.Substring(0, i1);
-                            //for (int i = 0; i < 3; i++)
-                            //{
-                            //    MessageBox.Show(atte_rec[i]);
-                            //}
                             //convert event id into int
                             int eID = Convert.ToInt32(atte_rec[0]);
                             //remove that username from all instance of that event
@@ -288,12 +272,6 @@ namespace ClientSide
                             {
                                 EventList[eID].addGoingList(atte_rec[1]);
                                 int glc = EventList[eID].getGoingListCount();
-                                // for (int i = 0; i < glc; i++)
-                                // {
-                                //     MessageBox.Show("This one is added to going(client master)");
-                                //     MessageBox.Show(EventList[eID].getGoingList(i));
-                                // }
-
                             }
                             else if (atte_rec[2] == "0") //not going
                             {
@@ -306,8 +284,7 @@ namespace ClientSide
                         }
                         else
                         {
-                            //both 3(attendence) and 4(request) and anything else should not exist
-                            //MessageBox.Show("There is a problem. Try Again");
+                            // what is else?
                         }
                     }
                 }
@@ -362,10 +339,6 @@ namespace ClientSide
             try
             {
                 string tbsendTextBox = tbsend.Text;
-                // MessageBox.Show("The next Box should have text iff you just clicked the create button on event:");
-                // MessageBox.Show(isItEvent);
-                // MessageBox.Show("The next Box should have text iff you just open See event form: ");
-                // MessageBox.Show(isItRequest);
                 if (isItEvent != "") //just event
                 {
                     //send event string

@@ -20,7 +20,6 @@ namespace CS408_Step1_Server
 {
     public partial class Server : Form
     {
-
         class client
         {
             public string name;
@@ -108,9 +107,6 @@ namespace CS408_Step1_Server
                             c.getsocket().Close();
                         }
                         clientarray.Clear();
-
-                        //  thraccept.Abort();//after the user clicks on stop! this block of code determines what happens.
-
                         s.Close();
                         s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                         richTextBox1.Text += "Server stopped listening at port " + textBox1.Text + ".\r\n";
@@ -151,6 +147,7 @@ namespace CS408_Step1_Server
             }
             catch
             {
+                // does something happen here?
             }
         }
 
@@ -249,11 +246,6 @@ namespace CS408_Step1_Server
                                 richTextBox1.Text = richTextBox1.Text + "eventsarray[i].getOrganizer: " + eventsarray[i].getOrganizer() + "\r\n\r\n";
                             }
                             /**************for debugging *****************/
-
-                            //send notification to everyone else
-                            //add all other users to notReply List
-                            //sends event to all clients
-                            //this version: just the original client
                             byte[] buffer = new byte[64];
                             buffer = Encoding.Default.GetBytes(newmessage);
                             foreach (client c in clientarray)
@@ -282,7 +274,6 @@ namespace CS408_Step1_Server
                             string A;
                             string B = newmessage;
                             string[] atte_rec = new string[3];
-                            //Format: "&"+{enent id}"&"{username}&{yes or no}"&"
                             for (int i = 0; i < 2; i++)
                             {
                                 i1 = B.IndexOf("&");
@@ -308,13 +299,6 @@ namespace CS408_Step1_Server
                             if (atte_rec[2] == "1") //going
                             {
                                 eventsarray[eID].addGoingList(atte_rec[1]);
-                                //int glc = eventsarray[eID].getGoingListCount();
-                                //for (int i = 0; i<glc; i++)
-                                //{
-                                //    MessageBox.Show("This one");
-                                //    MessageBox.Show(eventsarray[eID].getGoingList(i));
-                                //}
-
                             }
                             else if (atte_rec[2] == "0") //not going
                             {
@@ -378,7 +362,6 @@ namespace CS408_Step1_Server
         //return what the first symbol is/what is the purpose of message
         int check_symbol(ref string message)
         {
-            // MessageBox.Show(message);
             if (message.ElementAt(0) == '%') // event
             {
                 message = message.Substring(0, message.Length - 2);
@@ -398,7 +381,6 @@ namespace CS408_Step1_Server
             {
                 return 4;
             }
-            //this is just error
             return 0;
         }
 
