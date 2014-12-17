@@ -341,7 +341,6 @@ namespace ClientSide
                     //send event string
                     byte[] buffer = Encoding.Default.GetBytes(isItEvent);
                     //This is not correct
-                    richtextbox.Text = richtextbox.Text + isItEvent + "\r\n";
                     //display event info
                     richtextbox.Text = richtextbox.Text + "You have created an event!\r\n";
                     c.Send(buffer);

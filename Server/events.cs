@@ -141,29 +141,14 @@ namespace CS408_Step1_Server
         public void removeGoingList(string un)
         {
             bool ans = goingList.Remove(un);
-            if (ans == true)
-            {
-                //removed successfully
-                MessageBox.Show("User " + un + " has been removed from Going List.");
-            }
         }
         public void removeNotGoingList(string un)
         {
             bool ans = notGoingList.Remove(un);
-            if (ans == true)
-            {
-                //removed successfully
-                MessageBox.Show("User " + un + " has been removed from Not Going List.");
-            }
         }
         public void removeNotReplyList(string un)
         {
             bool ans = notReplyList.Remove(un);
-            if (ans == true)
-            {
-                //removed successfully
-                MessageBox.Show("User " + un + " has been removed from Not Reply List.");
-            }
         }
     }
 }

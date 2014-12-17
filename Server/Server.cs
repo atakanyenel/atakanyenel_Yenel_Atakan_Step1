@@ -230,7 +230,7 @@ namespace CS408_Step1_Server
                             tempe.setOrganizer(event_info[4]);
                             eventsarray.Add(tempe);
 
-                            richTextBox1.Text = richTextBox1.Text + "Events counter: " + eventsarray.Count.ToString() + "\r\n";
+                            //richTextBox1.Text = richTextBox1.Text + "Events counter: " + eventsarray.Count.ToString() + "\r\n";
                             richTextBox1.Text = richTextBox1.Text + "Event " + event_info[1] + " has been added to List." + "\r\n\r\n";
                             //need to send request to everyone else
 
@@ -250,7 +250,7 @@ namespace CS408_Step1_Server
                             {
                                 c.getsocket().Send(buffer2);
                             }
-                            byte[] buffer33 = Encoding.Default.GetBytes("#" + event_info[4] + "just created an new event!");
+                            byte[] buffer33 = Encoding.Default.GetBytes("#" + event_info[4] + " just created an new event!  ");
                             foreach (client c in clientarray)
                             {
                                 if (c.getsocket() != yeni)
@@ -283,10 +283,6 @@ namespace CS408_Step1_Server
                             B = B.Substring(1);
                             i1 = B.IndexOf("&");
                             atte_rec[2] = B.Substring(0, i1);
-                            for (int i = 0; i < 3; i++)
-                            {
-                                MessageBox.Show(atte_rec[i]);
-                            }
                             //convert event id into int
                             int eID = Convert.ToInt32(atte_rec[0]);
                             //remove that username from all instance of that event
@@ -309,7 +305,7 @@ namespace CS408_Step1_Server
                             //send notificatino back to organizer
                             //Someone just responded to your event!
                             byte[] buffer20 = new byte[64];
-                            buffer20 = Encoding.Default.GetBytes("#Someone just responded to your event!");
+                            buffer20 = Encoding.Default.GetBytes("#Someone just responded to your event!  ");
                             Socket iney = searchClient(atte_rec[1]);
                             iney.Send(buffer20);
                         }
