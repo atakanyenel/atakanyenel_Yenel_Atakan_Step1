@@ -49,7 +49,7 @@ Additional tasks
 
 Known Issues
 
-1) Exception when closing GUI under certain(unknown) circumstances
+1) [Maybe DONE] Exception when closing GUI under certain(unknown) circumstances
 
 2) "There is a problem. Try again" keeps popping up when connecting 2+ clients, but the connection is in fact successful
 
@@ -57,12 +57,16 @@ Known Issues
 
 4) Unable to send message to organizer when going/not going list changes, reason unknown
 
-5) [DONE]Organiser got clear after clicking create button in newevent.cs
+5) [DONE] Organiser got clear after clicking create button in newevent.cs
 
 6) closing server / connected client closes everything else
 
 Step 3:
 
 1) Only friends can communicate, invite, etc
+
+2) Events @ Step 2
+
+3) Messaging @ Step 1
 
 For more details, please check the pdf.

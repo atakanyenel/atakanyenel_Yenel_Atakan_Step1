@@ -282,10 +282,7 @@ namespace ClientSide
                                 MessageBox.Show("You can only choose between Yes or No");
                             }
                         }
-                        else
-                        {
-                            // what is else?
-                        }
+                        //more else if can be implemented in the future with the addition of new features
                     }
                 }
             }
@@ -356,16 +353,12 @@ namespace ClientSide
                     //isItRequest should always be just "$"
                     byte[] buffer = Encoding.Default.GetBytes(isItRequest);
                     c.Send(buffer);
-                    //for debugging:
-                    richtextbox.Text = richtextbox.Text + "Seeevent just sent a request: " + isItRequest + "\r\n";
                     isItRequest = "";
                 }
                 else if (isItAtte != "") //just attendence
                 {
                     byte[] buffer = Encoding.Default.GetBytes(isItAtte);
                     c.Send(buffer);
-                    //for debugging:
-                    richtextbox.Text = richtextbox.Text + "Seeevent just sent a  attendence " + isItAtte + "\r\n";
                     isItAtte = "";
                 }
                 else if (tbsendTextBox != "") //just message
