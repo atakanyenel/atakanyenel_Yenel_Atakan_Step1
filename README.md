@@ -1,6 +1,43 @@
 atakanyenel_Yenel_Atakan_Step1
 ==============================
 
+Step 3:
+
+1) Only friends can communicate, invite, etc
+
+1.1) create new form "editFriends"
+
+1.1.1) print list of clients ("name only")
+
+The following graph is only readable in font Courier(Notepad ++, sublime, etc)
+
+------------------                 ------------------
+|All users:      |                 |Friends:        |
+|                |                 |                |
+|                |                 |                |
+|                |                 |                |
+|                |   -----------   |                |
+|                |   | Request>|   |                |
+|                |   -----------   |                |
+|                |                 |Requested:      |
+|                |   -----------   |                |
+|                |   | <Remove |   |                |
+|                |   -----------   |                |
+|                |                 |                |
+|                |                 |                |
+|                |                 |                |
+|                |                 |                |
+|                |                 |                |
+------------------                 ------------------
+
+1.2) check it he's friends function in server
+
+2) Events @ Step 2
+
+3) Messaging @ Step 1
+
+-----------------------------
+
 What we need to do in step 2:
 
 1) Event Management
@@ -60,13 +97,5 @@ Known Issues
 5) [DONE] Organiser got clear after clicking create button in newevent.cs
 
 6) closing server / connected client closes everything else
-
-Step 3:
-
-1) Only friends can communicate, invite, etc
-
-2) Events @ Step 2
-
-3) Messaging @ Step 1
 
 For more details, please check the pdf.

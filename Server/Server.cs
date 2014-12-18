@@ -26,6 +26,7 @@ namespace CS408_Step1_Server
             public Socket clisoc;
             public int attending;
             //Step 3: list of friends(can be string of client)
+            List<client> friends = new List<client>();
             internal void setname(string strclientname)
             {
                 name = strclientname;
@@ -41,6 +42,14 @@ namespace CS408_Step1_Server
             internal string getname()
             {
                 return name;
+            }
+            public bool addFriend(string newfriend)
+            {
+
+            }
+            public bool delFriend(string newfriend)
+            {
+
             }
         };
 
@@ -374,6 +383,14 @@ namespace CS408_Step1_Server
             else if (message.ElementAt(0) == '$') // request
             {
                 return 4;
+            }
+            else if (message.ElementAt(0) == '@') //add friend
+            {
+
+            }
+            else if (message.ElementAt(0) == '^') //del friend
+            {
+
             }
             return 0;
         }
