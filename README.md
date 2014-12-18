@@ -12,12 +12,12 @@ Step 3:
 The following graph is only readable in font Courier(Notepad ++, sublime, etc)
 
 ------------------                 ------------------
-|All users:      |                 |Friends:        |
+|Requesting:     |                 |Friends:        |
 |                |                 |                |
 |                |                 |                |
 |                |                 |                |
-|                |   -----------   |                |
-|                |   | Request>|   |                |
+|All users:      |   -----------   |                |
+|                |   |   Add>  |   |                |
 |                |   -----------   |                |
 |                |                 |Requested:      |
 |                |   -----------   |                |
