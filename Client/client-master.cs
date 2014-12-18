@@ -424,5 +424,10 @@ namespace ClientSide
             var seeevents = new seeevents(this);
             seeevents.Show();
         }
+
+        private void friend_Click(object sender, EventArgs e)
+        {
+            //open friend form
+        }
     }
 }
