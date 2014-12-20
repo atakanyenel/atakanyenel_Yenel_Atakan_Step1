@@ -25,8 +25,8 @@ namespace CS408_Step1_Server
             public string name;
             public Socket clisoc;
             public int attending;
-            public List<client> friendsList = new List<client>();
-            public List<client> requestList = new List<client>();
+            public List<string> friendsList = new List<string>();
+            public List<string> requestList = new List<string>();
             internal void setname(string strclientname)
             {
                 name = strclientname;
@@ -42,6 +42,14 @@ namespace CS408_Step1_Server
             internal string getname()
             {
                 return name;
+            }
+            internal List<string> getFL()
+            {
+                return frindsList;
+            }
+            internal List<string> getRL()
+            {
+                return requestList;
             }
             //public bool addFriend(string newfriend)
             //{
@@ -80,27 +88,27 @@ namespace CS408_Step1_Server
             return null;
         }
 
-        public Socket searchClientFL(string un)
+        public List<string> searchClientFL(string un)
         {
             int cc = clientarray.Count;
             for (int i = 0; i < cc; i++)
             {
                 if (clientarray[i].getname() == un)
                 {
-                    return clientarray[i].getsocket();
+                    return clientarray[i].getFL();
                 }
             }
             return null;
         }
 
-        public Socket searchClientRL(string un)
+        public List<string> searchClientRL(string un)
         {
             int cc = clientarray.Count;
             for (int i = 0; i < cc; i++)
             {
                 if (clientarray[i].getname() == un)
                 {
-                    return clientarray[i].getsocket();
+                    return clientarray[i].getRL();
                 }
             }
             return null;
@@ -363,6 +371,11 @@ namespace CS408_Step1_Server
                             i1 = B.IndexOf("@");
                             addfri[1] = B.Substring(0, i1);
                             //go to c2 (addfri[1])
+                            public List<string> tempFL = new List<string>();
+                            public List<string> tempRL = new List<string>();
+                            tempFL = searchClientFL(addfri[1]);
+                            tempRL = searchClientRL(addfri[1]);
+                            //search if c1 exists in c2's RL or FL
 
                             //send message to that client immediately
                             //send message to that client
