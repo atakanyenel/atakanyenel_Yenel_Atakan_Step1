@@ -201,9 +201,9 @@ namespace ClientSide
                         isItRequest = "$";
                         sendButton();
                         //somehow it sends $?
-                        isItRequest = "?"; // the client request
-                        sendButton();
-                        
+                        // isItRequest = "?"; // the client request
+                        // sendButton();
+
                     }
                 }
                 catch
@@ -492,8 +492,8 @@ namespace ClientSide
             editfriends.Show();
         }
 
-        
 
-        
+
+
     }
 }

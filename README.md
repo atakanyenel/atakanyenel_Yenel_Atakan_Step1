@@ -9,37 +9,157 @@ Step 3:
 
 1.1.1) print list of clients ("name only")
 
-The following graph is only readable in font Courier(Notepad ++, sublime, etc)
-
-------------------                 ------------------
-|Requesting:     |                 |Friends:        |
-|                |                 |                |
-|                |                 |                |
-|                |                 |                |
-|                |                 |                |
-|                |                 |                |
-|All users:      |   -----------   |                |
-|                |   |   Add>  |   |                |
-|                |   -----------   |                |
-|                |                 |                |
-|                |   -----------   |                |
-|                |   | <Remove |   |                |
-|                |   -----------   |                |
-|                |                 |                |
-|                |                 |                |
-|                |                 |                |
-|                |                 |                |
-|                |                 |                |
-|                |   -----------   |                |
-|                |   | Refresh |   |                |
-|                |   -----------   |                |
-------------------                 ------------------
-
 1.2) check it he's friends function in server
 
 2) Events @ Step 2
 
 3) Messaging @ Step 1
+
+-----------------------------
+
+How things works:
+
+1. Server starts up
+
+2. Server start listening
+
+3. Client starts up
+
+4. Client connect to to server
+
+5. Client request server to send data(events + client)
+
+Create Events:
+
+1. Show new Form of newevents.cs
+
+2. Set Organizer to username
+
+3. User input data
+
+4. Click Create to create
+
+5. Encode data into a single string
+
+6. send that string to server
+
+7. Server receives event string
+
+8. Server decodes event string into pieces
+
+9. add that event into List of event in Server
+
+10. Broadcast event to every existing clients
+
+11. client receives events
+
+12. client decodes events
+
+13. client stores events into List of event in each client
+
+See Events:
+
+1. Show new Form of seeevents.cs
+
+2. get name of events one by one from client-master
+
+3. add each of them into comboBox
+
+4. user select a event
+
+5. show info of that event to user(including attendance)
+
+6. user select yes or no
+
+7. encode answer into a string
+
+8. send that string to server
+
+9. server decodes it
+
+10. server find that event
+
+11. server remove that username from all lists
+
+12. server adds that username to correspondent list
+
+13. server broadcast that attendance update to everyone
+
+14. client receives attendance update
+
+15. client find that event
+
+16. client remove that username from all lists
+
+17. client adds that username to correspondent list
+
+Friends:
+
+1. Show new Form of editFriends.cs
+
+2. get name of requested clients one by one from client-master
+
+3. add each of them into listBox3
+
+4. get name of friends one by one from client-master
+
+5. add each of them into listBox2
+
+6. get name of clients one by one from client-master
+
+7. if that name does not exist in either requested list nor friends list + now myself
+
+8. add each of them into listBox1
+
+Add Friends
+
+9. user add another user as friends
+
+10. client encode it into message
+
+11. client sends it to server
+
+12. server receives message of friend request
+
+13. server decodes it
+
+14. if that name does not exist in request list & friend list & himself
+
+15. add username to request list
+
+16. server sends it to client 1 and client 2
+
+17. client receives message of friend request
+
+18. client decodes it
+
+14. if that name does not exist in request list & friend list & himself
+
+15. add username to request list
+
+19. refresh everything
+
+Accept Friends
+
+
+
+-----------------------------
+
+List of Symbols:
+
+1 = % = event ("%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%")
+
+2 = # = message ("#" + tbname.Text + ": " + tbsendTextBox + "\r\n")
+
+3 = & = attendance ("&"+{enent id}"&"{username}&{yes or no}"&")
+
+4 = $ = request ($)
+
+5 = @ = add friend (@client1@client2@)
+
+6 = ^ = get all usernames(^username^)
+
+7 = ? = unused(used to be request username, now combined into request as well)
 
 -----------------------------
 
@@ -67,7 +187,9 @@ What we need to do in step 2:
 
 1.6.1) triggered wheneven setGoing/setNotGoing is triggered
 
-1.7) [DONE] Send event information only upon request
+1.7) [90% DONE] Send event information only upon request
+
+1.7.1) send attendance
 
 2) [DONE] Message (in step 1)
 

@@ -357,11 +357,21 @@ namespace CS408_Step1_Server
                         }
                         else if (check_symbol(ref newmessage) == 4) // event request(symbol: $)
                         {
+                            MessageBox.Show("Sending Event list: " + clientarray.Count);
                             for (int i = 0; i < eventsarray.Count; i++)
                             {
                                 //Recieved a request of event lists, so server will send them
                                 //"%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%";
                                 string event_request = "%" + eventsarray[i].getDate() + "%" + eventsarray[i].getTitle() + "%" + eventsarray[i].getPlace() + "%" + eventsarray[i].getDesc() + "%" + eventsarray[i].getOrganizer() + "%";
+                                byte[] buffer = new byte[64];
+                                buffer = Encoding.Default.GetBytes(event_request);
+                                yeni.Send(buffer);
+                            }
+                            MessageBox.Show("Sending complete client list: " + clientarray.Count);
+                            for (int i = 0; i < clientarray.Count; i++)
+                            {
+                                string event_request = "^" + clientarray[i].getname()+ "^";
+                                MessageBox.Show(event_request);
                                 byte[] buffer = new byte[64];
                                 buffer = Encoding.Default.GetBytes(event_request);
                                 yeni.Send(buffer);
@@ -433,18 +443,18 @@ namespace CS408_Step1_Server
                             iney2.Send(buffer64);
                             iney2.Send(buffer2);
                         }
-                        else if (check_symbol(ref newmessage) == 6) // get names list and send it to client
-                        {
-                            MessageBox.Show("blablabla" + clientarray.Count);
-                            for (int i = 0; i < clientarray.Count; i++)
-                            {
-                                string event_request = "^" + clientarray[i].getname()+ "^";
-                                MessageBox.Show(event_request);
-                                byte[] buffer = new byte[64];
-                                buffer = Encoding.Default.GetBytes(event_request);
-                                yeni.Send(buffer);
-                            }
-                        }
+                        // else if (check_symbol(ref newmessage) == 7) // get names list and send it to client
+                        // {
+                        //     MessageBox.Show("blablabla" + clientarray.Count);
+                        //     for (int i = 0; i < clientarray.Count; i++)
+                        //     {
+                        //         string event_request = "^" + clientarray[i].getname()+ "^";
+                        //         MessageBox.Show(event_request);
+                        //         byte[] buffer = new byte[64];
+                        //         buffer = Encoding.Default.GetBytes(event_request);
+                        //         yeni.Send(buffer);
+                        //     }
+                        // }
                         else
                         {
                             Time = DateTime.Now;
@@ -502,10 +512,10 @@ namespace CS408_Step1_Server
             {
                 return 5;
             }
-            else if (message.ElementAt(0) == '?') // client requested a list of clients
-            {
-                return 6;
-            }
+            // else if (message.ElementAt(0) == '?') // client requested a list of clients
+            // {
+            //     return 7;
+            // }
             return 0;
         }
 
