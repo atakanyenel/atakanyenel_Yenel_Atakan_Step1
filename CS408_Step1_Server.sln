@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Express 2013 for Windows Desktop
+# Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS408_Step1_Server", "Server\CS408_Step1_Server.csproj", "{5CFFB8BC-D303-4375-8240-868D267EE04E}"
@@ -8,6 +8,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientSide", "Client\ClientSide.csproj", "{EFBA3734-7B1F-422B-AE02-8945D1A17F0F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication3", "WindowsFormsApplication3\WindowsFormsApplication3.csproj", "{86F368B4-60B7-41D0-96CC-ED3B8866F6CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "editFriends", "editFriends\editFriends.csproj", "{7B7103F0-67A9-4C03-A891-16E873C3EF88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{86F368B4-60B7-41D0-96CC-ED3B8866F6CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86F368B4-60B7-41D0-96CC-ED3B8866F6CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86F368B4-60B7-41D0-96CC-ED3B8866F6CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B7103F0-67A9-4C03-A891-16E873C3EF88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B7103F0-67A9-4C03-A891-16E873C3EF88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B7103F0-67A9-4C03-A891-16E873C3EF88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B7103F0-67A9-4C03-A891-16E873C3EF88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

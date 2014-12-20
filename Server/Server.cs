@@ -43,6 +43,7 @@ namespace CS408_Step1_Server
             {
                 return name;
             }
+<<<<<<< HEAD
             internal List<string> getFL()
             {
                 return frindsList;
@@ -61,8 +62,16 @@ namespace CS408_Step1_Server
             }
             //public bool delFriend(string newfriend)
             //{
+=======
+            public bool addFriend(string newfriend)
+            {
 
-            //}
+            }
+            public bool delFriend(string newfriend)
+            {
+>>>>>>> parent of 378b72e... GUI changes
+
+            }
         };
 
         DateTime Time;

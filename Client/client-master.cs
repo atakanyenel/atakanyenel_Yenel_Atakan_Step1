@@ -435,16 +435,16 @@ namespace ClientSide
             seeevents.Show();
         }
 
-        private void btnFriends_Click(object sender, EventArgs e)
+        private void friend_Click(object sender, EventArgs e)
         {
-            // show form
-
-            var editfriends = new editFriends();
-            editfriends.Show();
+            //open friend form
         }
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> parent of 378b72e... GUI changes
     }
 }
