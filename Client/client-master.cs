@@ -25,6 +25,8 @@ namespace ClientSide
         string isItEvent = "";
         string isItRequest = "";
         string isItAtte = "";
+        string isItAddFri = "";
+        string isItAccFri = "";
         Socket c = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         List<events> EventList = new List<events>();
         public Form1()
@@ -45,6 +47,14 @@ namespace ClientSide
         public void setIsItAtte(string a)
         {
             isItAtte = a;
+        }
+        public void setIsItAddFri(string a)
+        {
+            isItAddFri = a;
+        }
+        public void setIsItAddFri(string a)
+        {
+            isItAccFri = a;
         }
         public string getIsItEvent()
         {
@@ -433,8 +443,8 @@ namespace ClientSide
             editfriends.Show();
         }
 
-        
 
-        
+
+
     }
 }

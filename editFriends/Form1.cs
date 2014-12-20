@@ -21,6 +21,25 @@ namespace editFriends
             InitializeComponent();
         }
 
+        private Form1 mainForm = null;
+        public editfriends(Form callingForm)
+        {
+            mainForm = callingForm as Form1;
+            InitializeComponent();
+        }
+
+        public void addFriends()
+        {
+            //check if listBox for add friends is selected
+            //@c1(sending request)@c2(reciving request)@
+            this.mainForm.setIsItAddFri("@" + /*c1*/ + "@" + /*c2*/ + "@");
+        }
+
+        public void acceptFridns()
+        {
+
+        }
+
         //listBox1:
         //1. requested
         //2. all clients - himself - requested - friends

@@ -80,6 +80,32 @@ namespace CS408_Step1_Server
             return null;
         }
 
+        public Socket searchClientFL(string un)
+        {
+            int cc = clientarray.Count;
+            for (int i = 0; i < cc; i++)
+            {
+                if (clientarray[i].getname() == un)
+                {
+                    return clientarray[i].getsocket();
+                }
+            }
+            return null;
+        }
+
+        public Socket searchClientRL(string un)
+        {
+            int cc = clientarray.Count;
+            for (int i = 0; i < cc; i++)
+            {
+                if (clientarray[i].getname() == un)
+                {
+                    return clientarray[i].getsocket();
+                }
+            }
+            return null;
+        }
+
         // function for START. With this function the server starts listening to the port that is given by the user.
         // It is handled in the try/cathch method to prevent crashing of the system.
         // If an error occurs a message box will appear and inform the server administrator about the error
@@ -319,7 +345,25 @@ namespace CS408_Step1_Server
                         }
                         else if (check_symbol(ref newmessage) == 5) // add friends(symbol: @)
                         {
-                            //find out which client
+                            //decode
+                            int i1 = 0;
+                            int i2 = 0;
+                            string A;
+                            string B = newmessage;
+                            string[] addfri = new string[2];
+                            for (int i = 0; i < 1; i++)
+                            {
+                                i1 = B.IndexOf("@");
+                                A = B.Substring(i1 + 1);
+                                i2 = A.IndexOf("@");
+                                addfri[0] = B.Substring(1, i2);
+                                B = B.Substring(i2 + 1);
+                            }
+                            B = B.Substring(1);
+                            i1 = B.IndexOf("@");
+                            addfri[1] = B.Substring(0, i1);
+                            //go to c2 (addfri[1])
+
                             //send message to that client immediately
                             //send message to that client
                         }
