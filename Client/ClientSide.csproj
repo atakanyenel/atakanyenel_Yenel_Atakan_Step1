@@ -50,6 +50,12 @@
     <Compile Include="client-master.Designer.cs">
       <DependentUpon>client-master.cs</DependentUpon>
     </Compile>
+    <Compile Include="editFriends.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="editFriends.Designer.cs">
+      <DependentUpon>editFriends.cs</DependentUpon>
+    </Compile>
     <Compile Include="event.cs" />
     <Compile Include="newevent.cs">
       <SubType>Form</SubType>
@@ -67,6 +73,9 @@
     </Compile>
     <EmbeddedResource Include="client-master.resx">
       <DependentUpon>client-master.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="editFriends.resx">
+      <DependentUpon>editFriends.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="newevent.resx">
       <DependentUpon>newevent.cs</DependentUpon>

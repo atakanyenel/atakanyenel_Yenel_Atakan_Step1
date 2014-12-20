@@ -42,3 +42,4 @@ C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSid
 C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSide.csproj.GenerateResource.Cache
 C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\Client\bin\Debug\ClientSide.exe
 C:\Users\TszHo\Desktop\atakanyenel_Yenel_Atakan_Step1\Client\bin\Debug\ClientSide.pdb
+C:\Users\Matjaz Moser\Desktop\atakanyenel_Yenel_Atakan_Step1\Client\obj\Debug\ClientSide.editFriends.resources

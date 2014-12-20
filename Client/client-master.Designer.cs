@@ -40,7 +40,7 @@
             this.tbname = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.friend = new System.Windows.Forms.Button();
+            this.btnFriends = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -87,7 +87,7 @@
             this.richtextbox.Location = new System.Drawing.Point(12, 85);
             this.richtextbox.Name = "richtextbox";
             this.richtextbox.ReadOnly = true;
-            this.richtextbox.Size = new System.Drawing.Size(294, 213);
+            this.richtextbox.Size = new System.Drawing.Size(294, 220);
             this.richtextbox.TabIndex = 13;
             this.richtextbox.Text = "";
             // 
@@ -132,7 +132,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(312, 154);
+            this.button1.Location = new System.Drawing.Point(312, 161);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(64, 68);
             this.button1.TabIndex = 14;
@@ -142,7 +142,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(312, 228);
+            this.button2.Location = new System.Drawing.Point(312, 235);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(64, 70);
             this.button2.TabIndex = 15;
@@ -150,15 +150,15 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // friend
+            // btnFriends
             // 
-            this.friend.Location = new System.Drawing.Point(313, 85);
-            this.friend.Name = "friend";
-            this.friend.Size = new System.Drawing.Size(63, 63);
-            this.friend.TabIndex = 16;
-            this.friend.Text = "Friends";
-            this.friend.UseVisualStyleBackColor = true;
-            this.friend.Click += new System.EventHandler(this.friend_Click);
+            this.btnFriends.Location = new System.Drawing.Point(312, 85);
+            this.btnFriends.Name = "btnFriends";
+            this.btnFriends.Size = new System.Drawing.Size(64, 70);
+            this.btnFriends.TabIndex = 16;
+            this.btnFriends.Text = "Friends";
+            this.btnFriends.UseVisualStyleBackColor = true;
+            this.btnFriends.Click += new System.EventHandler(this.btnFriends_Click);
             // 
             // Form1
             // 
@@ -166,7 +166,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(388, 310);
-            this.Controls.Add(this.friend);
+            this.Controls.Add(this.btnFriends);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tbname);
@@ -203,7 +203,7 @@
         private System.Windows.Forms.TextBox tbname;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button friend;
+        private System.Windows.Forms.Button btnFriends;
     }
 }
 
