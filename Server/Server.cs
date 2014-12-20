@@ -43,8 +43,6 @@ namespace CS408_Step1_Server
             {
                 return name;
             }
-<<<<<<< HEAD
-<<<<<<< HEAD
             internal List<string> getFL()
             {
                 return frindsList;
@@ -53,27 +51,10 @@ namespace CS408_Step1_Server
             {
                 return requestList;
             }
-            // public void addFriend(string newfriend)
-            // {
-            //
-            // }
             public void addRequest(string newfriend)
             {
                 requestList.Add(newfriend);
             }
-            //public bool delFriend(string newfriend)
-            //{
-=======
-            public bool addFriend(string newfriend)
-            {
-
-            }
-            public bool delFriend(string newfriend)
-            {
->>>>>>> parent of 378b72e... GUI changes
-
-            }
-=======
             public bool addFriend(string newfriend)
             {
 
@@ -82,7 +63,6 @@ namespace CS408_Step1_Server
             {
 
             }
->>>>>>> parent of 378b72e... GUI changes
         };
 
         DateTime Time;
