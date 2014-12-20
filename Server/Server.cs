@@ -51,10 +51,14 @@ namespace CS408_Step1_Server
             {
                 return requestList;
             }
-            //public bool addFriend(string newfriend)
-            //{
-
-            //}
+            // public void addFriend(string newfriend)
+            // {
+            //
+            // }
+            public void addRequest(string newfriend)
+            {
+                requestList.Add(newfriend);
+            }
             //public bool delFriend(string newfriend)
             //{
 
@@ -73,6 +77,19 @@ namespace CS408_Step1_Server
         {
             InitializeComponent();
             Form.CheckForIllegalCrossThreadCalls = false;
+        }
+
+        public void addToRequestList(string c1, string c2)
+        {
+            //put c1 into c2's request List
+            int cc = clientarray.Count;
+            for (int i = 0; i < cc; i++)
+            {
+                if (clientarray[i].getname() == c2)
+                {
+                    clientarray[i].addRequest(c1);
+                }
+            }
         }
 
         public Socket searchClient(string un)
@@ -376,9 +393,46 @@ namespace CS408_Step1_Server
                             tempFL = searchClientFL(addfri[1]);
                             tempRL = searchClientRL(addfri[1]);
                             //search if c1 exists in c2's RL or FL
-
+                            bool alreadyFriends = false;
+                            bool alreadyRequested = false;
+                            int FLcount = tempFL.Count;
+                            int RLcount = tempRL.Count;
+                            for (int i = 0; i < FLcount; i++)
+                            {
+                                if (tempFL[i] == addfri[0])
+                                {
+                                    alreadyFriends = true;
+                                }
+                            }
+                            for (int i = 0; i < RLcount; i++)
+                            {
+                                if (tempRL[i] == addfri[0])
+                                {
+                                    alreadyRequested = true;
+                                }
+                            }
+                            if (alreadyRequest == false)
+                            {
+                                if (alreadyFriends == false)
+                                {
+                                    //add to request list
+                                    addRequest(addfri[0], addfri[1]);
+                                }
+                                else
+                                {
+                                    //not possible
+                                    MessageBox.Show("Not Possible(alreadyFriends == true)")
+                                }
+                                //send a message to c1
+                                //"already requestd blah blah blah"
+                            }
                             //send message to that client immediately
                             //send message to that client
+                            byte[] buffer64 = new byte[64];
+                            buffer64 = Encoding.Default.GetBytes("#Someone just sent you a friend request!  ");
+                            Socket iney2 = searchClient(addfri[1]);
+                            iney2.Send(buffer64);
+                            iney2.Send(buffer2);
                         }
                         else if (check_symbol(ref newmessage) == 6) // del friends(symbol: ^)
                         {
