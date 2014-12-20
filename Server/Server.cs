@@ -25,8 +25,8 @@ namespace CS408_Step1_Server
             public string name;
             public Socket clisoc;
             public int attending;
-            //Step 3: list of friends(can be string of client)
-            List<client> friends = new List<client>();
+            public List<client> friendsList = new List<client>();
+            public List<client> requestList = new List<client>();
             internal void setname(string strclientname)
             {
                 name = strclientname;
@@ -241,20 +241,6 @@ namespace CS408_Step1_Server
 
                             //richTextBox1.Text = richTextBox1.Text + "Events counter: " + eventsarray.Count.ToString() + "\r\n";
                             richTextBox1.Text = richTextBox1.Text + "Event " + event_info[1] + " has been added to List." + "\r\n\r\n";
-                            //need to send request to everyone else
-
-                            /**************for debugging *****************/
-                            // for (int i = 0; i < eventsarray.Count; i++)
-                            // {
-                            //     richTextBox1.Text = richTextBox1.Text + "Looping: " + i.ToString() + "\r\n";
-                            //     richTextBox1.Text = richTextBox1.Text + "eventsarray.Count: " + eventsarray.Count.ToString() + "\r\n";
-                            //     richTextBox1.Text = richTextBox1.Text + "eventsarray[i].getDate: " + eventsarray[i].getDate() + "\r\n";
-                            //     richTextBox1.Text = richTextBox1.Text + "eventsarray[i].getTitle: " + eventsarray[i].getTitle() + "\r\n";
-                            //     richTextBox1.Text = richTextBox1.Text + "eventsarray[i].getPlace: " + eventsarray[i].getPlace() + "\r\n";
-                            //     richTextBox1.Text = richTextBox1.Text + "eventsarray[i].getDesc: " + eventsarray[i].getDesc() + "\r\n";
-                            //     richTextBox1.Text = richTextBox1.Text + "eventsarray[i].getOrganizer: " + eventsarray[i].getOrganizer() + "\r\n\r\n";
-                            // }
-                            /**************for debugging *****************/
                             foreach (client c in clientarray)
                             {
                                 c.getsocket().Send(buffer2);
@@ -331,6 +317,18 @@ namespace CS408_Step1_Server
                                 yeni.Send(buffer);
                             }
                         }
+                        else if (check_symbol(ref newmessage) == 5) // add friends(symbol: @)
+                        {
+                            //find out which client
+                            //send message to that client immediately
+                            //send message to that client
+                        }
+                        else if (check_symbol(ref newmessage) == 6) // del friends(symbol: ^)
+                        {
+                            //find out which client
+                            //send message to that client immediately
+                            //send message to that client
+                        }
                         else
                         {
                             Time = DateTime.Now;
@@ -375,22 +373,22 @@ namespace CS408_Step1_Server
                 message = message.Substring(0, message.Length - 2);
                 return 2;
             }
-            else if (message.ElementAt(0) == '&') //This is for attendance
+            else if (message.ElementAt(0) == '&') //attendance
             {
                 message = message.Substring(0, message.Length - 2);
                 return 3;
             }
-            else if (message.ElementAt(0) == '$') // request
+            else if (message.ElementAt(0) == '$') // request events list
             {
                 return 4;
             }
             else if (message.ElementAt(0) == '@') //add friend
             {
-
+                return 5;
             }
             else if (message.ElementAt(0) == '^') //del friend
             {
-
+                return 6;
             }
             return 0;
         }

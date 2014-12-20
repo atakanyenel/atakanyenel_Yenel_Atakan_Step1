@@ -16,10 +16,12 @@ The following graph is only readable in font Courier(Notepad ++, sublime, etc)
 |                |                 |                |
 |                |                 |                |
 |                |                 |                |
+|                |                 |                |
+|                |                 |                |
 |All users:      |   -----------   |                |
 |                |   |   Add>  |   |                |
 |                |   -----------   |                |
-|                |                 |Requested:      |
+|                |                 |                |
 |                |   -----------   |                |
 |                |   | <Remove |   |                |
 |                |   -----------   |                |
@@ -28,6 +30,9 @@ The following graph is only readable in font Courier(Notepad ++, sublime, etc)
 |                |                 |                |
 |                |                 |                |
 |                |                 |                |
+|                |   -----------   |                |
+|                |   | Refresh |   |                |
+|                |   -----------   |                |
 ------------------                 ------------------
 
 1.2) check it he's friends function in server
