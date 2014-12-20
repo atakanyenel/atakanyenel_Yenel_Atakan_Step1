@@ -439,12 +439,5 @@ namespace ClientSide
         {
             //open friend form
         }
-<<<<<<< HEAD
-
-
-
-
-=======
->>>>>>> parent of 378b72e... GUI changes
     }
 }
