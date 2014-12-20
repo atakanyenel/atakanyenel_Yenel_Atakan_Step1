@@ -27,6 +27,10 @@ namespace ClientSide
         string isItAtte = "";
         Socket c = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         List<events> EventList = new List<events>();
+        List<string> listFriends = new List<string>();
+        List<string> listRequests = new List<string>();
+        List<string> listAllClients = new List<string>();
+
         public Form1()
         {
             InitializeComponent();
@@ -125,6 +129,36 @@ namespace ClientSide
         {
             return EventList[eID].getNotReplyListCount();
         }
+        public int getCountREQ()
+        {
+            return listRequests.Count;
+        }
+        public int getCountFRI()
+        {
+            return listFriends.Count;
+        }
+        public string listRequestsX(int name)
+        {
+            return listRequests[name];
+        }
+
+        public string listFriendsX(int name)
+        {
+            return listFriends[name];
+        }
+
+        public int allClientsCount()
+        {
+            return listAllClients.Count;
+        }
+
+        public string listAllClinets(int name)
+        {
+            return listAllClients[name];
+        }
+
+
+
         // the function for connecting the client to the server. A client uses an port number, IP number and a given name to connect to the server.
         // If the name textbox is empty or if the name alredy exists in the clients list that the user is asked to use another name
         // the connection part is handled in an try/catch method so if anything goes wrong the program does not crash but returns a message box.
@@ -166,6 +200,10 @@ namespace ClientSide
                         this.AcceptButton = this.btnsend;
                         isItRequest = "$";
                         sendButton();
+                        //somehow it sends $?
+                        isItRequest = "?"; // the client request
+                        sendButton();
+                        
                     }
                 }
                 catch
@@ -282,7 +320,20 @@ namespace ClientSide
                                 MessageBox.Show("You can only choose between Yes or No");
                             }
                         }
-                        //more else if can be implemented in the future with the addition of new features
+                        else if (check_symbol(ref receivedmessage) == 6) // serevr replyed with the list of clients
+                        {
+                            int i1 = 0;
+                            int i2 = 0;
+                            string A;
+                            string B = receivedmessage;
+                            i1 = B.IndexOf("^");
+                            A = B.Substring(i1 + 1);
+                            i2 = A.IndexOf("^");
+                            string reply_usernames_S = B.Substring(1, i2);
+
+                            listAllClients.Add(reply_usernames_S);
+
+                        }
                     }
                 }
             }
@@ -322,6 +373,14 @@ namespace ClientSide
             else if (message.ElementAt(0) == '$') //request
             {
                 return 4;
+            }
+            else if (message.ElementAt(0) == '@') //add friends
+            {
+                return 5;
+            }
+            else if (message.ElementAt(0) == '^') // get usernames from server (reply from server)
+            {
+                return 6;
             }
             return 0;
         }
@@ -429,7 +488,7 @@ namespace ClientSide
         {
             // show form
 
-            var editfriends = new editFriends();
+            var editfriends = new editFriends(this);
             editfriends.Show();
         }
 

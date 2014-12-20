@@ -17,6 +17,45 @@ namespace ClientSide
             InitializeComponent();
         }
 
+        private Form1 mainForm = null;
+        public editFriends(Form callingForm)
+        {
+            mainForm = callingForm as Form1;
+            InitializeComponent();
+            refresh_lists();
+        }
+
+        public void refresh_lists()
+        {
+            //int i = this.mainForm.getCountREQ();
+            //listBox3.Items.Clear();
+
+            //for (int x = 0; x < i; x++)
+            //{
+            //    listBox3.Items.Add(this.mainForm.listRequestsX(x));
+            //}
+
+            //i = this.mainForm.getCountFRI();
+            //listBox2.Items.Clear();
+
+            //for (int x = 0; x < i; x++)
+            //{
+            //    listBox2.Items.Add(this.mainForm.listFriendsX(x));
+            //}
+            listBox1.Items.Clear();
+            int i = this.mainForm.allClientsCount();
+            if(i < 1){
+                MessageBox.Show("asfafdfda:" + i);
+            }
+
+            for (int x = 0; x < i; x++)
+            {
+                listBox1.Items.Add(this.mainForm.listAllClinets(x));
+            }
+
+
+        }
+
         private void addfriend_Click(object sender, EventArgs e)
         {
             // ads a friends from list of requests
@@ -27,10 +66,14 @@ namespace ClientSide
             // removes a friend from list of friends and ads it to the list of others
         }
 
-        private void editFriends_Load(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
-            // load the requests and such things
-            // maybe list of all connected clients
+            this.Close();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            refresh_lists();
         }
     }
 }

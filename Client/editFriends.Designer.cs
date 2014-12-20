@@ -120,6 +120,7 @@
             this.btnRefresh.TabIndex = 12;
             this.btnRefresh.Text = "REFRESH";
             this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnAccept
             // 
@@ -138,6 +139,7 @@
             this.btnExit.TabIndex = 15;
             this.btnExit.Text = "EXIT";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // editFriends
             // 
@@ -157,7 +159,6 @@
             this.Controls.Add(this.listBox1);
             this.Name = "editFriends";
             this.Text = "FRIENDS EDITOR";
-            this.Load += new System.EventHandler(this.editFriends_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

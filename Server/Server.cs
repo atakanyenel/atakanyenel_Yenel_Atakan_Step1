@@ -25,8 +25,8 @@ namespace CS408_Step1_Server
             public string name;
             public Socket clisoc;
             public int attending;
-            public List<client> friendsList = new List<client>();
-            public List<client> requestList = new List<client>();
+            public List<string> friendsList = new List<string>();
+            public List<string> requestList = new List<string>();
             internal void setname(string strclientname)
             {
                 name = strclientname;
@@ -43,10 +43,22 @@ namespace CS408_Step1_Server
             {
                 return name;
             }
-            //public bool addFriend(string newfriend)
-            //{
-
-            //}
+            internal List<string> getFL()
+            {
+                return friendsList;
+            }
+            internal List<string> getRL()
+            {
+                return requestList;
+            }
+            // public void addFriend(string newfriend)
+            // {
+            //
+            // }
+            public void addRequest(string newfriend)
+            {
+                requestList.Add(newfriend);
+            }
             //public bool delFriend(string newfriend)
             //{
 
@@ -67,6 +79,19 @@ namespace CS408_Step1_Server
             Form.CheckForIllegalCrossThreadCalls = false;
         }
 
+        public void addToRequestList(string c1, string c2)
+        {
+            //put c1 into c2's request List
+            int cc = clientarray.Count;
+            for (int i = 0; i < cc; i++)
+            {
+                if (clientarray[i].getname() == c2)
+                {
+                    clientarray[i].addRequest(c1);
+                }
+            }
+        }
+
         public Socket searchClient(string un)
         {
             int cc = clientarray.Count;
@@ -75,6 +100,32 @@ namespace CS408_Step1_Server
                 if (clientarray[i].getname() == un)
                 {
                     return clientarray[i].getsocket();
+                }
+            }
+            return null;
+        }
+
+        public List<string> searchClientFL(string un)
+        {
+            int cc = clientarray.Count;
+            for (int i = 0; i < cc; i++)
+            {
+                if (clientarray[i].getname() == un)
+                {
+                    return clientarray[i].getFL();
+                }
+            }
+            return null;
+        }
+
+        public List<string> searchClientRL(string un)
+        {
+            int cc = clientarray.Count;
+            for (int i = 0; i < cc; i++)
+            {
+                if (clientarray[i].getname() == un)
+                {
+                    return clientarray[i].getRL();
                 }
             }
             return null;
@@ -304,7 +355,6 @@ namespace CS408_Step1_Server
                             Socket iney = searchClient(atte_rec[1]);
                             iney.Send(buffer20);
                         }
-
                         else if (check_symbol(ref newmessage) == 4) // event request(symbol: $)
                         {
                             for (int i = 0; i < eventsarray.Count; i++)
@@ -319,15 +369,81 @@ namespace CS408_Step1_Server
                         }
                         else if (check_symbol(ref newmessage) == 5) // add friends(symbol: @)
                         {
-                            //find out which client
+                            //decode
+                            int i1 = 0;
+                            int i2 = 0;
+                            string A;
+                            string B = newmessage;
+                            string[] addfri = new string[2];
+                            for (int i = 0; i < 1; i++)
+                            {
+                                i1 = B.IndexOf("@");
+                                A = B.Substring(i1 + 1);
+                                i2 = A.IndexOf("@");
+                                addfri[0] = B.Substring(1, i2);
+                                B = B.Substring(i2 + 1);
+                            }
+                            B = B.Substring(1);
+                            i1 = B.IndexOf("@");
+                            addfri[1] = B.Substring(0, i1);
+                            //go to c2 (addfri[1])
+                            List<string> tempFL = new List<string>();
+                            List<string> tempRL = new List<string>();
+                            tempFL = searchClientFL(addfri[1]);
+                            tempRL = searchClientRL(addfri[1]);
+                            //search if c1 exists in c2's RL or FL
+                            bool alreadyFriends = false;
+                            bool alreadyRequested = false;
+                            int FLcount = tempFL.Count;
+                            int RLcount = tempRL.Count;
+                            for (int i = 0; i < FLcount; i++)
+                            {
+                                if (tempFL[i] == addfri[0])
+                                {
+                                    alreadyFriends = true;
+                                }
+                            }
+                            for (int i = 0; i < RLcount; i++)
+                            {
+                                if (tempRL[i] == addfri[0])
+                                {
+                                    alreadyRequested = true;
+                                }
+                            }
+                            if (alreadyRequested == false)
+                            {
+                                if (alreadyFriends == false)
+                                {
+                                    //add to request list
+                                    addToRequestList(addfri[0], addfri[1]);
+                                }
+                                else
+                                {
+                                    //not possible
+                                    MessageBox.Show("Not Possible(alreadyFriends == true)");
+                                }
+                                //send a message to c1
+                                //"already requestd blah blah blah"
+                            }
                             //send message to that client immediately
                             //send message to that client
+                            byte[] buffer64 = new byte[64];
+                            buffer64 = Encoding.Default.GetBytes("#Someone just sent you a friend request!  ");
+                            Socket iney2 = searchClient(addfri[1]);
+                            iney2.Send(buffer64);
+                            iney2.Send(buffer2);
                         }
-                        else if (check_symbol(ref newmessage) == 6) // del friends(symbol: ^)
+                        else if (check_symbol(ref newmessage) == 6) // get names list and send it to client
                         {
-                            //find out which client
-                            //send message to that client immediately
-                            //send message to that client
+                            MessageBox.Show("blablabla" + clientarray.Count);
+                            for (int i = 0; i < clientarray.Count; i++)
+                            {
+                                string event_request = "^" + clientarray[i].getname()+ "^";
+                                MessageBox.Show(event_request);
+                                byte[] buffer = new byte[64];
+                                buffer = Encoding.Default.GetBytes(event_request);
+                                yeni.Send(buffer);
+                            }
                         }
                         else
                         {
@@ -386,7 +502,7 @@ namespace CS408_Step1_Server
             {
                 return 5;
             }
-            else if (message.ElementAt(0) == '^') //del friend
+            else if (message.ElementAt(0) == '?') // client requested a list of clients
             {
                 return 6;
             }
