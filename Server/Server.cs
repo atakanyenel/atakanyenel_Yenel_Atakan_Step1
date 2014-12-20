@@ -43,14 +43,14 @@ namespace CS408_Step1_Server
             {
                 return name;
             }
-            public bool addFriend(string newfriend)
-            {
+            //public bool addFriend(string newfriend)
+            //{
 
-            }
-            public bool delFriend(string newfriend)
-            {
+            //}
+            //public bool delFriend(string newfriend)
+            //{
 
-            }
+            //}
         };
 
         DateTime Time;

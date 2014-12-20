@@ -425,9 +425,16 @@ namespace ClientSide
             seeevents.Show();
         }
 
-        private void friend_Click(object sender, EventArgs e)
+        private void btnFriends_Click(object sender, EventArgs e)
         {
-            //open friend form
+            // show form
+
+            var editfriends = new editFriends();
+            editfriends.Show();
         }
+
+        
+
+        
     }
 }
