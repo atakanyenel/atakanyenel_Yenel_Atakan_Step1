@@ -93,7 +93,7 @@ See Events:
 
 17. client adds that username to correspondent list
 
-Friends:
+[Not done yet] Friends:
 
 1. Show new Form of editFriends.cs
 
@@ -111,7 +111,7 @@ Friends:
 
 8. add each of them into listBox1
 
-Add Friends
+[Not done yet] Add Friends
 
 9. user add another user as friends
 
@@ -123,7 +123,7 @@ Add Friends
 
 13. server decodes it
 
-14. if that name does not exist in request list & friend list & himself
+14. iff that name does not exist in request list & friend list & himself
 
 15. add username to request list
 
@@ -133,15 +133,41 @@ Add Friends
 
 18. client decodes it
 
-14. if that name does not exist in request list & friend list & himself
+14. iff that name does not exist in request list & friend list & himself
 
 15. add username to request list
 
 19. refresh everything
 
-Accept Friends
+[Not done yet] Accept Friends
 
+9. user accept another user's friend request
 
+10. remove that username from requested list
+
+11. add that username into friends list
+
+12. client encode it into message
+
+13. client sends it to server
+
+14. server receives message of acceptance of friend request
+
+15. server decodes it
+
+16. iff that name exist in its requested list
+
+17. remove that username from requested list
+
+18. add that username into friends list in both client 1 and client 2
+
+19. send friend request have been accepted message to client 1
+
+20. client 1 receives message
+
+21. client 1 decodes message
+
+22. client 1 add client 2 into friends list
 
 -----------------------------
 
@@ -155,11 +181,15 @@ List of Symbols:
 
 4 = $ = request ($)
 
-5 = @ = add friend (@client1@client2@)
+[Not done yet] 5 = @ = add friend (@client1@client2@)
 
-6 = ^ = get all usernames(^username^)
+[Not done yet] 6 = ^ = get all usernames(^username^)
 
-7 = ? = unused(used to be request username, now combined into request as well)
+[Not done yet] 7 = ? = accept friend request (?client2?client1?)
+
+[Not done yet] 8 = < = friend request have been accepted(<client1<client2<)
+
+more can be added in the future
 
 -----------------------------
 

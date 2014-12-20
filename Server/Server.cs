@@ -304,6 +304,7 @@ namespace CS408_Step1_Server
                                     c.getsocket().Send(buffer33);
                                 }
                             }
+                            //we forgot to add every existing client into notReply List of that event
                         }
                         else if (check_symbol(ref newmessage) == 3) // attendance(symbol: &)
                         {
@@ -366,6 +367,9 @@ namespace CS408_Step1_Server
                                 byte[] buffer = new byte[64];
                                 buffer = Encoding.Default.GetBytes(event_request);
                                 yeni.Send(buffer);
+                                //we forgot to send goingList, notGoingList and notReplyList
+                                //use 3 more for loop
+                                //encode each of them like newly added attendance reply
                             }
                             MessageBox.Show("Sending complete client list: " + clientarray.Count);
                             for (int i = 0; i < clientarray.Count; i++)
@@ -376,6 +380,7 @@ namespace CS408_Step1_Server
                                 buffer = Encoding.Default.GetBytes(event_request);
                                 yeni.Send(buffer);
                             }
+                            //friends list and request list should be empty at first
                         }
                         else if (check_symbol(ref newmessage) == 5) // add friends(symbol: @)
                         {
@@ -443,18 +448,6 @@ namespace CS408_Step1_Server
                             iney2.Send(buffer64);
                             iney2.Send(buffer2);
                         }
-                        // else if (check_symbol(ref newmessage) == 7) // get names list and send it to client
-                        // {
-                        //     MessageBox.Show("blablabla" + clientarray.Count);
-                        //     for (int i = 0; i < clientarray.Count; i++)
-                        //     {
-                        //         string event_request = "^" + clientarray[i].getname()+ "^";
-                        //         MessageBox.Show(event_request);
-                        //         byte[] buffer = new byte[64];
-                        //         buffer = Encoding.Default.GetBytes(event_request);
-                        //         yeni.Send(buffer);
-                        //     }
-                        // }
                         else
                         {
                             Time = DateTime.Now;
@@ -512,11 +505,17 @@ namespace CS408_Step1_Server
             {
                 return 5;
             }
-            // else if (message.ElementAt(0) == '?') // client requested a list of clients
-            // {
-            //     return 7;
-            // }
+            else if (message.ElementAt(0) == '^') // get usernames from server (reply from server)
+            {
+                return 6;
+            }
             return 0;
+        }
+
+        public bool friendsOrNot(string client1, string client2)
+        {
+            //most sending need to check if this one is true first
+            return true;
         }
 
         private bool checkname(string name)
