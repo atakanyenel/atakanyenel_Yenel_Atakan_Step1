@@ -45,10 +45,6 @@ namespace ClientSide
         {
             directlyToServer = a;
         }
-        public void setdirectlyToServer(string a)
-        {
-            directlyToServer = a;
-        }
         public string getIsItEvent()
         {
             return isItEvent;
