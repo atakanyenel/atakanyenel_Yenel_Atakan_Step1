@@ -43,13 +43,21 @@ namespace CS408_Step1_Server
             {
                 return name;
             }
-            internal List<string> getFL()
+            internal string getstringfriendsList(int a)
             {
-                return friendsList;
+                return friendsList[a];
             }
-            internal List<string> getRL()
+            internal string getstringrequestList(int a)
             {
-                return requestList;
+                return requestList[a];
+            }
+            internal int getfriendsListCountc()
+            {
+                return friendsList.Count;
+            }
+            internal int getrequestListCountc()
+            {
+                return requestList.Count;
             }
             // public void addFriend(string newfriend)
             // {
@@ -79,6 +87,26 @@ namespace CS408_Step1_Server
             Form.CheckForIllegalCrossThreadCalls = false;
         }
 
+        public int getFriendsListCount(int a)
+        {
+            return clientarray[a].getfriendsListCountc();
+        }
+
+        public string getFriendsListItem(int a, int b)
+        {
+            return clientarray[a].getstringfriendsList(b);
+        }
+
+        public int getRequestListCount(int a)
+        {
+            return clientarray[a].getrequestListCountc();
+        }
+
+        public string getRequestListItem(int a, int b)
+        {
+            return clientarray[a].getstringrequestList(b);
+        }
+
         public void addToRequestList(string c1, string c2)
         {
             //put c1 into c2's request List
@@ -92,6 +120,19 @@ namespace CS408_Step1_Server
             }
         }
 
+        public int searchClientID(string un)
+        {
+            int cc = clientarray.Count;
+            for (int i = 0; i < cc; i++)
+            {
+                if (clientarray[i].getname() == un)
+                {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
         public Socket searchClient(string un)
         {
             int cc = clientarray.Count;
@@ -100,32 +141,6 @@ namespace CS408_Step1_Server
                 if (clientarray[i].getname() == un)
                 {
                     return clientarray[i].getsocket();
-                }
-            }
-            return null;
-        }
-
-        public List<string> searchClientFL(string un)
-        {
-            int cc = clientarray.Count;
-            for (int i = 0; i < cc; i++)
-            {
-                if (clientarray[i].getname() == un)
-                {
-                    return clientarray[i].getFL();
-                }
-            }
-            return null;
-        }
-
-        public List<string> searchClientRL(string un)
-        {
-            int cc = clientarray.Count;
-            for (int i = 0; i < cc; i++)
-            {
-                if (clientarray[i].getname() == un)
-                {
-                    return clientarray[i].getRL();
                 }
             }
             return null;
@@ -390,37 +405,29 @@ namespace CS408_Step1_Server
                             string A;
                             string B = newmessage;
                             string[] addfri = new string[2];
-                            for (int i = 0; i < 1; i++)
-                            {
-                                i1 = B.IndexOf("@");
-                                A = B.Substring(i1 + 1);
-                                i2 = A.IndexOf("@");
-                                addfri[0] = B.Substring(1, i2);
-                                B = B.Substring(i2 + 1);
-                            }
-                            B = B.Substring(1);
+                            i1 = B.IndexOf("@");
+                            A = B.Substring(i1 + 1);
+                            i2 = A.IndexOf("@");
+                            addfri[0] = B.Substring(1, i2);
+                            B = B.Substring(i2 + 2);
                             i1 = B.IndexOf("@");
                             addfri[1] = B.Substring(0, i1);
                             //go to c2 (addfri[1])
-                            List<string> tempFL = new List<string>();
-                            List<string> tempRL = new List<string>();
-                            tempFL = searchClientFL(addfri[1]);
-                            tempRL = searchClientRL(addfri[1]);
-                            //search if c1 exists in c2's RL or FL
+                            int c2ID = searchClientID(addfri[1]);
                             bool alreadyFriends = false;
                             bool alreadyRequested = false;
-                            int FLcount = tempFL.Count;
-                            int RLcount = tempRL.Count;
+                            int FLCount = getFriendsListCount(c2ID);
+                            int RLCount = getrequestListCount(c2ID);
                             for (int i = 0; i < FLcount; i++)
                             {
-                                if (tempFL[i] == addfri[0])
+                                if (getFriendsListItem(c2ID, i) == addfri[0])
                                 {
                                     alreadyFriends = true;
                                 }
                             }
-                            for (int i = 0; i < RLcount; i++)
+                            for (int i = 0; i < RLCount; i++)
                             {
-                                if (tempRL[i] == addfri[0])
+                                if (getRequestListItem(c2ID, i) == addfri[0])
                                 {
                                     alreadyRequested = true;
                                 }
@@ -431,6 +438,13 @@ namespace CS408_Step1_Server
                                 {
                                     //add to request list
                                     addToRequestList(addfri[0], addfri[1]);
+                                    //send message to that client immediately
+                                    //send message to that client
+                                    byte[] buffer64 = new byte[64];
+                                    buffer64 = Encoding.Default.GetBytes("#Someone just sent you a friend request!  ");
+                                    Socket iney2 = searchClient(addfri[1]);
+                                    iney2.Send(buffer64);
+                                    iney2.Send(buffer2);
                                 }
                                 else
                                 {
@@ -440,13 +454,6 @@ namespace CS408_Step1_Server
                                 //send a message to c1
                                 //"already requestd blah blah blah"
                             }
-                            //send message to that client immediately
-                            //send message to that client
-                            byte[] buffer64 = new byte[64];
-                            buffer64 = Encoding.Default.GetBytes("#Someone just sent you a friend request!  ");
-                            Socket iney2 = searchClient(addfri[1]);
-                            iney2.Send(buffer64);
-                            iney2.Send(buffer2);
                         }
                         else
                         {

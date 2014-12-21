@@ -23,8 +23,7 @@ namespace ClientSide
         Thread thrReceive;
         bool condition = true;
         string isItEvent = "";
-        string isItRequest = "";
-        string isItAtte = "";
+        string directlyToServer = "";
         Socket c = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         List<events> EventList = new List<events>();
         List<string> listFriends = new List<string>();
@@ -42,30 +41,30 @@ namespace ClientSide
         {
             isItEvent = a;
         }
-        public void setIsItRequest(string a)
+        public void setdirectlyToServer(string a)
         {
-            isItRequest = a;
+            directlyToServer = a;
         }
-        public void setIsItAtte(string a)
+        public void setdirectlyToServer(string a)
         {
-            isItAtte = a;
+            directlyToServer = a;
         }
         public string getIsItEvent()
         {
             return isItEvent;
         }
-        public string getIsItRequest()
+        public string getdirectlyToServer()
         {
-            return isItRequest;
+            return directlyToServer;
         }
         public string getIsItOwner()
         {
             string Owner = tbname.Text;
             return Owner;
         }
-        public string getIsItAtte()
+        public string getdirectlyToServer()
         {
-            return isItAtte;
+            return directlyToServer;
         }
         public int getEventListCount()
         {
@@ -198,12 +197,8 @@ namespace ClientSide
                             c.Close();
                         }
                         this.AcceptButton = this.btnsend;
-                        isItRequest = "$";
+                        directlyToServer = "$";
                         sendButton();
-                        //somehow it sends $?
-                        // isItRequest = "?"; // the client request
-                        // sendButton();
-
                     }
                 }
                 catch
@@ -406,18 +401,11 @@ namespace ClientSide
                     isItEvent = "";
                     this.ActiveControl = tbsend;
                 }
-                else if (isItRequest != "") //just request
+                else if (directlyToServer != "") //just request/attendance/add friends
                 {
-                    //isItRequest should always be just "$"
-                    byte[] buffer = Encoding.Default.GetBytes(isItRequest);
+                    byte[] buffer = Encoding.Default.GetBytes(directlyToServer);
                     c.Send(buffer);
-                    isItRequest = "";
-                }
-                else if (isItAtte != "") //just attendence
-                {
-                    byte[] buffer = Encoding.Default.GetBytes(isItAtte);
-                    c.Send(buffer);
-                    isItAtte = "";
+                    directlyToServer = "";
                 }
                 else if (tbsendTextBox != "") //just message
                 {
