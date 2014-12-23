@@ -55,8 +55,6 @@ namespace ClientSide
                 //c) yourself
                 listBox1.Items.Add(this.mainForm.listAllClinets(x));
             }
-
-
         }
 
         private void addfriend_Click(object sender, EventArgs e)
@@ -64,12 +62,19 @@ namespace ClientSide
             // ads a friends from list of requests
             // 1. check if anything in listBox? have been selected
             // 2. encode message
+            string temp = "@" + /*sth*/ +"@" + /*sth*/ + "@";
             // 3. store message in client master(setdirectlyToServer(string a))
+            this.mainForm.setdirectlyToServer(temp);
             // 4. trigger send button(this.mainForm.sendButton())
+            this.mainForm.sendButton();
         }
 
         private void removefriend_Click(object sender, EventArgs e)
         {
+
+            //remove this function. We don't have enough time
+
+
             // removes a friend from list of friends and ads it to the list of others
             // 1. check if anything in listBox? have been selected
             // 2. encode message

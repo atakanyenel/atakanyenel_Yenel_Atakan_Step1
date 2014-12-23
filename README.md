@@ -1,6 +1,12 @@
 atakanyenel_Yenel_Atakan_Step1
 ==============================
 
+How to save time:
+
+1. Maybe we should ditch remove friend functionality
+
+2. Maybe we should ditch the add + accept friends to just add
+
 Step 3:
 
 1) Only friends can communicate, invite, etc

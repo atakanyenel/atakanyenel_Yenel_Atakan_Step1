@@ -7,9 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-// imported libraries
-
 using System.Net;
 using System.Threading;
 using System.Net.Sockets;
@@ -59,18 +56,18 @@ namespace CS408_Step1_Server
             {
                 return requestList.Count;
             }
-            // public void addFriend(string newfriend)
-            // {
-            //
-            // }
+            public void addFriend(string newfriend)
+            {
+                friendsList.Add(newfriend);
+            }
             public void addRequest(string newfriend)
             {
                 requestList.Add(newfriend);
             }
-            //public bool delFriend(string newfriend)
-            //{
-
-            //}
+            // public bool delFriend(string newfriend)
+            // {
+            //     //How to use remove?
+            // }
         };
 
         DateTime Time;
@@ -504,7 +501,7 @@ namespace CS408_Step1_Server
                 message = message.Substring(0, message.Length - 2);
                 return 3;
             }
-            else if (message.ElementAt(0) == '$') // request events list
+            else if (message.ElementAt(0) == '$') // request
             {
                 return 4;
             }

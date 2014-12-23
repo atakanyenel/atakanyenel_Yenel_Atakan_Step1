@@ -34,9 +34,7 @@ namespace ClientSide
         {
             InitializeComponent();
             Form.CheckForIllegalCrossThreadCalls = false;
-
         }
-        //DO NOT create set functions for events date/title/org/desc/place
         public void setIsItEvent(string a)
         {
             isItEvent = a;
