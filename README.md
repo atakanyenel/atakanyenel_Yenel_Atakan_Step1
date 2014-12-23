@@ -7,6 +7,14 @@ How to save time:
 
 2. Maybe we should ditch the add + accept friends to just add
 
+What we need to fix:
+
+1. Dynamic buffer size
+
+2. "Someone just responded to your event" error
+
+3. Reconnect event with no attendance record error
+
 Step 3:
 
 1) Only friends can communicate, invite, etc

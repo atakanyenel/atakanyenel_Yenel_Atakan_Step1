@@ -184,15 +184,15 @@ namespace ClientSide
                             tbname.Enabled = false;
                             tbport.Enabled = false;
                             condition = true;
+                            this.AcceptButton = this.btnsend;
+                            directlyToServer = "$";
+                            sendButton();
                         }
                         else
                         {
                             MessageBox.Show("YOUR NAME IS INVALID");
                             c.Close();
                         }
-                        this.AcceptButton = this.btnsend;
-                        directlyToServer = "$";
-                        sendButton();
                     }
                 }
                 catch
