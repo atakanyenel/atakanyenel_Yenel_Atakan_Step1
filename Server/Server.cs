@@ -357,9 +357,13 @@ namespace CS408_Step1_Server
                             {
                                 eventsarray[eID].addNotGoingList(atte_rec[1]);
                             }
+                            else if (atte_rec[2] == "-1") //not reply
+                            {
+                                eventsarray[eID].addNotReplyList(atte_rec[1]);
+                            }
                             else
                             {
-                                MessageBox.Show("You can only choose between Yes or No");
+                                MessageBox.Show("Something's wrong!");
                             }
                             //send notificatino back to organizer
                             //Someone just responded to your event!
@@ -371,20 +375,42 @@ namespace CS408_Step1_Server
                         }
                         else if (check_symbol(ref newmessage) == 4) // event request(symbol: $)
                         {
-                            MessageBox.Show("Sending Event list: " + clientarray.Count);
+                            MessageBox.Show("[Remove this before sumbit] Sending Event list: " + clientarray.Count);
                             for (int i = 0; i < eventsarray.Count; i++)
                             {
                                 //Recieved a request of event lists, so server will send them
                                 //"%" + date + "%" + title + "%" + place + "%" + description + "%" + organizer + "%";
-                                string event_request = "%" + eventsarray[i].getDate() + "%" + eventsarray[i].getTitle() + "%" + eventsarray[i].getPlace() + "%" + eventsarray[i].getDesc() + "%" + eventsarray[i].getOrganizer() + "%";
+                                string sendThis = "%" + eventsarray[i].getDate() + "%" + eventsarray[i].getTitle() + "%" + eventsarray[i].getPlace() + "%" + eventsarray[i].getDesc() + "%" + eventsarray[i].getOrganizer() + "%";
                                 byte[] buffer = new byte[64];
-                                buffer = Encoding.Default.GetBytes(event_request);
+                                buffer = Encoding.Default.GetBytes(sendThis);
                                 yeni.Send(buffer);
                                 //we forgot to send goingList, notGoingList and notReplyList
                                 //use 3 more for loop
+                                int glc = eventsarray[i].getGoingListCount();
+                                int nglc = eventsarray[i].getNotGoingListCount();
+                                int nrlc = eventsarray[i].getNotRepluListCount();
                                 //encode each of them like newly added attendance reply
+                                for (int j = 0; j<glc; j++)
+                                {
+                                    sendThis = "&" + i + "&" + eventsarray[i].getGoingList(j) + "&1&";
+                                    buffer = Encoding.Default.GetBytes(sendThis);
+                                    yeni.Send(buffer);
+                                }
+                                for (int j = 0; j<nglc; j++)
+                                {
+                                    sendThis = "&" + i + "&" + eventsarray[i].getNotGoingList(j) + "&0&";
+                                    buffer = Encoding.Default.GetBytes(sendThis);
+                                    yeni.Send(buffer);
+                                }
+                                for (int j = 0; j<nrlc; j++)
+                                {
+                                    sendThis = "&" + i + "&" + eventsarray[i].getNotReplyList(j) + "&-1&";
+                                    buffer = Encoding.Default.GetBytes(sendThis);
+                                    yeni.Send(buffer);
+                                }
+                                //"&"+{event id}"&"{username}&{yes or no}"&"
                             }
-                            MessageBox.Show("Sending complete client list: " + clientarray.Count);
+                            MessageBox.Show("[Remove this before sumbit] Sending complete client list: " + clientarray.Count);
                             for (int i = 0; i < clientarray.Count; i++)
                             {
                                 string event_request = "^" + clientarray[i].getname()+ "^";
