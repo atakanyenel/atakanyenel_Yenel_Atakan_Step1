@@ -140,7 +140,7 @@ namespace ClientSide
         {
             return listFriends.Contains(nameOf);
         }
-        
+
 
         // the function for connecting the client to the server. A client uses an port number, IP number and a given name to connect to the server.
         // If the name textbox is empty or if the name alredy exists in the clients list that the user is asked to use another name
@@ -347,7 +347,7 @@ namespace ClientSide
                                 listFriends.Add(addfri[1]);
                             }
                         }
-                        else if (check_symbol(ref receivedmessage) == 7) // add clients(symbol: §)
+                        else if (check_symbol(ref receivedmessage) == 7) // update all client list
                         {
                             int i1 = 0;
                             int i2 = 0;
@@ -409,7 +409,7 @@ namespace ClientSide
             {
                 return 6;
             }
-            else if (message.ElementAt(0) == '§') // get usernames from server (reply from server)
+            else if (message.ElementAt(0) == '§') // update all client list
             {
                 return 7;
             }

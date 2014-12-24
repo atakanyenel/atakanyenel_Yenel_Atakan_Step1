@@ -265,14 +265,14 @@ namespace CS408_Step1_Server
 
                             string clientsendername = clientarray[pos].getname();
                             sendmessage = Encoding.Default.GetBytes(newmessage);
-                            
+
 
                             for (int k = 0; k < clientarray.Count; k++)
                             {
 
                                 string any = clientarray[k].getname();
                                 bool friend = isItFriend_server(any, clientsendername);
-                                // && 
+                                // &&
                                 if (friend == true)
                                     clientarray[k].getsocket().Send(sendmessage);
                                 else if (k == pos)
@@ -333,7 +333,7 @@ namespace CS408_Step1_Server
                         }
                         else if (check_symbol(ref newmessage) == 3) // attendance(symbol: &)
                         {
-                            
+
                             int i1 = 0;
                             int i2 = 0;
                             string A;
@@ -483,11 +483,8 @@ namespace CS408_Step1_Server
                             add_friends_2ways(addfri[0], addfri[1]);
                             iney2.Send(buffer64);
                             iney2.Send(buffer2);
-                                
-                                //send a message to c1
-                                //"already requestd blah blah blah"
                             }
-                        else if (check_symbol(ref newmessage) == 7) // add friends(symbol: @)
+                        else if (check_symbol(ref newmessage) == 7) // update all client list
                         {
                             byte[] buffer = new byte[64];
                             foreach (client c in clientarray)
@@ -557,7 +554,7 @@ namespace CS408_Step1_Server
             {
                 return 6;
             }
-            else if (message.ElementAt(0) == '§') // get usernames from server (reply from server)
+            else if (message.ElementAt(0) == '§') // add new client to all client list
             {
                 return 7;
             }
