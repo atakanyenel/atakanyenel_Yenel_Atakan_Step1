@@ -28,32 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.removefriend = new System.Windows.Forms.Button();
             this.addfriend = new System.Windows.Forms.Button();
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btnRefresh = new System.Windows.Forms.Button();
-            this.btnAccept = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // removefriend
-            // 
-            this.removefriend.Location = new System.Drawing.Point(138, 198);
-            this.removefriend.Name = "removefriend";
-            this.removefriend.Size = new System.Drawing.Size(111, 23);
-            this.removefriend.TabIndex = 7;
-            this.removefriend.Text = "<--Remove";
-            this.removefriend.UseVisualStyleBackColor = true;
-            this.removefriend.Click += new System.EventHandler(this.removefriend_Click);
-            // 
             // addfriend
             // 
-            this.addfriend.Location = new System.Drawing.Point(138, 169);
+            this.addfriend.Location = new System.Drawing.Point(139, 129);
             this.addfriend.Name = "addfriend";
             this.addfriend.Size = new System.Drawing.Size(111, 23);
             this.addfriend.TabIndex = 6;
@@ -72,27 +58,10 @@
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 129);
+            this.listBox1.Location = new System.Drawing.Point(12, 25);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 173);
+            this.listBox1.Size = new System.Drawing.Size(120, 277);
             this.listBox1.TabIndex = 4;
-            // 
-            // listBox3
-            // 
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.Location = new System.Drawing.Point(12, 25);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(120, 82);
-            this.listBox3.TabIndex = 8;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Requests:";
             // 
             // label2
             // 
@@ -106,7 +75,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 113);
+            this.label3.Location = new System.Drawing.Point(12, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 11;
@@ -114,7 +83,7 @@
             // 
             // btnRefresh
             // 
-            this.btnRefresh.Location = new System.Drawing.Point(138, 250);
+            this.btnRefresh.Location = new System.Drawing.Point(139, 158);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(111, 23);
             this.btnRefresh.TabIndex = 12;
@@ -122,18 +91,9 @@
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
-            // btnAccept
-            // 
-            this.btnAccept.Location = new System.Drawing.Point(138, 52);
-            this.btnAccept.Name = "btnAccept";
-            this.btnAccept.Size = new System.Drawing.Size(111, 23);
-            this.btnAccept.TabIndex = 14;
-            this.btnAccept.Text = "Accept -->";
-            this.btnAccept.UseVisualStyleBackColor = true;
-            // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(138, 279);
+            this.btnExit.Location = new System.Drawing.Point(139, 279);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(111, 23);
             this.btnExit.TabIndex = 15;
@@ -147,13 +107,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(393, 323);
             this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.btnAccept);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox3);
-            this.Controls.Add(this.removefriend);
             this.Controls.Add(this.addfriend);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.listBox1);
@@ -166,16 +122,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Button removefriend;
         private System.Windows.Forms.Button addfriend;
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnRefresh;
-        private System.Windows.Forms.Button btnAccept;
         private System.Windows.Forms.Button btnExit;
     }
 }

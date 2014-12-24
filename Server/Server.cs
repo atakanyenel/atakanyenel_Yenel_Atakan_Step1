@@ -21,9 +21,8 @@ namespace CS408_Step1_Server
         {
             public string name;
             public Socket clisoc;
-            public int attending;
+            //public int attending;
             public List<string> friendsList = new List<string>();
-            public List<string> requestList = new List<string>();
             internal void setname(string strclientname)
             {
                 name = strclientname;
@@ -32,6 +31,7 @@ namespace CS408_Step1_Server
             {
                 clisoc = yeni;
             }
+
             internal Socket getsocket()
             {
                 return clisoc;
@@ -44,30 +44,19 @@ namespace CS408_Step1_Server
             {
                 return friendsList[a];
             }
-            internal string getstringrequestList(int a)
-            {
-                return requestList[a];
-            }
             internal int getfriendsListCountc()
             {
                 return friendsList.Count;
-            }
-            internal int getrequestListCountc()
-            {
-                return requestList.Count;
             }
             public void addFriend(string newfriend)
             {
                 friendsList.Add(newfriend);
             }
-            public void addRequest(string newfriend)
+            public bool isItFriend(string nameOf)
             {
-                requestList.Add(newfriend);
+                return friendsList.Contains(nameOf);
             }
-            // public bool delFriend(string newfriend)
-            // {
-            //     //How to use remove?
-            // }
+
         };
 
         DateTime Time;
@@ -94,29 +83,6 @@ namespace CS408_Step1_Server
             return clientarray[a].getstringfriendsList(b);
         }
 
-        public int getRequestListCount(int a)
-        {
-            return clientarray[a].getrequestListCountc();
-        }
-
-        public string getRequestListItem(int a, int b)
-        {
-            return clientarray[a].getstringrequestList(b);
-        }
-
-        public void addToRequestList(string c1, string c2)
-        {
-            //put c1 into c2's request List
-            int cc = clientarray.Count;
-            for (int i = 0; i < cc; i++)
-            {
-                if (clientarray[i].getname() == c2)
-                {
-                    clientarray[i].addRequest(c1);
-                }
-            }
-        }
-
         public int searchClientID(string un)
         {
             int cc = clientarray.Count;
@@ -130,6 +96,32 @@ namespace CS408_Step1_Server
             return -1;
         }
 
+        public Socket get_me_socket(int client_ID)
+        {
+            return clientarray[client_ID].getsocket();
+        }
+
+        public void add_friends_2ways(string c1, string c2)
+        {
+            int c1_ID = searchClientID(c1);
+            int c2_ID = searchClientID(c2);
+
+            if ((clientarray[c1_ID].isItFriend(c2) == false) && (clientarray[c2_ID].isItFriend(c1) == false))
+            {
+                clientarray[c1_ID].addFriend(c2);
+                clientarray[c2_ID].addFriend(c1);
+            }
+
+            Socket c1_socket = get_me_socket(c1_ID);
+            Socket c2_socket = get_me_socket(c2_ID);
+
+            string new_friends = "@" + c1 + "@" + c2 + "@";
+
+            byte[] buffer = new byte[64];
+            buffer = Encoding.Default.GetBytes(new_friends);
+            c1_socket.Send(buffer);
+            c2_socket.Send(buffer);
+        }
         public Socket searchClient(string un)
         {
             int cc = clientarray.Count;
@@ -141,6 +133,12 @@ namespace CS408_Step1_Server
                 }
             }
             return null;
+        }
+
+        public bool isItFriend_server(string nameOf, string sender)
+        {
+            int ID_client = searchClientID(sender);
+            return clientarray[ID_client].isItFriend(nameOf);
         }
 
         // function for START. With this function the server starts listening to the port that is given by the user.
@@ -251,6 +249,8 @@ namespace CS408_Step1_Server
                         {
                             c.getsocket().Send(sendmessage);
                         }
+                        sendmessage = Encoding.Default.GetBytes("§" + strclientname + "§");
+                        c.getsocket().Send(sendmessage);
                     }
                     bool condition = true;
                     while (condition)
@@ -259,15 +259,23 @@ namespace CS408_Step1_Server
                         yeni.Receive(buffer2);
                         string newmessage = Encoding.Default.GetString(buffer2);
                         int pos = clientarray.IndexOf(clientarray.Find(client => client.getsocket() == yeni));
+
                         if (check_symbol(ref newmessage) == 2) //message
                         {
+
                             string clientsendername = clientarray[pos].getname();
                             sendmessage = Encoding.Default.GetBytes(newmessage);
+                            
+
                             for (int k = 0; k < clientarray.Count; k++)
                             {
-                                if (k != pos)
+
+                                string any = clientarray[k].getname();
+                                bool friend = isItFriend_server(any, clientsendername);
+                                // && 
+                                if (friend == true)
                                     clientarray[k].getsocket().Send(sendmessage);
-                                else
+                                else if (k == pos)
                                 {
                                     Time = DateTime.Now;
                                     richTextBox1.Text = richTextBox1.Text + "-> " + clientsendername + " sent a message at " + Time + ".\r\n";
@@ -308,12 +316,14 @@ namespace CS408_Step1_Server
                             {
                                 c.getsocket().Send(buffer2);
                             }
+                            //iff frinds only
+                            //isItFriend_server
                             byte[] buffer33 = Encoding.Default.GetBytes("#" + event_info[4] + " just created an new event!  ");
                             //get that event (event count-1?)
                             int thisEvent = eventsarray.Count-1;
                             foreach (client c in clientarray)
                             {
-                                if (c.getsocket() != yeni)
+                                if (c.getsocket() != yeni && isItFriend_server(event_info[4], c.getname())== true)
                                 {
                                     c.getsocket().Send(buffer33);
                                     //add c.getname() into it Not reply list of this event
@@ -323,12 +333,7 @@ namespace CS408_Step1_Server
                         }
                         else if (check_symbol(ref newmessage) == 3) // attendance(symbol: &)
                         {
-                            byte[] buffer = new byte[64];
-                            buffer = Encoding.Default.GetBytes(newmessage);
-                            foreach (client c in clientarray)
-                            {
-                                c.getsocket().Send(buffer);
-                            }
+                            
                             int i1 = 0;
                             int i2 = 0;
                             string A;
@@ -347,38 +352,64 @@ namespace CS408_Step1_Server
                             atte_rec[2] = B.Substring(0, i1);
                             //convert event id into int
                             int eID = Convert.ToInt32(atte_rec[0]);
-                            //remove that username from all instance of that event
-                            eventsarray[eID].removeGoingList(atte_rec[1]);
-                            eventsarray[eID].removeNotGoingList(atte_rec[1]);
-                            eventsarray[eID].removeNotReplyList(atte_rec[1]);
-                            //decide where the username should be store according to event and answer
-                            if (atte_rec[2] == "1") //going
+                            bool exist = false;
+                            bool exist1 = false;
+                            bool exist2 = false;
+                            bool exist3 = false;
+
+                            exist1 = eventsarray[eID].existGL(atte_rec[1]);
+                            exist2 = eventsarray[eID].existNGL(atte_rec[1]);
+                            exist3 = eventsarray[eID].existNRL(atte_rec[1]);
+                            exist = exist1 || exist2 || exist3;
+
+
+                            if (exist == true)
                             {
-                                eventsarray[eID].addGoingList(atte_rec[1]);
-                            }
-                            else if (atte_rec[2] == "0") //not going
-                            {
-                                eventsarray[eID].addNotGoingList(atte_rec[1]);
-                            }
-                            else if (atte_rec[2] == "-1") //not reply
-                            {
-                                eventsarray[eID].addNotReplyList(atte_rec[1]);
+                                byte[] buffer = new byte[64];
+                                buffer = Encoding.Default.GetBytes(newmessage);
+                                foreach (client c in clientarray)
+                                {
+                                    c.getsocket().Send(buffer);
+                                }
+                                //remove that username from all instance of that event
+                                eventsarray[eID].removeGoingList(atte_rec[1]);
+                                eventsarray[eID].removeNotGoingList(atte_rec[1]);
+                                eventsarray[eID].removeNotReplyList(atte_rec[1]);
+                                //decide where the username should be store according to event and answer
+                                if (atte_rec[2] == "1") //going
+                                {
+                                    eventsarray[eID].addGoingList(atte_rec[1]);
+                                }
+                                else if (atte_rec[2] == "0") //not going
+                                {
+                                    eventsarray[eID].addNotGoingList(atte_rec[1]);
+                                }
+                                else if (atte_rec[2] == "-1") //not reply
+                                {
+                                    eventsarray[eID].addNotReplyList(atte_rec[1]);
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Something's wrong!");
+                                }
+                                //send notificatino back to organizer
+                                //Someone just responded to your event!
+                                string replyTo = eventsarray[eID].getOrganizer();
+                                byte[] buffer20 = new byte[64];
+                                buffer20 = Encoding.Default.GetBytes("#Someone just responded to your event!  ");
+                                Socket iney = searchClient(replyTo);
+                                iney.Send(buffer20);
                             }
                             else
                             {
-                                MessageBox.Show("Something's wrong!");
+                                byte[] buffer356 = new byte[64];
+                                buffer356 = Encoding.Default.GetBytes("#You are not invited  ");
+                                yeni.Send(buffer356);
                             }
-                            //send notificatino back to organizer
-                            //Someone just responded to your event!
-                            string replyTo = eventsarray[eID].getOrganizer();
-                            byte[] buffer20 = new byte[64];
-                            buffer20 = Encoding.Default.GetBytes("#Someone just responded to your event!  ");
-                            Socket iney = searchClient(replyTo);
-                            iney.Send(buffer20);
                         }
                         else if (check_symbol(ref newmessage) == 4) // event request(symbol: $)
                         {
-                            MessageBox.Show("[Remove this before sumbit] Sending Event list: " + clientarray.Count);
+                            //MessageBox.Show("[Remove this before sumbit] Sending Event list: " + clientarray.Count);
                             for (int i = 0; i < eventsarray.Count; i++)
                             {
                                 //Recieved a request of event lists, so server will send them
@@ -391,7 +422,7 @@ namespace CS408_Step1_Server
                                 //use 3 more for loop
                                 int glc = eventsarray[i].getGoingListCount();
                                 int nglc = eventsarray[i].getNotGoingListCount();
-                                int nrlc = eventsarray[i].getNotRepluListCount();
+                                int nrlc = eventsarray[i].getNotReplyListCount();
                                 //encode each of them like newly added attendance reply
                                 for (int j = 0; j<glc; j++)
                                 {
@@ -413,11 +444,11 @@ namespace CS408_Step1_Server
                                 }
                                 //"&"+{event id}"&"{username}&{yes or no}"&"
                             }
-                            MessageBox.Show("[Remove this before sumbit] Sending complete client list: " + clientarray.Count);
+                            //MessageBox.Show("[Remove this before sumbit] Sending complete client list: " + clientarray.Count);
                             for (int i = 0; i < clientarray.Count; i++)
                             {
                                 string event_request = "^" + clientarray[i].getname()+ "^";
-                                MessageBox.Show(event_request);
+                                //MessageBox.Show(event_request);
                                 byte[] buffer = new byte[64];
                                 buffer = Encoding.Default.GetBytes(event_request);
                                 yeni.Send(buffer);
@@ -441,45 +472,27 @@ namespace CS408_Step1_Server
                             addfri[1] = B.Substring(0, i1);
                             //go to c2 (addfri[1])
                             int c2ID = searchClientID(addfri[1]);
-                            bool alreadyFriends = false;
-                            bool alreadyRequested = false;
                             int FLCount = getFriendsListCount(c2ID);
-                            int RLCount = getrequestListCount(c2ID);
-                            for (int i = 0; i < FLcount; i++)
-                            {
-                                if (getFriendsListItem(c2ID, i) == addfri[0])
-                                {
-                                    alreadyFriends = true;
-                                }
-                            }
-                            for (int i = 0; i < RLCount; i++)
-                            {
-                                if (getRequestListItem(c2ID, i) == addfri[0])
-                                {
-                                    alreadyRequested = true;
-                                }
-                            }
-                            if (alreadyRequested == false)
-                            {
-                                if (alreadyFriends == false)
-                                {
-                                    //add to request list
-                                    addToRequestList(addfri[0], addfri[1]);
-                                    //send message to that client immediately
-                                    //send message to that client
-                                    byte[] buffer64 = new byte[64];
-                                    buffer64 = Encoding.Default.GetBytes("#Someone just sent you a friend request!  ");
-                                    Socket iney2 = searchClient(addfri[1]);
-                                    iney2.Send(buffer64);
-                                    iney2.Send(buffer2);
-                                }
-                                else
-                                {
-                                    //not possible
-                                    MessageBox.Show("Not Possible(alreadyFriends == true)");
-                                }
+
+                            //add to request list
+                            //send message to that client immediately
+                            //send message to that client
+                            byte[] buffer64 = new byte[64];
+                            buffer64 = Encoding.Default.GetBytes("#Someone just sent you a friend request!  ");
+                            Socket iney2 = searchClient(addfri[0]);
+                            add_friends_2ways(addfri[0], addfri[1]);
+                            iney2.Send(buffer64);
+                            iney2.Send(buffer2);
+                                
                                 //send a message to c1
                                 //"already requestd blah blah blah"
+                            }
+                        else if (check_symbol(ref newmessage) == 7) // add friends(symbol: @)
+                        {
+                            byte[] buffer = new byte[64];
+                            foreach (client c in clientarray)
+                            {
+                                c.getsocket().Send(buffer);
                             }
                         }
                         else
@@ -489,6 +502,7 @@ namespace CS408_Step1_Server
                             newmessage = clientarray[pos].getname() + " has left the conversation.";
                             sendmessage = Encoding.Default.GetBytes(newmessage);
                             clientarray[pos].getsocket().Close();
+                            //somethings wrong here?
                             clientarray.RemoveAt(pos);
                             foreach (client c in clientarray)
                             {
@@ -542,6 +556,10 @@ namespace CS408_Step1_Server
             else if (message.ElementAt(0) == '^') // get usernames from server (reply from server)
             {
                 return 6;
+            }
+            else if (message.ElementAt(0) == '§') // get usernames from server (reply from server)
+            {
+                return 7;
             }
             return 0;
         }

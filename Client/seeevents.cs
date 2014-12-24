@@ -42,7 +42,12 @@ namespace ClientSide
                 cbOrganizers.Items.Clear();
                 for (int i = 0; i < count; i++)
                 {
-                    cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
+                    string org = this.mainForm.getEventListGetOrganize(i);
+                    bool check = this.mainForm.isItFriend(org);
+                    if (check == true)
+                    {
+                        cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
+                    }
                 }
             }
         }
@@ -62,7 +67,13 @@ namespace ClientSide
                 cbOrganizers.Items.Clear();
                 for (int i = 0; i<count; i++)
                 {
-                    cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
+                    string org = this.mainForm.getEventListGetOrganize(i);
+                    bool check = this.mainForm.isItFriend(org);
+                    if (check == true)
+                    {
+                        cbOrganizers.Items.Add(this.mainForm.getEventListGetTitle(i));
+                    }
+                    
                 }
             }
             else

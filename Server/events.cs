@@ -98,6 +98,22 @@ namespace CS408_Step1_Server
             return notReplyList.Count;
         }
 
+
+        public bool existGL(string name)
+        {
+            return goingList.Contains(name);
+        }
+        public bool existNGL(string name)
+        {
+            return notGoingList.Contains(name);
+        }
+
+        public bool existNRL(string name)
+        {
+            return notReplyList.Contains(name);
+        }
+
+
         //search functions for the 3 lists
         //update event.cs in client as well
         public int searchGoingList(string un)

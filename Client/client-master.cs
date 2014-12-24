@@ -27,7 +27,6 @@ namespace ClientSide
         Socket c = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         List<events> EventList = new List<events>();
         List<string> listFriends = new List<string>();
-        List<string> listRequests = new List<string>();
         List<string> listAllClients = new List<string>();
 
         public Form1()
@@ -55,10 +54,6 @@ namespace ClientSide
         {
             string Owner = tbname.Text;
             return Owner;
-        }
-        public string getdirectlyToServer()
-        {
-            return directlyToServer;
         }
         public int getEventListCount()
         {
@@ -122,17 +117,9 @@ namespace ClientSide
         {
             return EventList[eID].getNotReplyListCount();
         }
-        public int getCountREQ()
-        {
-            return listRequests.Count;
-        }
         public int getCountFRI()
         {
             return listFriends.Count;
-        }
-        public string listRequestsX(int name)
-        {
-            return listRequests[name];
         }
 
         public string listFriendsX(int name)
@@ -149,8 +136,11 @@ namespace ClientSide
         {
             return listAllClients[name];
         }
-
-
+        public bool isItFriend(string nameOf)
+        {
+            return listFriends.Contains(nameOf);
+        }
+        
 
         // the function for connecting the client to the server. A client uses an port number, IP number and a given name to connect to the server.
         // If the name textbox is empty or if the name alredy exists in the clients list that the user is asked to use another name
@@ -183,6 +173,9 @@ namespace ClientSide
                             btnsend.Enabled = true;
                             tbname.Enabled = false;
                             tbport.Enabled = false;
+                            btnFriends.Enabled = true;
+                            button1.Enabled = true;
+                            button2.Enabled = true;
                             condition = true;
                             this.AcceptButton = this.btnsend;
                             directlyToServer = "$";
@@ -207,6 +200,9 @@ namespace ClientSide
                     Connect.Text = "Connect";
                     Connect.BackColor = DefaultBackColor;
                     btnsend.Enabled = false;
+                    btnFriends.Enabled = false;
+                    button1.Enabled = false;
+                    button2.Enabled = false;
                     byte[] buffer = new byte[64];
                     string text = "d";
                     buffer = Encoding.Default.GetBytes(text);
@@ -326,6 +322,45 @@ namespace ClientSide
                             listAllClients.Add(reply_usernames_S);
 
                         }
+                        else if (check_symbol(ref receivedmessage) == 5) // add friends(symbol: @)
+                        {
+                            int i1 = 0;
+                            int i2 = 0;
+                            string A;
+                            string B = receivedmessage;
+                            string[] addfri = new string[2];
+                            i1 = B.IndexOf("@");
+                            A = B.Substring(i1 + 1);
+                            i2 = A.IndexOf("@");
+                            addfri[0] = B.Substring(1, i2);
+                            B = B.Substring(i2 + 2);
+                            i1 = B.IndexOf("@");
+                            addfri[1] = B.Substring(0, i1);
+                            string my_name = tbname.Text;
+
+                            if (addfri[0] != my_name)
+                            {
+                                listFriends.Add(addfri[0]);
+                            }
+                            else
+                            {
+                                listFriends.Add(addfri[1]);
+                            }
+                        }
+                        else if (check_symbol(ref receivedmessage) == 7) // add clients(symbol: §)
+                        {
+                            int i1 = 0;
+                            int i2 = 0;
+                            string A;
+                            string B = receivedmessage;
+                            string addc;
+                            i1 = B.IndexOf("§");
+                            A = B.Substring(i1 + 1);
+                            i2 = A.IndexOf("§");
+                            addc = B.Substring(1, i2);
+                            listAllClients.Add(addc);
+                        }
+
                     }
                 }
             }
@@ -373,6 +408,10 @@ namespace ClientSide
             else if (message.ElementAt(0) == '^') // get usernames from server (reply from server)
             {
                 return 6;
+            }
+            else if (message.ElementAt(0) == '§') // get usernames from server (reply from server)
+            {
+                return 7;
             }
             return 0;
         }
