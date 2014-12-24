@@ -363,9 +363,10 @@ namespace CS408_Step1_Server
                             }
                             //send notificatino back to organizer
                             //Someone just responded to your event!
+                            string replyTo = eventsarray[eID].getOrganizer();
                             byte[] buffer20 = new byte[64];
                             buffer20 = Encoding.Default.GetBytes("#Someone just responded to your event!  ");
-                            Socket iney = searchClient(atte_rec[1]);
+                            Socket iney = searchClient(replyTo);
                             iney.Send(buffer20);
                         }
                         else if (check_symbol(ref newmessage) == 4) // event request(symbol: $)
