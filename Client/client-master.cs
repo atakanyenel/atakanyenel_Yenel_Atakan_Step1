@@ -298,7 +298,6 @@ namespace ClientSide
                             if (atte_rec[2] == "1") //going
                             {
                                 EventList[eID].addGoingList(atte_rec[1]);
-                                int glc = EventList[eID].getGoingListCount();
                             }
                             else if (atte_rec[2] == "0") //not going
                             {

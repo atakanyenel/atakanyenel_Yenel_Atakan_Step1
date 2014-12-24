@@ -191,7 +191,7 @@ List of Symbols:
 
 2 = # = message ("#" + tbname.Text + ": " + tbsendTextBox + "\r\n")
 
-3 = & = attendance ("&"+{enent id}"&"{username}&{yes or no}"&")
+3 = & = attendance ("&"{event id}"&"{username}&{yes or no}"&")
 
 4 = $ = request ($)
 

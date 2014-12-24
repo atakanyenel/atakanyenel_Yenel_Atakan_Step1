@@ -309,14 +309,17 @@ namespace CS408_Step1_Server
                                 c.getsocket().Send(buffer2);
                             }
                             byte[] buffer33 = Encoding.Default.GetBytes("#" + event_info[4] + " just created an new event!  ");
+                            //get that event (event count-1?)
+                            int thisEvent = eventsarray.Count-1;
                             foreach (client c in clientarray)
                             {
                                 if (c.getsocket() != yeni)
                                 {
                                     c.getsocket().Send(buffer33);
+                                    //add c.getname() into it Not reply list of this event
+                                    eventsarray[thisEvent].addNotReplyList(c.getname());
                                 }
                             }
-                            //we forgot to add every existing client into notReply List of that event
                         }
                         else if (check_symbol(ref newmessage) == 3) // attendance(symbol: &)
                         {
