@@ -304,9 +304,13 @@ namespace ClientSide
                             {
                                 EventList[eID].addNotGoingList(atte_rec[1]);
                             }
+                            else if (atte_rec[2] == "-1") //not reply
+                            {
+                                EventList[eID].addNotReplyList(atte_rec[1]);
+                            }
                             else
                             {
-                                MessageBox.Show("You can only choose between Yes or No");
+                                MessageBox.Show("Something's wrong");
                             }
                         }
                         else if (check_symbol(ref receivedmessage) == 6) // serevr replyed with the list of clients
