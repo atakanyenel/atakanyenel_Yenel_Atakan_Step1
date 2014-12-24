@@ -16,22 +16,16 @@ namespace ClientSide
 {
     public partial class newevent : Form
     {
-
         public newevent()
         {
             InitializeComponent();
         }
-
         private Form1 mainForm = null;
         public newevent(Form callingForm)
         {
            mainForm = callingForm as Form1;
            InitializeComponent();
         }
-        //overload constructor, with an input of Form1, so it can access
-        //functions in Form1 (esp. btnsend_Click(object, EventArgs))
-        //but maybe we should move everything inside btnsend_Click to a
-
         private void createButton()
         {
             if (txtDescription.Text == "" || txtTitle.Text == "" || txtPlace.Text == "" ){
@@ -49,7 +43,6 @@ namespace ClientSide
             clear();
             }
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             createButton();

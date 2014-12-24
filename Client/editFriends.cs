@@ -31,11 +31,14 @@ namespace ClientSide
             listBox2.Items.Clear();
             listBox1.Items.Clear();
 
+            List<string> ToBeExclude = new List<string>();
+            ToBeExclude.Add(this.mainForm.getTbName());
             //Request List
             int i = this.mainForm.getCountREQ();
             for (int x = 0; x < i; x++)
             {
                listBox3.Items.Add(this.mainForm.listRequestsX(x));
+               ToBeExclude.Add(this.mainForm.listRequestsX(x));
             }
 
             //Friends List
@@ -43,6 +46,7 @@ namespace ClientSide
             for (int x = 0; x < i; x++)
             {
                listBox2.Items.Add(this.mainForm.listFriendsX(x));
+               ToBeExclude.Add(this.mainForm.listRequestsX(x));
             }
 
             //all users list
@@ -53,7 +57,11 @@ namespace ClientSide
                 //a) that user is friends
                 //b) that user is requesting
                 //c) yourself
-                listBox1.Items.Add(this.mainForm.listAllClinets(x));
+                string temp351 = this.mainForm.listAllClinets(x);
+                if (ToBeExclude.Contain(temp351) != true)
+                {
+                    listBox1.Items.Add(temp351);
+                }
             }
         }
 
